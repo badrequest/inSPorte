@@ -1,0 +1,71 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="br.com.badrequest.insporte"
+	android:versionCode="1"
+	android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-sdk
+		android:minSdkVersion="8"
+		android:targetSdkVersion="18" />
+
+	<application
+		android:icon="@drawable/ic_launcher"
+        android:theme="@style/Theme.Sptrans"
+        android:name=".InsPorte"
+		android:label="@string/app_name" >
+		<activity
+			android:name=".activity.Start_"
+			android:label="@string/app_name" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+        <activity
+                android:name=".activity.WizardActivity_"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activity.Login_"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activity.Menu_"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activity.Feed_"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activity.Routes_"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activity.Comment_"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".activity.SurveyActivity_"
+                android:label="@string/app_name"
+                android:screenOrientation="portrait">
+        </activity>
+
+        <service android:name=".service.SyncUserDataService_"
+                 android:exported="false"/>
+
+
+    </application>
+
+</manifest>

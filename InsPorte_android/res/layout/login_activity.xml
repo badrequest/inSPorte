@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="horizontal" >
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context=".Confirmacao" >
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true" >
+
+            <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/logo" />
+
+            <TextView
+                    android:id="@+id/textMensagem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/logo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <EditText
+                    android:id="@+id/buscard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textMensagem"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="36dp"
+                    android:ems="8"
+                    android:hint="@string/hint_bus_card"
+                    android:inputType="none" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                    android:id="@+id/userid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buscard"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="22dp"
+                    android:ems="8"
+                    android:maxLength="8"
+                    android:enabled="true"
+                    android:hint="@string/hint_id"
+                    android:inputType="number" >
+
+            </EditText>
+
+            <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/userid"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/userid"
+                    android:indeterminate="true"
+                    android:indeterminateBehavior="repeat"
+                    android:visibility="invisible" />
+
+            <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/userid"
+                    android:layout_alignRight="@+id/userid"
+                    android:layout_below="@+id/userid"
+                    android:layout_marginTop="22dp"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/login"
+                    android:textColor="@drawable/button_text_color" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>
