@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>SPTrans</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link href="static/css/bootstrap.css" rel="stylesheet" />
+	<link href="static/css/style.css" media="all" rel="stylesheet" />
+  <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script>
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.js"></script>
+    <script src="static/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <header>
+    <div class="container mg-bottom-10 mg-top-10">
+      <div class="col-sm-4">    				
+        <a class="logo-site" href="index.html" title="Link para a página inicial"></a>
+      </div>
+      
+      <div class="col-sm-1"></div> 
+      
+      <div class="col-sm-7 mg-top-10">
+        <div class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" />
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                                <li><a href="sobre.html">Sobre o App</a></li>
+                                <li><a href="feeds.html">Feeds</a></li>
+                                <li><a href="onibus.html">Ônibus</a></li>
+                </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main-items">
+    <div class="container">
+        <div class="col-sm-6 grafico verde">
+          <div class="panel panel-default">
+            Confira abaixo as linhas de transporte da <strong>SPTrans</strong> mais <span class="green">positivadas</span> através do aplicativo <strong>inSPorte</strong>.
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Classificação</th>
+                <th>Nome da Linha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1º</td>
+                <td>Linha 1</td>
+              </tr>
+              <tr>
+                <td>2º</td>
+                <td>Linha 2</td>
+              </tr>
+              <tr>
+                <td>3º</td>
+                <td>Linha 3</td>
+              </tr>
+              <tr>
+                <td>4º</td>
+                <td>Linha 4</td>
+              </tr>
+              <tr>
+                <td>5º</td>
+                <td>Linha 5</td>
+              </tr>
+              <tr>
+                <td>6º</td>
+                <td>Linha 6</td>
+              </tr>
+              <tr>
+                <td>7º</td>
+                <td>Linha 7</td>
+              </tr>
+              <tr>
+                <td>8º</td>
+                <td>Linha 8</td>
+              </tr>
+              <tr>
+                <td>9º</td>
+                <td>Linha 8</td>
+              </tr>
+              <tr>
+                <td>10º</td>
+                <td>Linha 10</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        <div class="col-sm-6 grafico vermelho">
+          <div class="panel panel-default">
+            Confira abaixo as linhas de transporte da <strong>SPTrans</strong> mais <span class="red">negativadas</span> através do aplicativo <strong>inSPorte</strong>.
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Classificação</th>
+                <th>Nome da Linha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1º</td>
+                <td>Linha 1</td>
+              </tr>
+              <tr>
+                <td>2º</td>
+                <td>Linha 2</td>
+              </tr>
+              <tr>
+                <td>3º</td>
+                <td>Linha 3</td>
+              </tr>
+              <tr>
+                <td>4º</td>
+                <td>Linha 4</td>
+              </tr>
+              <tr>
+                <td>5º</td>
+                <td>Linha 5</td>
+              </tr>
+              <tr>
+                <td>6º</td>
+                <td>Linha 6</td>
+              </tr>
+              <tr>
+                <td>7º</td>
+                <td>Linha 7</td>
+              </tr>
+              <tr>
+                <td>8º</td>
+                <td>Linha 8</td>
+              </tr>
+              <tr>
+                <td>9º</td>
+                <td>Linha 8</td>
+              </tr>
+              <tr>
+                <td>10º</td>
+                <td>Linha 10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="clear_both"></div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div class="creditos">SPTrans - Equipe Bad Request</div>
+    </div>
+  </footer>
+  <script src="static/js/jquery.js"></script>
+  <script src="static/js/bootstrap.js"></script>
+  <script src="static/js/application.js"></script>
+   <script>
+    $.ajax({
+      method: 'GET',
+   contentType: "application/jsonp; charset=utf-8",
+    dataType: "jsonp",
+   url: "http://172.20.10.7/insporte-rest/like",
+   success: function(){
+     alert("sucesso");
+   }, error: function() {
+     alert("erro");
+   }
+ });
+   </script>
+   </body>
+</html>

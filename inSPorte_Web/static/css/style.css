@@ -1,0 +1,91 @@
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Roboto Light'), local('Roboto-Light'), url('../fonts/roboto.woff') format('woff');
+}
+@font-face {
+	font-family: 'Roboto Regular';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto Regular'), local('Roboto-Regular'), url('../fonts/roboto-regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Roboto Medium';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/roboto-medium.woff') format('woff');
+}
+body {
+	overflow-x: hiddene;
+}
+.logo-site {	
+	background: url("../img/logo-284-100.png");
+	content: '';
+	display: block;
+	font-size: 0px;
+	height: 100px;
+	width: 284px;
+}
+.main-container {
+	clear: both;
+	width: 100%;
+}
+.main-destaque {
+	background-color: #CF2B2F;
+	margin-bottom: 50px;
+	margin-top: 20px;
+	width: 100%;
+}
+.main-image {
+	background: url("../img/geral/sptrans-ecofrota.jpg") no-repeat;
+	float: left;
+	height: 400px;
+	width: 0;
+}
+.main-about {
+	color: #FFFFFF;
+	display: none;
+	padding: 15px;
+}
+.main-about p {
+	display: block;
+	font-size: 17px;
+	line-height: 1.5;
+}
+.main-items {
+	background-color: #EEE;
+	clear: both;
+	padding: 15px 0 15px 0;
+	margin: 30px 0 0 0 0;
+	text-align: center;
+	width: 100%;
+}
+footer {
+	clear: both;
+	font-family: 'Roboto Medium';
+	padding: 30px 0 30px 0;
+	width: 100%;
+}
+.creditos {
+	padding: 15px;
+	text-align: center;
+}
+.grafico.verde {border-left: 4px solid green;}
+.grafico.vermelho {border-left: 4px solid red;}
+
+#placeholder, #placeholder2 {
+	width: 100%;
+	height: 200px;
+}
+.pieLabel {font-size: 30px !important;}
+table {width: 100%;}
+table thead th, table tbody tr {padding: 5px 10px 5px 10px;}
+table tbody tr {
+	background: #FFF;
+	border: 1px solid #CCC;
+}
+.main-feeds div {margin: 10px 0 10px 0;}
+.main-feeds .citacao {
+	font-style: italic;
+}

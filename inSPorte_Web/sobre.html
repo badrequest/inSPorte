@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>SPTrans</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link href="static/css/bootstrap.css" rel="stylesheet" />
+	<link href="static/css/style.css" media="all" rel="stylesheet" />
+  <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script>
+  <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.js"></script>
+    <script src="static/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <header>
+    <div class="container mg-bottom-10 mg-top-10">
+      <div class="col-sm-4">    				
+        <a class="logo-site" href="index.html" title="Link para a página inicial"></a>
+      </div>
+      
+      <div class="col-sm-1"></div> 
+      
+      <div class="col-sm-7 mg-top-10">
+        <div class="navbar navbar-default">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" />
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                                <li><a href="sobre.html">Sobre o App</a></li>
+                                <li><a href="feeds.html">Feeds</a></li>
+                                <li><a href="onibus.html">Ônibus</a></li>
+                </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main-items">
+    <div class="container">
+      <hgroup>
+        <h1>Sobre o projeto inSPorte</h1>
+        <h3>Uma breve descrição</h3>
+      </hgroup>
+        <p>
+          O aplicativo a ser desenvolvido visa possibilitar ao cidadão a se tornar um informante das condições do transporte público e assim auxiliar na melhoria deste serviço na cidade de São Paulo. Com tal aplicativo, será possível a qualquer pessoa informar com facilidade a localização, bem como, as condições dos pontos e dos ônibus. O aplicativo contará com as funções de: informar a localização e as condições dos pontos, dos veículos de transporte público e de seus funcionários.
+        </p>
+        <p>
+          A posição será obtida por meio de GPS e A-GPS. Os usuários poderão tirar fotos, escrever comentários e ainda poderão responder perguntas rápidas e objetivas relacionadas a qualidade do transporte, dos pontos e do atendimento dos funcionários;
+        </p>
+        <p>
+          Obtenção da velocidade do veículo e do tempo de permanência no ônibus. Através de geofences e de dados de sensores disponíveis nos smartphones, será possível detectar e informar o ponto de embarque e desembarque e o tempo de viagem.
+        </p>
+        <p>
+          Assim, será possível estimar com mais precisão os trechos e horários de maior lotação; · Mostrar ao usuário um feed de notícias sobre o transporte público em geral, futuramente alertando, com notificações, possíveis problemas com a linhas mais usadas por este usuário;
+        <p>
+            Será feito um website com estatísticas e informações colhidas com o aplicativo, e com as melhorias já realizadas no transporte devido às informações fornecidas e com um ranking dos "Cidadãos Mais Conscientes", com pontuação para as pessoas que mais forneceram informações úteis.
+        </p>
+        <p>
+          Uma possível validação dos dados enviados seria relacionando os estes com os dados de bilhetagem e viagens (bilhete unico, por exemplo), verificando se o bilhete do usuario usado no momento do cadastro foi o usado naquele veículo;
+        </p>
+          O aplicativo podera fazer a captura das informações mesmo sem conexao com a Internet, fazendo posterior sincronização (de forma preferencialmente automática). Também estará preparado para usar tecnologias de” BLE Bacons” para identificação dos pontos de dos ônibus de maneira mais eficiente;
+        <p>
+          Redes sociais poderão ser usadas para compartilhamento do ranking e assim incentivar o usuário a utilizar mais o aplicativo. As redes podem ser utilizadas também para enviar avisos para amigos que eventualmente utilizam as mesmas linhas, assim reduzindo o transtorno causado por possíveis manifestações, mudanças, desvios, obras e etc.
+        </p>        
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div class="creditos">SPTrans - Equipe Bad Request</div>
+    </div>
+  </footer>
+  <script src="static/js/jquery.js"></script>
+  <script src="static/js/bootstrap.js"></script>
+  <script src="static/js/application.js"></script>
+   <script>
+    $.ajax({
+      method: 'GET',
+   contentType: "application/jsonp; charset=utf-8",
+    dataType: "jsonp",
+   url: "http://172.20.10.7/insporte-rest/like",
+   success: function(){
+     alert("sucesso");
+   }, error: function() {
+     alert("erro");
+   }
+ });
+   </script>
+   </body>
+</html>
