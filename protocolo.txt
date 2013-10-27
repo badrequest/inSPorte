@@ -1,0 +1,202 @@
+.:. Proposta de protocolos JSON .:.
+
+1. Autenticao:
+
+App -> Web Service
+
+{
+	“auth” : {
+		“bu” : “<id do bilhete unico>”,
+		“id” : “<cpf ou algum outro identificador>”
+	},
+
+	“request” : “auth”
+}
+
+Web Service -> App
+
+{
+	“ans” : “<fail | ok>”
+}
+
+2. Envio de resposta:
+
+App -> Web Service
+
+{
+	“auth” : {
+		“bu” : “<id do bilhete unico>”,
+		“id” : “<cpf ou algum outro identificador>”
+	},
+
+	“request” : “resposta”,
+
+	“info”: {
+		“id” : “<numero da linha | numero do ponto>”,
+		“lat” : <latitude>,
+		“lon” : <longitude>,
+		“data” : “<dd/MM/yyyy HH:mm:ss em UTC>”,
+	}
+
+	“resposta” : {
+		
+		“idQuestionario” : <numero do questionario [1: onibus, 2: motorista/cobrador, 3:... etc]>,
+		“perguntas” : [
+			{
+				“idPergunta” : <numero da pergunta>,
+				“opcoes” : [
+					{
+						“idOpcao” : <numero da opcao>
+					}
+				],
+				“imagem” : <true | false>
+			}
+		]
+	},
+
+	“comentario” : {
+		“texto” : “<comentario do usuario>”,
+		“imagem” : <true | false>	
+	}
+}
+
+Obs.: Perguntas nao respondidas nao serao enviadas… Opcoes nao selecionadas nao serao enviadas… Um envio pode ter “perguntas”, “comentario” ou ambos.
+
+Web Service -> App
+
+{
+	“ans” : “<fail | ok>”,
+	“idImagens” : [
+		{
+			“idPergunta” : <numero da pergunta>,
+			“idImagem” : <numero da imagem>
+		}
+	],
+	“idImagemComentario” : <numero da imagem>
+}
+
+Obs.: O envio da lista idImagens so sera feito se o envio de resposta possuir algum imagem:true. idImagemComentario so sera enviado se tiver recebido comentario com imagem:true.
+
+3. Envio de imagens
+
+App -> Web Service
+
+{
+	“auth” : {
+		“bu” : “<id do bilhete unico>”,
+		“id” : “<cpf ou algum outro identificador>”
+	},
+
+	“request” : “imagem”,
+
+	“imagem” : {
+		“idImagem” : <numero da imagem>,
+		“img” : “<imagem em arquivo jpg codificado em base64>”
+	}
+}
+
+Web Service -> App
+
+{
+	“ans” : “<fail | ok>”
+}
+
+4. Sincronizacao de base (nao implementado)
+O Web Service pode mandar um push, pedindo pra requisitar esta atualizacao de base...
+
+App -> Web Service
+
+{
+	“auth” : {
+		“bu” : “<id do bilhete unico>”,
+		“id” : “<cpf ou algum outro identificador>”
+	},
+
+	“request” : “atualiza”
+}
+
+Web Service -> App
+
+{
+	“ans” : “<fail | ok>”,
+
+	“questionarios” : [
+		{
+			“idQuestionario” : <numero do id>,
+			“nome” : “<nome do questionario, ex: Onibus>”,
+			“desc” : “<descricao do questionario>”,
+			“img” : “<nome da imagem do botao, pra mostrar no app>”,
+			“tipo” : “<ponto | linha | ambos>”,
+
+			“perguntas” : [
+				{
+					“idPergunta” : <numero da pergunta>,
+					“desc” : “<descricao da pergunta>”,
+					“ordem” : <numero da pergunta no questionario>,
+					“opcoes” : [
+						{
+							“idOpcao” : <numero da opcao>,
+							“desc” : “<descricao da opcao>”,
+							“ordem” : <numero da opcao na pergunta>
+						}
+					]
+				}	
+			]
+		}
+	]
+}
+
+5. Envio de likes
+
+App -> Web Service
+
+{
+	“auth” : {
+		“bu” : “<id do bilhete unico>”,
+		“id” : “<cpf ou algum outro identificador>”
+	},
+
+	“request” : “set-like”,
+
+	“like” : {
+		“status” : <true | false>,
+		“id” : <numero da linha>
+	}
+}
+
+Web Service -> App
+
+{
+	“ans” : “<fail | ok>”
+}
+
+6. Recebimento de likes
+
+App -> Web Service
+
+{
+	“auth” : {
+		“bu” : “<id do bilhete unico>”,
+		“id” : “<cpf ou algum outro identificador>”
+	},
+
+	“request” : “get-like”,
+
+	“id” : <numero da linha>
+}
+
+Web Service -> App
+
+{
+	“ans” : “<fail | ok>”,
+	“like” : <true | false>
+}
+
+Obs.: Se der “get-like” e nao possuir entrada na base, retorna fail em ans e nao retorna like.
+
+
+
+
+
+
+
