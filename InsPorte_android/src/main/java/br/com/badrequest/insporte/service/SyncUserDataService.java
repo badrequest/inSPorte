@@ -40,7 +40,7 @@ public class SyncUserDataService extends Service {
 
     @Override
     public void onCreate() {
-        System.out.println("FILHAAAAAA DA PUTAAAAAAAAAAAAAAAAAA DO KCTEEEEEEEEEEEEEEEEEEE FILHAAAAAA DA PUTAAAAAAAAAAAAAAAAAA DO KCTEEEEEEEEEEEEEEEEEEE FILHAAAAAA DA PUTAAAAAAAAAAAAAAAAAA DO KCTEEEEEEEEEEEEEEEEEEE");
+        //Log.d("DEBUG");
         syncData();
     }
 
@@ -51,7 +51,7 @@ public class SyncUserDataService extends Service {
 
     @Background
     void syncData() {
-        System.out.println("FILHAAAAAA DA PUTAAAAAAAAAAAAAAAAAA DO KCTEEEEEEEEEEEEEEEEEEE FILHAAAAAA DA PUTAAAAAAAAAAAAAAAAAA DO KCTEEEEEEEEEEEEEEEEEEE FILHAAAAAA DA PUTAAAAAAAAAAAAAAAAAA DO KCTEEEEEEEEEEEEEEEEEEE");
+        //Log.d("DEBUG");
 
 //        int falhas = 0;
 //        try {
