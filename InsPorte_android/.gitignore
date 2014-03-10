@@ -1,0 +1,7 @@
+.idea
+InsPorte.iml
+classes/
+gen-external-apklibs/
+gen/
+target/
+
