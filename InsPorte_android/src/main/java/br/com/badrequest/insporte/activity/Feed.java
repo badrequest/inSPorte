@@ -63,7 +63,7 @@ public class Feed extends ActionBarActivity {
 
     @Click(R.id.imageButtonSobre)
     void about() {
-
+        startActivity(new Intent(this, About_.class));
     }
 
 }

@@ -51,9 +51,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="1dp"
                 android:layout_toLeftOf="@id/verticalDivider"
-                android:background="@drawable/custom_button"
+                android:background="@drawable/custom_button2"
                 android:text="Cancelar"
-                android:textColor="@drawable/button_text_color"
+                android:textColor="@color/black"
                 android:layout_alignParentBottom="true"/>
         <Button
                 android:id="@+id/btnProximo"
@@ -64,8 +64,8 @@
                 android:layout_marginTop="1dp"
                 android:text="Enviar"
                 android:layout_alignParentBottom="true"
-                android:textColor="@drawable/button_text_color"
-                android:background="@drawable/custom_button"
+                android:textColor="@color/black"
+                android:background="@drawable/custom_button2"
                 android:layout_toRightOf="@id/verticalDivider"/>
 
     </RelativeLayout>

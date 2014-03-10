@@ -3,6 +3,7 @@ package br.com.badrequest.insporte.activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.beans.Route;
@@ -60,6 +61,18 @@ public class Menu extends ActionBarActivity {
         Intent intent = new Intent(this, Comment_.class);
         intent.putExtra(Comment.SURVEY_EXTRA, mSurvey);
         startActivity(intent);
+    }
+
+    @Click(R.id.imageButtonNotLike)
+    void notLike() {
+        ((ImageButton) findViewById(R.id.imageButtonNotLike)).setImageResource(R.drawable.ic_not_like_ativo);
+        ((ImageButton) findViewById(R.id.imageButtonLike)).setImageResource(R.drawable.ic_like);
+    }
+
+    @Click(R.id.imageButtonLike)
+    void like() {
+        ((ImageButton) findViewById(R.id.imageButtonNotLike)).setImageResource(R.drawable.ic_not_like);
+        ((ImageButton) findViewById(R.id.imageButtonLike)).setImageResource(R.drawable.ic_like_ativo);
     }
 
     @Override
