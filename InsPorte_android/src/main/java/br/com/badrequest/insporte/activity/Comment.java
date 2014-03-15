@@ -5,19 +5,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import br.com.badrequest.insporte.R;
-import android.view.View;
 import br.com.badrequest.insporte.beans.Survey;
 import br.com.badrequest.insporte.util.BitmapUtils;
 import br.com.badrequest.insporte.util.Constants;
 import com.googlecode.androidannotations.annotations.*;
 
-import java.io.File;
 import java.io.IOException;
 
 @EActivity(R.layout.coment_activity)
@@ -69,18 +68,19 @@ public class Comment extends ActionBarActivity {
 
     @OptionsItem(R.id.action_photo)
     void takePicture() {
+        Toast.makeText(this, "Fotos estarão disponíveis apartir da próxima versão.", Toast.LENGTH_LONG).show();
 
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        String fotoPath = getExternalFilesDir(Constants.PICTURES_PATH).getAbsolutePath() + "/"
-                + "comentario_"
-                + String.valueOf(System.currentTimeMillis()) + ".jpg";
-        File picture = new File(fotoPath);
-        picture.mkdirs();
-        picture.delete();
-        mImageUri = Uri.fromFile(picture);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
-        startActivityForResult(cameraIntent, CAMERA_INTENT);
+//        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//        String fotoPath = getExternalFilesDir(Constants.PICTURES_PATH).getAbsolutePath() + "/"
+//                + "comentario_"
+//                + String.valueOf(System.currentTimeMillis()) + ".jpg";
+//        File picture = new File(fotoPath);
+//        picture.mkdirs();
+//        picture.delete();
+//        mImageUri = Uri.fromFile(picture);
+//        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
+//        startActivityForResult(cameraIntent, CAMERA_INTENT);
     }
 
     @Click(R.id.btnOK)

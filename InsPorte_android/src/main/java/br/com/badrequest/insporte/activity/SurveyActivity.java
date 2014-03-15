@@ -2,9 +2,8 @@ package br.com.badrequest.insporte.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.*;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.beans.Option;
 import br.com.badrequest.insporte.beans.Question;
@@ -36,6 +35,14 @@ public class SurveyActivity extends ActionBarActivity {
         for(Question question : questionList) {
             LinearLayout questionLayout = (LinearLayout) inflater.inflate(R.layout.question_layout, null);
             ((TextView) questionLayout.findViewById(R.id.perguntaTextView)).setText(question.getQuestion());
+
+            ImageButton cameraButton = (ImageButton) questionLayout.findViewById(R.id.cameraIcon);
+            cameraButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(SurveyActivity.this, "Fotos estarão disponíveis apartir da próxima versão.", Toast.LENGTH_LONG).show();
+                }
+            });
 
             LinearLayout checksLayout = (LinearLayout) questionLayout.findViewById(R.id.checksLayout);
             for(Option option : question.getOptions()) {

@@ -28,11 +28,11 @@
 
         <!-- Dependencies -->
         <androidannotations.version>2.7.1</androidannotations.version>
-        <android.version>4.3_r2</android.version>
-        <support-v4.version>18</support-v4.version>
-        <support-v7-appcompat.version>18</support-v7-appcompat.version>
+        <android.version>4.4.2_r3</android.version>
+        <support-v4.version>19.0.1</support-v4.version>
+        <support-v7-appcompat.version>19.0.1</support-v7-appcompat.version>
         <android-gcm.version>3</android-gcm.version>
-        <google-play-services.version>12</google-play-services.version>
+        <google-play-services.version>15.0.0</google-play-services.version>
         <orman.version>20120316</orman.version>
     </properties>
 
@@ -117,6 +117,36 @@
             <groupId>org.twitter4j</groupId>
             <artifactId>twitter4j-core</artifactId>
             <version>[3.0,)</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.17.0-rc</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>xpp3</artifactId>
+                    <groupId>xpp3</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>httpclient</artifactId>
+                    <groupId>org.apache.httpcomponents</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>junit</artifactId>
+                    <groupId>junit</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>android</artifactId>
+                    <groupId>com.google.android</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-gson</artifactId>
+            <version>1.17.0-rc</version>
         </dependency>
 
         <dependency>

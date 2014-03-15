@@ -1,31 +1,12 @@
 package br.com.badrequest.insporte.service;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.content.LocalBroadcastManager;
-import android.util.Base64;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
-
+import android.support.v4.content.LocalBroadcastManager;
 import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.EService;
 import com.googlecode.androidannotations.annotations.UiThread;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 @EService
 public class SyncUserDataService extends Service {
