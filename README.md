@@ -7,7 +7,7 @@ Data: 27 de Outubro de 2013
 
 Equipe:
 
-Danilo de Godoy Carolino (Portal Web e Arte) - dcarolino@aersoft.org
+Danilo de Godoy Carolino (Portal Web e Arte) - danilogcarolino@gmail.com
 
 Fabio de Albuquerque Dela Antonio (Aplicativo iOS) - fabio914@gmail.com
 
