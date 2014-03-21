@@ -10,5 +10,6 @@
     <string name="hint_bus_card">Bilhete único</string>
     <string name="hint_id">CPF</string>
     <string name="take_picture">Tirar foto</string>
-
+    <string name="search_hint">Número da linha</string>
+    <string name="action_search">Busca</string>
 </resources>

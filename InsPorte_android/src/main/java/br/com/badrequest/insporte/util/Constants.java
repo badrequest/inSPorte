@@ -29,7 +29,7 @@ public class Constants {
      * URL AND WS
      */
 
-    public static final String URL_WEBSERVICE = "http://000.000.000";
+    public static final String URL_WEBSERVICE = "http://www.insporte.com.br";
 
     public static final String URI_AUTH = "/auth";
 
@@ -45,8 +45,8 @@ public class Constants {
 
     public static final String PROP_URL_WS = "URL_WEBSERVICE";
 
-    public static final String PROP_BUS_CARD = "buscard";
-
     public static final String PROP_USER_ID = "userid";
+
+    public static final String PROP_USER_PASS = "userpass";
 
 }

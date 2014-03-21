@@ -5,7 +5,15 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private String id;
-    private String busCard;
+    private String password;
+
+    public User() {
+    }
+
+    public User(String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
 
     public String getId() {
         return id;
@@ -15,11 +23,11 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String getBusCard() {
-        return busCard;
+    public String getPassword() {
+        return password;
     }
 
-    public void setBusCard(String busCard) {
-        this.busCard = busCard;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

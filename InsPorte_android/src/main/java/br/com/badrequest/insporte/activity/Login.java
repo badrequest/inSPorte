@@ -4,16 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import br.com.badrequest.insporte.R;
-import br.com.badrequest.insporte.util.Checker;
+import br.com.badrequest.insporte.beans.User;
+import br.com.badrequest.insporte.beans.integration.Response;
+import br.com.badrequest.insporte.beans.integration.Token;
+import br.com.badrequest.insporte.util.Constants;
+import br.com.badrequest.insporte.util.ServiceRequest;
+import br.com.badrequest.insporte.util.Util;
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
+import com.google.gson.Gson;
 import com.googlecode.androidannotations.annotations.*;
 
 import java.io.IOException;
@@ -82,8 +89,7 @@ public class Login extends Activity implements
     @Click(R.id.sign_in_button)
     void signInGoogle() {
         mSignInClicked = true;
-        resolveSignInError();
-        //teste();
+        mGoogleApiClient.connect();
     }
 
     @Background
@@ -91,7 +97,8 @@ public class Login extends Activity implements
         try {
             String token = GoogleAuthUtil.getToken(this, Plus.AccountApi.getAccountName(mGoogleApiClient), "audience:server:client_id:549088494676-ukvqmup4o945c2memdcgudc631nm1mdk.apps.googleusercontent.com");
 
-            Checker checker = new Checker(new String[]{"549088494676-m2ctid6cpll6ttd4j3p6rk4d8ug49eri.apps.googleusercontent.com"}, "549088494676-ukvqmup4o945c2memdcgudc631nm1mdk.apps.googleusercontent.com");
+            Log.d("INSPORTE", token);
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (GoogleAuthException e) {
@@ -102,7 +109,31 @@ public class Login extends Activity implements
 
     @Override
     public void onConnected(Bundle bundle) {
+        authWithServer();
+    }
+
+    @Background
+    void authWithServer(){
+        try {
+            String token = GoogleAuthUtil.getToken(this, Plus.AccountApi.getAccountName(mGoogleApiClient), "audience:server:client_id:549088494676-ukvqmup4o945c2memdcgudc631nm1mdk.apps.googleusercontent.com");
+            Response response = (new Gson()).fromJson(ServiceRequest.makeJSONRequest(Constants.URL_WEBSERVICE + "/rest/auth/add", (new Gson()).toJson(new Token(token))), Response.class);
+
+            if(!response.getAns().equalsIgnoreCase("err")) {
+                Util.saveUser(this, new User(Plus.AccountApi.getAccountName(mGoogleApiClient), response.getAns()));
+                startFeedActivity();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (GoogleAuthException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @UiThread
+    void startFeedActivity() {
         startActivity(new Intent(this, Feed_.class));
+        finish();
     }
 
     @Override

@@ -1,16 +1,20 @@
 package br.com.badrequest.insporte.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.beans.Route;
-import br.com.badrequest.insporte.beans.Survey;
 import br.com.badrequest.insporte.beans.SurveyType;
-import br.com.badrequest.insporte.util.Util;
+import br.com.badrequest.insporte.beans.integration.Auth;
+import br.com.badrequest.insporte.beans.integration.Info;
+import br.com.badrequest.insporte.beans.integration.RestBean;
 import com.googlecode.androidannotations.annotations.*;
+
+import java.util.Date;
 
 @EActivity(R.layout.menu_activity)
 public class Menu extends ActionBarActivity {
@@ -18,7 +22,8 @@ public class Menu extends ActionBarActivity {
     public static final String ROUTE_EXTRA = "ROUTE";
     public static final int SURVEY_INTENT = 2000;
 
-    private Survey mSurvey = new Survey();
+    //FIXME: Nao usar bean de integration no projeto. Criar beans internos
+    private RestBean mSurvey = new RestBean();
 
     @ViewById
     TextView route;
@@ -26,10 +31,17 @@ public class Menu extends ActionBarActivity {
     @Extra(ROUTE_EXTRA)
     Route mRoute;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        mSurvey.setAuth(new Auth("giovannimarques33@gmail.com", "Tcre0X84NDDaQR0kSing"));
+        mSurvey.setInfo(new Info(mRoute.getCod(), 0.0, 0.0, new Date()));
+        super.onCreate(savedInstanceState);
+    }
+
     @AfterViews
     void afterViews() {
         route.setText(mRoute.getName());
-        Util.sendNotification(this, "Devido a manifestações, sua linha sofrerá atraso de 25 minutos!");
+        //Util.sendNotification(this, "Devido a manifestações, sua linha sofrerá atraso de 25 minutos!");
     }
 
     @Click({R.id.imageButtonOnibus, R.id.imageButtonMotorista, R.id.imageButtonPonto, R.id.imageButtonIncidente})
@@ -52,7 +64,8 @@ public class Menu extends ActionBarActivity {
                 break;
         }
 
-        intent.putExtra(SurveyActivity.SURVEY_EXTRA, surveyType);
+        intent.putExtra(SurveyActivity.SURVEY_TYPE_EXTRA, surveyType);
+        intent.putExtra(SurveyActivity.SURVEY_EXTRA, mSurvey);
         startActivity(intent);
     }
 
@@ -60,7 +73,7 @@ public class Menu extends ActionBarActivity {
     void comment() {
         Intent intent = new Intent(this, Comment_.class);
         intent.putExtra(Comment.SURVEY_EXTRA, mSurvey);
-        startActivity(intent);
+        startActivityForResult(intent, SURVEY_INTENT);
     }
 
     @Click(R.id.imageButtonNotLike)
@@ -78,7 +91,7 @@ public class Menu extends ActionBarActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SURVEY_INTENT && resultCode == RESULT_OK) {
-            mSurvey = (Survey) data.getSerializableExtra(Comment.SURVEY_EXTRA);
+            mSurvey = (RestBean) data.getSerializableExtra(Comment.SURVEY_EXTRA);
         }
     }
 

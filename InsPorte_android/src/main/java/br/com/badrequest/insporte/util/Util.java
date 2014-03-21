@@ -27,16 +27,16 @@ public class Util {
     public static User getUser(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         User user = new User();
-        user.setBusCard(preferences.getString(Constants.PROP_BUS_CARD, null));
         user.setId(preferences.getString(Constants.PROP_USER_ID, null));
-        return user;
+        user.setPassword(preferences.getString(Constants.PROP_USER_PASS, null));
+        return user.getPassword() != null ? user : null;
     }
 
     public static void saveUser(Context context, User user) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(Constants.PROP_BUS_CARD, user.getBusCard()).commit();
         editor.putString(Constants.PROP_USER_ID, user.getId()).commit();
+        editor.putString(Constants.PROP_USER_PASS, user.getPassword()).commit();
     }
 
     public static boolean haveNetworkConnection(Context context) {

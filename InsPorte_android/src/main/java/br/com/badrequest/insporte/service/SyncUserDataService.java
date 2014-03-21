@@ -4,9 +4,16 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
+import br.com.badrequest.insporte.beans.dao.JsonSubmit;
+import br.com.badrequest.insporte.util.ServiceRequest;
 import com.googlecode.androidannotations.annotations.Background;
 import com.googlecode.androidannotations.annotations.EService;
 import com.googlecode.androidannotations.annotations.UiThread;
+import org.apache.http.client.ClientProtocolException;
+import org.orman.mapper.Model;
+
+import java.io.IOException;
 
 @EService
 public class SyncUserDataService extends Service {
@@ -21,7 +28,7 @@ public class SyncUserDataService extends Service {
 
     @Override
     public void onCreate() {
-        System.out.println("DEBUG");
+        Log.d("INSPORTE", "onCreate - SyncUserDataService");
         syncData();
     }
 
@@ -32,10 +39,17 @@ public class SyncUserDataService extends Service {
 
     @Background
     void syncData() {
-        System.out.println("DEBUG");
+        Log.d("INSPORTE", "syncData - SyncUserDataService");
 
-//        int falhas = 0;
-//        try {
+        int falhas = 0;
+        try {
+            String baseURL = "http://54.201.69.11";
+            for(JsonSubmit json : Model.fetchAll(JsonSubmit.class)) {
+                Log.d("INSPORTE - REQUEST", json.getJson());
+                Log.d("INSPORTE - RESPONSE ", ServiceRequest.makeJSONRequest(baseURL+"/rest/answer", json.getJson()));
+                json.delete();
+            }
+
 //            RespostaDataSource respostaDS = new RespostaDataSource(getApplicationContext());
 //            List<Resposta> respostasQuestionario = respostaDS.listarTodosQuestionarios();
 //            String baseURL = Util.getUrlWS(getApplicationContext());
@@ -87,10 +101,14 @@ public class SyncUserDataService extends Service {
 //                sendStatus(imagensRestantes--, IMAGENS_RESTANTES_EXTRA);
 //            }
 //            respostaDS.close();
-//        } finally {
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
 //            sendStatus(falhas, FALHAS_EXTRA);
-//            pararServico();
-//        }
+            pararServico();
+        }
     }
 
 //    private boolean enviarJsonImagem(String json, String url) {

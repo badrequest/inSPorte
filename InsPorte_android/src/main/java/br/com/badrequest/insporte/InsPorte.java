@@ -1,7 +1,7 @@
 package br.com.badrequest.insporte;
 
 import android.app.Application;
-import br.com.badrequest.insporte.beans.Survey;
+import br.com.badrequest.insporte.beans.dao.JsonSubmit;
 import org.orman.dbms.Database;
 import org.orman.dbms.sqliteandroid.SQLiteAndroid;
 import org.orman.mapper.MappingSession;
@@ -13,7 +13,7 @@ public class InsPorte extends Application {
     public void onCreate() {
         Database db = new SQLiteAndroid(getApplicationContext(), "insport.db", 1);
         MappingSession.getConfiguration().setCreationPolicy(SchemaCreationPolicy.CREATE_IF_NOT_EXISTS);
-        MappingSession.registerEntity(Survey.class);
+        MappingSession.registerEntity(JsonSubmit.class);
         MappingSession.registerDatabase(db);
         MappingSession.start();
     }

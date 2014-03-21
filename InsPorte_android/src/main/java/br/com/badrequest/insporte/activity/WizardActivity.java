@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
-import android.widget.Toast;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.adapter.WizardPagerAdapter;
 import br.com.badrequest.insporte.beans.WizardPage;
@@ -46,6 +45,7 @@ public class WizardActivity extends ActionBarActivity implements ViewPager.OnPag
     void next() {
         if(pager.getCurrentItem() == pager.getAdapter().getCount()-1) {
             startActivity(new Intent(this, Login_.class));
+            finish();
         } else {
             pager.setCurrentItem(pager.getCurrentItem()+1, true);
         }
