@@ -22,7 +22,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="20dp"
-                android:contentDescription="Ambev Logo"
+                android:contentDescription="inSPorte Logo"
                 android:scaleType="fitEnd"
                 android:src="@drawable/logo"/>
 

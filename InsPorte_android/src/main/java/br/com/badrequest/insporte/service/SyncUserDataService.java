@@ -45,7 +45,6 @@ public class SyncUserDataService extends Service {
         try {
             String baseURL = "http://54.201.69.11";
             for(JsonSubmit json : Model.fetchAll(JsonSubmit.class)) {
-                Log.d("INSPORTE - REQUEST", json.getJson());
                 Log.d("INSPORTE - RESPONSE ", ServiceRequest.makeJSONRequest(baseURL+"/rest/answer", json.getJson()));
                 json.delete();
             }
