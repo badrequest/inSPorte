@@ -15,12 +15,14 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray * lines; // of Line
 
+@property (weak, nonatomic) IBOutlet UITextField *searchField;
+
 @end
 
 @implementation SelectViewController
 
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+    return NO;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,7 +41,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.lines = [[[DAO alloc] init] requestLines];
+    self.lines = [[[DAO alloc] init] requestLinesWithNumberOrName:nil];
+    
+    self.searchField.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,6 +82,18 @@
     }
     
     return 0;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    self.lines = [[[DAO alloc] init] requestLinesWithNumberOrName:textField.text];
+    
+    [self.tableView reloadData];
+    
+    [textField resignFirstResponder];
+    [textField setNeedsDisplay];
+    
+    return NO;
 }
 
 @end

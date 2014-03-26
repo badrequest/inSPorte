@@ -9,10 +9,25 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
+typedef sqlite3_stmt * Statement;
+typedef sqlite3 * Database;
+
 @interface DataManager : NSObject
 
-+ (NSString *)getDatabasePathWithName:(NSString *)name;
-+ (sqlite3 *)openDatabaseConnectionWithName:(NSString *)name;
-+ (void)closeDatabaseConnection:(sqlite3 *)db;
++ (BOOL)dataBaseExists;
++ (void)prepareDB;
++ (void)eraseDB;
+
+- (id)init;
+- (Database)database;
+- (void)dealloc;
+
+- (Statement *)prepareQuery:(NSString *)q, ...;
+- (BOOL)hasNextStepWithStatement:(Statement *)stmt;
+- (int)intAtColumn:(unsigned)idx ofStatement:(Statement *)stmt;
+- (NSString *)stringAtColumn:(unsigned)idx ofStatement:(Statement *)stmt;
+- (void)finalizeQueryWithStatement:(Statement *)stmt;
+- (BOOL)tryToPerformInsertStatement:(NSString *)i, ...;
 
 @end
+

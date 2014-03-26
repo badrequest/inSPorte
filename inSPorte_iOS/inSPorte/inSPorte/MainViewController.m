@@ -13,13 +13,14 @@
 @interface MainViewController ()
 
 @property (weak, atomic) IBOutlet UITextView *newsFeed;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
 @implementation MainViewController
 
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+    return NO;
 }
 
 //
@@ -111,6 +112,27 @@
 	// Do any additional setup after loading the view.
     
     [self getInfo];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    /* Parallax */
+    UIInterpolatingMotionEffect *verticalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y"
+                                                                                                        type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    
+    verticalMotionEffect.minimumRelativeValue = @(-20);
+    verticalMotionEffect.maximumRelativeValue = @(20);
+    
+    UIInterpolatingMotionEffect *horizontalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x"
+                                                                                                          type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-15);
+    horizontalMotionEffect.maximumRelativeValue = @(15);
+    
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    [self.imageView addMotionEffect:group];
 }
 
 - (void)didReceiveMemoryWarning

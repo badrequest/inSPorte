@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E51A5B7A18E257FD0074C165 /* sp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E51A5B7918E257FD0074C165 /* sp.jpg */; };
+		E51A5B7E18E25EFB0074C165 /* sp_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E51A5B7D18E25EFB0074C165 /* sp_blur.jpg */; };
+		E51A5B8118E260F70074C165 /* OfflineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E51A5B8018E260F70074C165 /* OfflineManager.m */; };
+		E51A5B8418E26F230074C165 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E51A5B8318E26F230074C165 /* twitter_icon.png */; };
 		E551D201181BD86B00945131 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D200181BD86B00945131 /* SelectViewController.m */; };
 		E551D205181BD94D00945131 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D204181BD94D00945131 /* MenuViewController.m */; };
 		E551D209181BD96E00945131 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D208181BD96E00945131 /* CommentViewController.m */; };
@@ -102,6 +106,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E51A5B7918E257FD0074C165 /* sp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp.jpg; sourceTree = "<group>"; };
+		E51A5B7D18E25EFB0074C165 /* sp_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp_blur.jpg; sourceTree = "<group>"; };
+		E51A5B7F18E260F70074C165 /* OfflineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineManager.h; sourceTree = "<group>"; };
+		E51A5B8018E260F70074C165 /* OfflineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineManager.m; sourceTree = "<group>"; };
+		E51A5B8318E26F230074C165 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_icon.png; sourceTree = "<group>"; };
 		E551D1FF181BD86B00945131 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
 		E551D200181BD86B00945131 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
 		E551D203181BD94D00945131 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -254,6 +263,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E51A5B8218E260FC0074C165 /* Offline */ = {
+			isa = PBXGroup;
+			children = (
+				E51A5B7F18E260F70074C165 /* OfflineManager.h */,
+				E51A5B8018E260F70074C165 /* OfflineManager.m */,
+			);
+			name = Offline;
+			sourceTree = "<group>";
+		};
 		E551D202181BD87000945131 /* SelectViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +347,7 @@
 				E5C46BDD181C764D0006FB4F /* CheckBox */,
 				E5C46BBA181C434B0006FB4F /* Logo */,
 				E58F6E05181C2E5500206525 /* Imagens */,
+				E51A5B8218E260FC0074C165 /* Offline */,
 				E58F6DF4181C1D6500206525 /* Network */,
 				E58F6DC2181C067900206525 /* Database */,
 				E58F6DB5181BDE0300206525 /* Constants */,
@@ -550,6 +569,9 @@
 		E58F6E05181C2E5500206525 /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
+				E51A5B8318E26F230074C165 /* twitter_icon.png */,
+				E51A5B7918E257FD0074C165 /* sp.jpg */,
+				E51A5B7D18E25EFB0074C165 /* sp_blur.jpg */,
 				E5C46BDE181C7FCB0006FB4F /* botao-avaliacao.png */,
 				E5C46BDF181C7FCB0006FB4F /* botao-sobrenos.png */,
 				E5C46BD2181C57C00006FB4F /* checkbox-ativo.png */,
@@ -691,6 +713,7 @@
 				E5C46BAB181C3D520006FB4F /* botoes-horizontais-autorizar.png in Resources */,
 				E58F6E0B181C313800206525 /* botoes-horizontais-sobre.png in Resources */,
 				E5CD5CD1181D3A610046A255 /* logo-icone-57-57.png in Resources */,
+				E51A5B8418E26F230074C165 /* twitter_icon.png in Resources */,
 				E5C46BC8181C47CC0006FB4F /* camera-red.png in Resources */,
 				E58E2DB4181BD6310055CE81 /* Images.xcassets in Resources */,
 				E5C46BCC181C47CC0006FB4F /* not-like.png in Resources */,
@@ -704,6 +727,7 @@
 				E58E2DAF181BD6310055CE81 /* Main.storyboard in Resources */,
 				E5CD5CD0181D3A610046A255 /* logo-icone-29-29.png in Resources */,
 				E5C46BC2181C47240006FB4F /* camera_icon@2x.png in Resources */,
+				E51A5B7E18E25EFB0074C165 /* sp_blur.jpg in Resources */,
 				E5C46BD4181C57C10006FB4F /* checkbox-ativo.png in Resources */,
 				E5C46BBE181C46D80006FB4F /* bar@2x.png in Resources */,
 				E5C46BA9181C3D350006FB4F /* logo-284-100.png in Resources */,
@@ -717,6 +741,7 @@
 				E5C46BBD181C46D80006FB4F /* bar.png in Resources */,
 				E5CD5CD2181D3A610046A255 /* logo-icone-58-58.png in Resources */,
 				E5CD5CD3181D3A610046A255 /* logo-icone-80-80.png in Resources */,
+				E51A5B7A18E257FD0074C165 /* sp.jpg in Resources */,
 				E5CD5CD5181D3A610046A255 /* logo-icone-120-120.png in Resources */,
 				E5CD5CDD181D3C040046A255 /* local.db in Resources */,
 				E58F6E0A181C313800206525 /* botoes-horizontais-avaliar.png in Resources */,
@@ -758,6 +783,7 @@
 				E58F6DE0181C073700206525 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				E5C46BF3181C98A40006FB4F /* QuestionnaireAnswer.m in Sources */,
 				E58E2DA8181BD6310055CE81 /* main.m in Sources */,
+				E51A5B8118E260F70074C165 /* OfflineManager.m in Sources */,
 				E58F6DF3181C1D6000206525 /* Network.m in Sources */,
 				E5C46BED181C93B30006FB4F /* OptionAnswer.m in Sources */,
 				E58F6DE1181C073700206525 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
@@ -905,7 +931,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "inSPorte/inSPorte-Prefix.pch";
 				INFOPLIST_FILE = "inSPorte/inSPorte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -918,7 +944,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "inSPorte/inSPorte-Prefix.pch";
 				INFOPLIST_FILE = "inSPorte/inSPorte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

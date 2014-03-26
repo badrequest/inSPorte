@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SelectViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 
 

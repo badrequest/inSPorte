@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DataManager.h"
 #import "Questionnaire.h"
 #import "Line.h"
 
-@interface DAO : NSObject
+@interface DAO : DataManager
 
-- (id)init;
 - (NSArray *)requestQuestionnaires;
-- (NSArray *)requestLines;
-- (void)dealloc;
+- (NSArray *)requestLinesWithNumberOrName:(NSString *)data;
 
 @end

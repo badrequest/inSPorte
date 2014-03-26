@@ -26,7 +26,7 @@
 
 - (BOOL)prefersStatusBarHidden {
     
-    return YES;
+    return NO;
 }
 
 - (void)viewDidLoad
@@ -42,15 +42,15 @@
     
     UIViewController * viewController;
     
-    if([Auth isAuthenticated]) {
+//    if([Auth isAuthenticated]) {
     
         viewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    }
+//    }
     
-    else {
-        
-        viewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
-    }
+//    else {
+//        
+//        viewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
+//    }
 
     UIWindow * windowRef = [UIApplication sharedApplication].delegate.window;
     windowRef.rootViewController = viewController;

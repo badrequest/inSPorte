@@ -7,56 +7,30 @@
 //
 
 #import "DAO.h"
-#import "DataManager.h"
 #include "Constants.h"
 
-@interface DAO()
+#define SQL(query, ...) [self prepareQuery:query, ##__VA_ARGS__]
 
-@property (nonatomic) sqlite3 * db;
-
-@end
+#define ITERATE_SQL(X) while([self hasNextStepWithStatement:X]){
+#define STEP_SQL(X) if([self hasNextStepWithStatement:X]){
+#define FAIL_STEP_SLQ } else {
+#define END_SQL(X) }[self finalizeQueryWithStatement:X];
 
 @implementation DAO
-
-- (id)init {
-    
-    self = [super init];
-    
-    if(self) {
-        
-        self.db = [DataManager openDatabaseConnectionWithName:DB_NAME];
-    }
-    
-    return self;
-}
 
 - (NSArray *)requestQuestionnaires {
     
     NSMutableArray * quest = [[NSMutableArray alloc] init];
     
-    char * query = "select id, nome from questionario order by id";
+    Statement * stmt = SQL(@"select id, nome from questionario order by id");
     
-    sqlite3_stmt * selectStatement;
+    ITERATE_SQL(stmt)
     
-    if(sqlite3_prepare_v2(self.db, query, -1, &selectStatement, NULL) == SQLITE_OK) {
+        Questionnaire * q = [[Questionnaire alloc] initWithText:[self stringAtColumn:1 ofStatement:stmt] andId:[self intAtColumn:0 ofStatement:stmt]];
         
-        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
-            
-            unsigned idQuestionnaire = sqlite3_column_int(selectStatement, 0);
-            char * text = (char *)sqlite3_column_text(selectStatement, 1);
-            
-            Questionnaire * q = [[Questionnaire alloc] initWithText:[NSString stringWithUTF8String:text] andId:idQuestionnaire];
-            
-            [quest addObject:q];
-        }
-    }
+        [quest addObject:q];
     
-    else {
-        
-        NSLog(@"Erro: \'%s\'", sqlite3_errmsg(self.db));
-    }
-    
-    sqlite3_finalize(selectStatement);
+    END_SQL(stmt)
     
     unsigned nQuestionnaires = [quest count];
     
@@ -81,29 +55,15 @@
     
     NSMutableArray * questions = [[NSMutableArray alloc] init];
     
-    NSString * nsQuery = [NSString stringWithFormat:@"select id, texto from pergunta where id_questionario = %d order by id", idQuestionnaire];
+    Statement * stmt = SQL(@"select id, texto from pergunta where id_questionario = %d order by id", idQuestionnaire);
     
-    const char * query = [nsQuery UTF8String];
+    ITERATE_SQL(stmt)
     
-    sqlite3_stmt * selectStatement;
-    
-    if(sqlite3_prepare_v2(self.db, query, -1, &selectStatement, NULL) == SQLITE_OK) {
+        Question * q = [[Question alloc] initWithText:[self stringAtColumn:1 ofStatement:stmt] andId:[self intAtColumn:0 ofStatement:stmt]];
         
-        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
-            
-            unsigned idQuestion = sqlite3_column_int(selectStatement, 0);
-            char * text = (char *)sqlite3_column_text(selectStatement, 1);
-            
-            Question * q = [[Question alloc] initWithText:[NSString stringWithUTF8String:text] andId:idQuestion];
-            
-            [questions addObject:q];
-        }
-    }
+        [questions addObject:q];
     
-    else {
-        
-        NSLog(@"Erro: \'%s\'", sqlite3_errmsg(self.db));
-    }
+    END_SQL(stmt)
     
     unsigned nQuestions = [questions count];
     
@@ -120,8 +80,6 @@
         }
     }
     
-    sqlite3_finalize(selectStatement);
-    
     return questions;
 }
 
@@ -129,75 +87,46 @@
     
     NSMutableArray * opts = [[NSMutableArray alloc] init];
     
-    NSString * nsQuery = [NSString stringWithFormat:@"select id, texto from opcao where id_pergunta = %d order by id", idQuestion];
+    Statement * stmt = SQL(@"select id, texto from opcao where id_pergunta = %d order by id", idQuestion);
     
-    const char * query = [nsQuery UTF8String];
+    ITERATE_SQL(stmt)
     
-    sqlite3_stmt * selectStatement;
-    
-    if(sqlite3_prepare_v2(self.db, query, -1, &selectStatement, NULL) == SQLITE_OK) {
+        Option * opt = [[Option alloc] initWithText:[self stringAtColumn:1 ofStatement:stmt] andId:[self intAtColumn:0 ofStatement:stmt]];
         
-        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
-            
-            unsigned idOption = sqlite3_column_int(selectStatement, 0);
-            char * text = (char *)sqlite3_column_text(selectStatement, 1);
-            
-            Option * opt = [[Option alloc] initWithText:[NSString stringWithUTF8String:text] andId:idOption];
-            
-            [opts addObject:opt];
-        }
-    }
+        [opts addObject:opt];
     
-    else {
-        
-        NSLog(@"Erro: \'%s\'", sqlite3_errmsg(self.db));
-    }
-    
-    sqlite3_finalize(selectStatement);
+    END_SQL(stmt)
     
     return opts;
 }
 
-- (NSArray *)requestLines {
+- (NSArray *)requestLinesWithNumberOrName:(NSString *)data {
     
-    NSMutableArray * arr = [[NSMutableArray alloc] init];
+    Statement * stmt;
     
-    char * query = "select id, codigo, nome from linha order by id";
-    
-    sqlite3_stmt * selectStatement;
-    
-    if(sqlite3_prepare_v2(self.db, query, -1, &selectStatement, NULL) == SQLITE_OK) {
+    if(data == nil || [data isEqualToString:@""]) {
         
-        while(sqlite3_step(selectStatement) == SQLITE_ROW) {
-            
-            unsigned idLine = sqlite3_column_int(selectStatement, 0);
-            char * code = (char *)sqlite3_column_text(selectStatement, 1);
-            NSString * codeString = [NSString stringWithUTF8String:code];
-            
-            char * text = (char *)sqlite3_column_text(selectStatement, 2);
-            NSString * textString = [NSString stringWithUTF8String:text];
-            
-            Line * l = [[Line alloc] initWithId:idLine
-                                        andCode:codeString
-                                        andText:textString];
-            
-            [arr addObject:l];
-        }
+        stmt = SQL(@"select id, codigo, nome from linha order by id limit 100");
     }
     
     else {
         
-        NSLog(@"Erro: \'%s\'", sqlite3_errmsg(self.db));
+        stmt = SQL(@"select id, codigo, nome from linha where codigo like \'%%%@%%\' or nome like \'%%%@%%\'", data, data);
     }
     
-    sqlite3_finalize(selectStatement);
+    NSMutableArray * arr = [[NSMutableArray alloc] init];
+    
+    ITERATE_SQL(stmt)
+    
+    Line * l = [[Line alloc] initWithId:[self intAtColumn:0 ofStatement:stmt]
+                                andCode:[self stringAtColumn:1 ofStatement:stmt]
+                                andText:[self stringAtColumn:2 ofStatement:stmt]];
+    
+    [arr addObject:l];
+    
+    END_SQL(stmt)
     
     return arr;
-}
-
-- (void)dealloc {
-    
-    [DataManager closeDatabaseConnection:self.db];
 }
 
 @end

@@ -26,13 +26,18 @@ delegate:nil \
 cancelButtonTitle:@"OK" \
 otherButtonTitles:nil] show]
 
+#define EXCLUSIVE_TOUCH_BUTTONS(X) \
+for (UIView * button in [X subviews]) {\
+if([button isKindOfClass:[UIButton class]])\
+[((UIButton *)button) setExclusiveTouch:YES];\
+}
+
 #define GPS_TIMEOUT 15.0
 #define MAX_GPS_TRIES 5
 #define MAX_GPS_ACCURACY 200.0
 
 #define DB_NAME @"local.db"
 
-#warning TROCAR ESTA URL COM A URL DO SEU SERVIDOR!
-#define WEB_SERVICE_SERVER @"http://172.20.10.7/insporte-rest"
+#define WEB_SERVICE_SERVER @"http://www.insporte.com.br/insporte-rest"
 
 #endif

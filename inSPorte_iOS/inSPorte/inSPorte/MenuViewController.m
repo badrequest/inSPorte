@@ -34,12 +34,14 @@
 
 @property (strong, nonatomic) NSString * nextSegue;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @implementation MenuViewController
 
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+    return NO;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,6 +67,27 @@
     self.conn = [[Network alloc] initWithURL:WEB_SERVICE_SERVER];
     
     [self updateLikes];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    /* Parallax */
+    UIInterpolatingMotionEffect *verticalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y"
+                                                                                                        type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    
+    verticalMotionEffect.minimumRelativeValue = @(-15);
+    verticalMotionEffect.maximumRelativeValue = @(15);
+    
+    UIInterpolatingMotionEffect *horizontalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x"
+                                                                                                          type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-20);
+    horizontalMotionEffect.maximumRelativeValue = @(20);
+    
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    [self.imageView addMotionEffect:group];
 }
 
 - (void)viewDidLayoutSubviews {
