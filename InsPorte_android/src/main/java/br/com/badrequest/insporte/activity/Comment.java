@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import br.com.badrequest.insporte.R;
-import br.com.badrequest.insporte.beans.integration.RestBean;
-import com.googlecode.androidannotations.annotations.*;
+import br.com.badrequest.insporte.integration.bean.Survey;
+import org.androidannotations.annotations.*;
 
 @EActivity(R.layout.coment_activity)
 @OptionsMenu(R.menu.comment)
@@ -33,7 +33,7 @@ public class Comment extends ActionBarActivity {
 
     @Extra(SURVEY_EXTRA)
     @NonConfigurationInstance
-    RestBean mSurvey;
+    Survey mSurvey;
 
     @AfterViews
     void afterViews() {

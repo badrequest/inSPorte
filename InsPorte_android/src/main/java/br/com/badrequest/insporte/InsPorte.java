@@ -1,7 +1,7 @@
 package br.com.badrequest.insporte;
 
 import android.app.Application;
-import br.com.badrequest.insporte.beans.dao.JsonSubmit;
+import br.com.badrequest.insporte.bean.dao.JsonSubmit;
 import org.orman.dbms.Database;
 import org.orman.dbms.sqliteandroid.SQLiteAndroid;
 import org.orman.mapper.MappingSession;

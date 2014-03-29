@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import br.com.badrequest.insporte.R;
-import br.com.badrequest.insporte.beans.Route;
-import br.com.badrequest.insporte.beans.SurveyType;
-import br.com.badrequest.insporte.beans.integration.Auth;
-import br.com.badrequest.insporte.beans.integration.Info;
-import br.com.badrequest.insporte.beans.integration.RestBean;
-import com.googlecode.androidannotations.annotations.*;
+import br.com.badrequest.insporte.bean.Route;
+import br.com.badrequest.insporte.bean.SurveyType;
+import br.com.badrequest.insporte.integration.bean.Credentials;
+import br.com.badrequest.insporte.integration.bean.ExtraSurveyInfo;
+import br.com.badrequest.insporte.integration.bean.Survey;
+import org.androidannotations.annotations.*;
 
 import java.util.Date;
 
@@ -23,7 +23,7 @@ public class Menu extends ActionBarActivity {
     public static final int SURVEY_INTENT = 2000;
 
     //FIXME: Nao usar bean de integration no projeto. Criar beans internos
-    private RestBean mSurvey = new RestBean();
+    private Survey mSurvey = new Survey();
 
     @ViewById
     TextView route;
@@ -33,8 +33,8 @@ public class Menu extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mSurvey.setAuth(new Auth("giovannimarques33@gmail.com", "Tcre0X84NDDaQR0kSing"));
-        mSurvey.setInfo(new Info(mRoute.getCod(), 0.0, 0.0, new Date()));
+        mSurvey.setCredentials(new Credentials("giovannimarques33@gmail.com", "Tcre0X84NDDaQR0kSing"));
+        mSurvey.setInfo(new ExtraSurveyInfo(mRoute.getCod(), 0.0, 0.0, new Date()));
         super.onCreate(savedInstanceState);
     }
 
@@ -91,7 +91,7 @@ public class Menu extends ActionBarActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SURVEY_INTENT && resultCode == RESULT_OK) {
-            mSurvey = (RestBean) data.getSerializableExtra(Comment.SURVEY_EXTRA);
+            mSurvey = (Survey) data.getSerializableExtra(Comment.SURVEY_EXTRA);
         }
     }
 

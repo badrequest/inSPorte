@@ -12,12 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.adapter.RouteListAdapter;
-import br.com.badrequest.insporte.beans.Route;
+import br.com.badrequest.insporte.bean.Route;
 import br.com.badrequest.insporte.database.datasource.RouteDataSource;
-import com.googlecode.androidannotations.annotations.AfterViews;
-import com.googlecode.androidannotations.annotations.EActivity;
-import com.googlecode.androidannotations.annotations.OptionsMenu;
-import com.googlecode.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 

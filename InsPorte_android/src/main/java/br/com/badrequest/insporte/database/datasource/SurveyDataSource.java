@@ -3,10 +3,9 @@ package br.com.badrequest.insporte.database.datasource;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import br.com.badrequest.insporte.beans.Option;
-import br.com.badrequest.insporte.beans.Question;
-import br.com.badrequest.insporte.beans.Route;
-import br.com.badrequest.insporte.beans.SurveyType;
+import br.com.badrequest.insporte.bean.Option;
+import br.com.badrequest.insporte.bean.Question;
+import br.com.badrequest.insporte.bean.SurveyType;
 import br.com.badrequest.insporte.util.Constants;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 

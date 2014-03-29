@@ -1,4 +1,4 @@
-package br.com.badrequest.insporte.beans;
+package br.com.badrequest.insporte.bean;
 
 import java.io.Serializable;
 import java.util.List;

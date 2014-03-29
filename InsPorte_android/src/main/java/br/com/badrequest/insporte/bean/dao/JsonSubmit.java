@@ -1,4 +1,4 @@
-package br.com.badrequest.insporte.beans.dao;
+package br.com.badrequest.insporte.bean.dao;
 
 import org.orman.mapper.Model;
 import org.orman.mapper.annotation.Entity;

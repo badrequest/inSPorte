@@ -1,33 +1,22 @@
 package br.com.badrequest.insporte.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
 import br.com.badrequest.insporte.R;
-import br.com.badrequest.insporte.beans.User;
-import br.com.badrequest.insporte.beans.integration.Response;
-import br.com.badrequest.insporte.beans.integration.Token;
-import br.com.badrequest.insporte.util.Constants;
-import br.com.badrequest.insporte.util.ServiceRequest;
-import br.com.badrequest.insporte.util.Util;
-import com.google.android.gms.auth.GoogleAuthException;
-import com.google.android.gms.auth.GoogleAuthUtil;
+import br.com.badrequest.insporte.business.LoginBusiness;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
-import com.google.gson.Gson;
-import com.googlecode.androidannotations.annotations.*;
-
-import java.io.IOException;
+import org.androidannotations.annotations.*;
 
 @EActivity(R.layout.login_activity)
-public class Login extends Activity implements
+public class Login extends TranslucentActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+    @Bean
+    LoginBusiness loginBusiness;
 
     @ViewById(R.id.sign_in_button)
     SignInButton signInButton;
@@ -42,24 +31,6 @@ public class Login extends Activity implements
     private boolean mSignInClicked;
 
     private ConnectionResult mConnectionResult;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
-        if (id != 0) { //KitKat or higher
-            boolean enabled = getResources().getBoolean(id);
-            // enabled = are translucent bars supported on this device
-            if (enabled) {
-                Window w = getWindow();
-                w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-                w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
-        }
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     protected void onStart() {
@@ -92,41 +63,15 @@ public class Login extends Activity implements
         mGoogleApiClient.connect();
     }
 
-    @Background
-    void teste() {
-        try {
-            String token = GoogleAuthUtil.getToken(this, Plus.AccountApi.getAccountName(mGoogleApiClient), "audience:server:client_id:549088494676-ukvqmup4o945c2memdcgudc631nm1mdk.apps.googleusercontent.com");
-
-            Log.d("INSPORTE", token);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (GoogleAuthException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     @Override
     public void onConnected(Bundle bundle) {
         authWithServer();
     }
 
     @Background
-    void authWithServer(){
-        try {
-            String token = GoogleAuthUtil.getToken(this, Plus.AccountApi.getAccountName(mGoogleApiClient), "audience:server:client_id:549088494676-ukvqmup4o945c2memdcgudc631nm1mdk.apps.googleusercontent.com");
-            Response response = (new Gson()).fromJson(ServiceRequest.makeJSONRequest(Constants.URL_WEBSERVICE + "/rest/auth/add", (new Gson()).toJson(new Token(token))), Response.class);
-
-            if(!response.getAns().equalsIgnoreCase("err")) {
-                Util.saveUser(this, new User(Plus.AccountApi.getAccountName(mGoogleApiClient), response.getAns()));
-                startFeedActivity();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (GoogleAuthException e) {
-            e.printStackTrace();
+    void authWithServer() {
+        if(loginBusiness.googleLogin(Plus.AccountApi.getAccountName(mGoogleApiClient))) {
+            startFeedActivity();
         }
     }
 

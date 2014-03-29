@@ -3,7 +3,7 @@ package br.com.badrequest.insporte.database.datasource;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import br.com.badrequest.insporte.beans.Route;
+import br.com.badrequest.insporte.bean.Route;
 import br.com.badrequest.insporte.util.Constants;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 

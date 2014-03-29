@@ -7,15 +7,16 @@ import android.view.View;
 import android.widget.*;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import br.com.badrequest.insporte.R;
-import br.com.badrequest.insporte.beans.Option;
-import br.com.badrequest.insporte.beans.Question;
-import br.com.badrequest.insporte.beans.SurveyType;
-import br.com.badrequest.insporte.beans.dao.JsonSubmit;
-import br.com.badrequest.insporte.beans.integration.RestBean;
-import br.com.badrequest.insporte.beans.integration.SurveyResult;
+import br.com.badrequest.insporte.bean.Option;
+import br.com.badrequest.insporte.bean.Question;
+import br.com.badrequest.insporte.bean.SurveyType;
+import br.com.badrequest.insporte.bean.dao.JsonSubmit;
+import br.com.badrequest.insporte.integration.bean.AdministeredQuestionnaire;
+import br.com.badrequest.insporte.integration.bean.QuestionOption;
+import br.com.badrequest.insporte.integration.bean.Survey;
 import br.com.badrequest.insporte.database.datasource.SurveyDataSource;
 import com.google.gson.GsonBuilder;
-import com.googlecode.androidannotations.annotations.*;
+import org.androidannotations.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +35,14 @@ public class SurveyActivity extends ActionBarActivity {
 
     //FIXME: Nao usar bean de integration no projeto. Criar beans internos
     @Extra(SURVEY_EXTRA)
-    RestBean mSurvey;
+    Survey mSurvey;
 
     @SystemService
     LayoutInflater inflater;
 
     @AfterViews
     void afterViews() {
-        mSurvey.setResposta(new SurveyResult(surveyType.getId(), new ArrayList<br.com.badrequest.insporte.beans.integration.Question>()));
+        mSurvey.setResposta(new AdministeredQuestionnaire(surveyType.getId(), new ArrayList<br.com.badrequest.insporte.integration.bean.Question>()));
 
         SurveyDataSource surveyDataSource = new SurveyDataSource(this);
         List<Question> questionList = surveyDataSource.listSurvey(surveyType);
@@ -95,18 +96,18 @@ public class SurveyActivity extends ActionBarActivity {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                List<br.com.badrequest.insporte.beans.integration.Question> questions = mSurvey.getResposta().getPerguntas();
+                List<br.com.badrequest.insporte.integration.bean.Question> questions = mSurvey.getResposta().getPerguntas();
 
-                br.com.badrequest.insporte.beans.integration.Question question = new br.com.badrequest.insporte.beans.integration.Question(idQuestion);
+                br.com.badrequest.insporte.integration.bean.Question question = new br.com.badrequest.insporte.integration.bean.Question(idQuestion);
 
                 if(questions.contains(question)){
                     question = questions.get(questions.indexOf(question));
                 } else {
-                    question.setOpcoes(new ArrayList<br.com.badrequest.insporte.beans.integration.Option>());
+                    question.setOpcoes(new ArrayList<QuestionOption>());
                     questions.add(question);
                 }
 
-                br.com.badrequest.insporte.beans.integration.Option option = new br.com.badrequest.insporte.beans.integration.Option(idOption);
+                QuestionOption option = new QuestionOption(idOption);
                 if(isChecked) {
                     question.getOpcoes().add(option);
                 } else {

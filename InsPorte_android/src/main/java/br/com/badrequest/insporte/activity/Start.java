@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import br.com.badrequest.insporte.database.datasource.RouteDataSource;
-import br.com.badrequest.insporte.util.Util;
-import com.googlecode.androidannotations.annotations.EActivity;
+import br.com.badrequest.insporte.preferences.LoginPrefs_;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 @EActivity
 public class Start extends ActionBarActivity {
+
+    @Pref
+    LoginPrefs_ loginPrefs;
 
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +23,7 @@ public class Start extends ActionBarActivity {
         routeDataSource.getReadableDatabase();
         routeDataSource.close();
 
-        if(Util.getUser(this) == null) {
+        if(!loginPrefs.pass().exists()) {
             startActivity(new Intent(this, WizardActivity_.class));
         } else {
             startActivity(new Intent(this, Feed_.class));

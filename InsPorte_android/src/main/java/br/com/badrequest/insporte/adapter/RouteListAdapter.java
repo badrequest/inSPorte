@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import br.com.badrequest.insporte.R;
-import br.com.badrequest.insporte.beans.Route;
+import br.com.badrequest.insporte.bean.Route;
 
 import java.util.List;
 

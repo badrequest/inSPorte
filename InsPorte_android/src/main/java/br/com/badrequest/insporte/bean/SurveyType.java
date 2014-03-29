@@ -1,4 +1,4 @@
-package br.com.badrequest.insporte.beans;
+package br.com.badrequest.insporte.bean;
 
 public enum SurveyType {
     ONIBUS(1),

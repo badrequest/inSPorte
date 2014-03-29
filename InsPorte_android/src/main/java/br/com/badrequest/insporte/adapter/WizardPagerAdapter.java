@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import br.com.badrequest.insporte.activity.fragment.WizardFragment_;
-import br.com.badrequest.insporte.beans.WizardPage;
+import br.com.badrequest.insporte.bean.WizardPage;
 
 import java.util.List;
 

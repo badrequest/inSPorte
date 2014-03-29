@@ -7,18 +7,17 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.adapter.FeedListAdapter;
-import com.googlecode.androidannotations.annotations.*;
+import org.androidannotations.annotations.*;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
-import twitter4j.auth.AccessToken;
 import twitter4j.conf.ConfigurationBuilder;
 
 import java.util.List;
 
 @EActivity(R.layout.feed_activity)
-public class Feed extends ActionBarActivity {
+public class Feed extends TranslucentActivity {
 
     @ViewById
     ProgressBar progressBar;

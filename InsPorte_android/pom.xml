@@ -27,13 +27,14 @@
         <api.platform>18</api.platform>
 
         <!-- Dependencies -->
-        <androidannotations.version>2.7.1</androidannotations.version>
+        <androidannotations.version>3.0.1</androidannotations.version>
         <android.version>4.4.2_r3</android.version>
         <support-v4.version>19.0.1</support-v4.version>
         <support-v7-appcompat.version>19.0.1</support-v7-appcompat.version>
         <android-gcm.version>3</android-gcm.version>
         <google-play-services.version>15.0.0</google-play-services.version>
         <orman.version>20120316</orman.version>
+        <spring-android-rest-template.version>1.0.1.RELEASE</spring-android-rest-template.version>
     </properties>
 
     <dependencies>
@@ -80,15 +81,20 @@
         </dependency>
 
         <dependency>
-            <groupId>com.googlecode.androidannotations</groupId>
+            <groupId>org.androidannotations</groupId>
             <artifactId>androidannotations</artifactId>
             <version>${androidannotations.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.googlecode.androidannotations</groupId>
+            <groupId>org.androidannotations</groupId>
             <artifactId>androidannotations-api</artifactId>
             <version>${androidannotations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.android</groupId>
+            <artifactId>spring-android-rest-template</artifactId>
+            <version>${spring-android-rest-template.version}</version>
         </dependency>
 
         <dependency>

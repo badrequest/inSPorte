@@ -6,11 +6,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.adapter.WizardPagerAdapter;
-import br.com.badrequest.insporte.beans.WizardPage;
-import com.googlecode.androidannotations.annotations.AfterViews;
-import com.googlecode.androidannotations.annotations.Click;
-import com.googlecode.androidannotations.annotations.EActivity;
-import com.googlecode.androidannotations.annotations.ViewById;
+import br.com.badrequest.insporte.bean.WizardPage;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 import com.viewpagerindicator.UnderlinePageIndicator;
 
 import java.util.ArrayList;
