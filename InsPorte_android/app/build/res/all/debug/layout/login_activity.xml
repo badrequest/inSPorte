@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".Confirmacao">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/sp"
+            android:scaleType="centerCrop"
+            android:alpha="0.6"/>
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+        <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"/>
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
+                android:layout_marginTop="30dp"
+                android:indeterminate="true"
+                android:indeterminateBehavior="repeat"
+                android:visibility="invisible"
+                android:layout_centerHorizontal="true"/>
+
+        <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_in_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progressBar"
+                android:layout_marginTop="30dp"
+                android:layout_alignLeft="@id/logo"
+                android:layout_alignRight="@id/logo"/>
+    </RelativeLayout>
+</RelativeLayout><!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/layout/login_activity.xml -->

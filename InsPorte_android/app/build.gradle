@@ -1,0 +1,64 @@
+apply plugin: 'android'
+apply plugin: 'android-apt'
+def AAVersion = '3.0.1'
+
+dependencies {
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    compile 'com.android.support:support-v4:19.0.+'
+    compile 'com.android.support:appcompat-v7:19.+'
+    compile 'com.google.android.gms:play-services:4.2.42'
+    compile 'com.viewpagerindicator:library:2.4.1@aar'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'org.twitter4j:twitter4j-core:3.0.6'
+    apt 'org.projectlombok:lombok:1.12.6'
+    provided 'org.projectlombok:lombok:1.12.6'
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile group: 'org.orman', name: 'orman', version: '20120316'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    compile group: 'com.google.code.gson', name: 'gson', version: '1.7.1'
+    compile group: 'com.readystatesoftware.sqliteasset', name: 'android-sqlite-asset-helper', version: '2'
+
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.3"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 19
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+apt {
+    arguments {
+        androidManifestFile variant.processResources.manifestFile 
+        resourcePackageName 'br.com.badrequest.insporte'
+
+        // If you're using Android NBS flavors you should use the following line instead of hard-coded packageName
+        // resourcePackageName android.defaultConfig.packageName
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel 'INFO'
+        // logFile '/var/log/aa.log'
+    }
+}

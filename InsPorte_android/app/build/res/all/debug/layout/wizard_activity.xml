@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp">
+
+        <View
+                android:background="@color/holo_blue_bright"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <com.viewpagerindicator.UnderlinePageIndicator
+                android:id="@+id/indicator"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                app:fades="false"/>
+
+    </FrameLayout>
+
+    <!--Barra botoes inferiores-->
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:background="#44a0a0a0"
+                android:layout_alignParentTop="true"/>
+
+        <Button
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1dp"
+                android:background="@color/vermelho_claro_sptrans"
+                android:text="@string/next"
+                android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/layout/wizard_activity.xml -->

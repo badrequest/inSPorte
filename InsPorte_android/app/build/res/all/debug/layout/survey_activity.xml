@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        <LinearLayout
+                android:id="@+id/questoesLayout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <!--Barra botoes inferiores-->
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true">
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:background="#44a0a0a0"
+                android:layout_alignParentTop="true"/>
+        <View
+                android:id="@+id/verticalDivider"
+                android:layout_width="1dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="4dip"
+                android:layout_marginTop="4dip"
+                android:background="#44a0a0a0"
+                android:layout_centerHorizontal="true"/>
+        <Button
+                android:id="@+id/btnAnterior"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1dp"
+                android:layout_toLeftOf="@id/verticalDivider"
+                android:background="@drawable/custom_button2"
+                android:text="Cancelar"
+                android:textColor="@color/black"
+                android:layout_alignParentBottom="true"/>
+        <Button
+                android:id="@+id/btnProximo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1dp"
+                android:text="Enviar"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/black"
+                android:background="@drawable/custom_button2"
+                android:layout_toRightOf="@id/verticalDivider"/>
+
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/layout/survey_activity.xml -->

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:avaliacaoti="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/action_photo"
+            android:orderInCategory="100"
+            avaliacaoti:showAsAction="always"
+            android:icon="@drawable/ic_action_photo"
+            android:title="@string/take_picture"/>
+</menu><!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/menu/comment.xml -->

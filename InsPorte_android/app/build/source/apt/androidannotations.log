@@ -1,0 +1,464 @@
+00:29:20.848 [Daemon] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:29:20.998 [Daemon] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:29:21.170 [Daemon] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml
+00:29:21.462 [Daemon] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:29:21.469 [Daemon] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:29:21.472 [Daemon] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:29:21.527 [Daemon] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:29:21.598 [Daemon] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:29:21.601 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:29:21.616 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:29:21.618 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:29:21.626 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:29:21.630 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:29:21.637 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:29:21.651 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:29:21.662 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:29:21.673 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:29:21.675 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:29:21.676 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:29:21.678 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:29:21.687 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:29:21.694 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:29:21.701 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:29:21.714 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:29:21.717 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:29:21.721 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:29:21.723 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:29:21.728 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:29:21.734 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:29:21.737 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:29:21.741 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:29:21.758 [Daemon] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:29:21.760 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.SurveyActivity]
+00:29:21.874 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:29:21.879 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:29:21.892 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:29:21.895 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:29:21.907 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:29:21.913 [Daemon] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:29:21.950 [Daemon] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:29:21.956 [Daemon] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:29:21.961 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:29:21.996 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:29:22.48 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:29:22.70 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:29:22.87 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:29:22.112 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:29:22.126 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:29:22.137 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:29:22.162 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:29:22.182 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:29:22.191 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:29:22.199 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:29:22.216 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:29:22.236 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:29:22.241 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:29:22.249 [Daemon] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 1251 ms], [Extract Manifest = 301 ms], [Generate Sources = 299 ms], [Process Annotations = 208 ms], [Extract Annotations = 165 ms], [Validate Annotations = 145 ms], [Find R Classes = 98 ms], 
+00:29:22.251 [Daemon] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+00:30:50.462 [Daemon] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:30:50.630 [Daemon] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:30:50.669 [Daemon] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml
+00:30:50.685 [Daemon] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:30:50.689 [Daemon] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:30:50.698 [Daemon] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:30:50.716 [Daemon] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:30:50.752 [Daemon] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:30:50.753 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:30:50.761 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:30:50.772 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:30:50.778 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:30:50.780 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:30:50.784 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:30:50.789 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:30:50.802 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:30:50.808 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:30:50.809 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:30:50.810 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:30:50.812 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:30:50.816 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:30:50.818 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:30:50.821 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:30:50.825 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:30:50.826 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:30:50.827 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:30:50.829 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:30:50.835 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:30:50.838 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:30:50.843 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:30:50.847 [Daemon] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:30:50.986 [Daemon] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:30:50.989 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Comment]
+00:30:51.153 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:30:51.158 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:30:51.167 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler, br.com.badrequest.insporte.business.LoginBusiness]
+00:30:51.169 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:30:51.179 [Daemon] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:30:51.184 [Daemon] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:30:51.219 [Daemon] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:30:51.223 [Daemon] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:30:51.228 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:30:51.254 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:30:51.286 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:30:51.322 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:30:51.344 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:30:51.369 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:30:51.384 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:30:51.399 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:30:51.420 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:30:51.434 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:30:51.443 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:30:51.455 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:30:51.476 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:30:51.484 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:30:51.489 [Daemon] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:30:51.493 [Daemon] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 863 ms], [Process Annotations = 369 ms], [Generate Sources = 274 ms], [Validate Annotations = 99 ms], [Find R Classes = 48 ms], [Extract Annotations = 34 ms], [Extract Manifest = 22 ms], 
+00:30:51.494 [Daemon] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+00:34:02.396 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:34:02.480 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:34:02.516 [Daemon Thread 2] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml
+00:34:02.528 [Daemon Thread 2] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:34:02.532 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:34:02.542 [Daemon Thread 2] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:34:02.567 [Daemon Thread 2] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:34:02.592 [Daemon Thread 2] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:34:02.593 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:34:02.599 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:34:02.600 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:34:02.604 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:34:02.605 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:34:02.610 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:34:02.615 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:34:02.623 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:34:02.631 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:34:02.633 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:34:02.635 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:34:02.636 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:34:02.647 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:34:02.650 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:34:02.653 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:34:02.656 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:34:02.657 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:34:02.659 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:34:02.660 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:34:02.662 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:34:02.664 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:34:02.666 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:34:02.669 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:34:02.682 [Daemon Thread 2] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:34:02.683 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Start]
+00:34:02.735 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:34:02.739 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:34:02.744 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:34:02.747 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:34:02.763 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:34:02.769 [Daemon Thread 2] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:34:02.799 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:34:02.802 [Daemon Thread 2] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:34:02.806 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:34:02.825 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:34:02.850 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:34:02.867 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:34:02.883 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:34:02.908 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:34:02.923 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:34:02.934 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:34:02.953 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:34:02.976 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:34:02.986 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:34:02.993 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:34:03.6 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:34:03.16 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:34:03.21 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:34:03.28 [Daemon Thread 2] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 547 ms], [Generate Sources = 228 ms], [Process Annotations = 129 ms], [Validate Annotations = 79 ms], [Find R Classes = 38 ms], [Extract Annotations = 33 ms], [Extract Manifest = 16 ms], 
+00:34:03.29 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+00:34:14.93 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:34:14.145 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:34:14.163 [Daemon Thread 2] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml
+00:34:14.170 [Daemon Thread 2] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:34:14.172 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:34:14.175 [Daemon Thread 2] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:34:14.183 [Daemon Thread 2] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:34:14.200 [Daemon Thread 2] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:34:14.201 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:34:14.206 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:34:14.207 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:34:14.210 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:34:14.211 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:34:14.213 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:34:14.217 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:34:14.226 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:34:14.232 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:34:14.233 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:34:14.234 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:34:14.235 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:34:14.240 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:34:14.242 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:34:14.245 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:34:14.248 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:34:14.250 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:34:14.251 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:34:14.252 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:34:14.253 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:34:14.254 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:34:14.255 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:34:14.257 [Daemon Thread 2] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:34:14.268 [Daemon Thread 2] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:34:14.269 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.Feed]
+00:34:14.306 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:34:14.309 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:34:14.328 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler, br.com.badrequest.insporte.business.LoginBusiness]
+00:34:14.331 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:34:14.340 [Daemon Thread 2] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:34:14.344 [Daemon Thread 2] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:34:14.371 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:34:14.375 [Daemon Thread 2] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:34:14.379 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:34:14.398 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:34:14.427 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:34:14.451 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:34:14.473 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:34:14.500 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:34:14.514 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:34:14.529 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:34:14.550 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:34:14.563 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:34:14.574 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:34:14.583 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:34:14.598 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:34:14.604 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:34:14.607 [Daemon Thread 2] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:34:14.612 [Daemon Thread 2] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 467 ms], [Generate Sources = 241 ms], [Process Annotations = 113 ms], [Validate Annotations = 58 ms], [Find R Classes = 18 ms], [Extract Annotations = 15 ms], [Extract Manifest = 10 ms], 
+00:34:14.613 [Daemon Thread 2] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+00:35:40.962 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:35:41.31 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:35:41.47 [Daemon Thread 3] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml
+00:35:41.55 [Daemon Thread 3] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:35:41.57 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:35:41.58 [Daemon Thread 3] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:35:41.66 [Daemon Thread 3] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:35:41.98 [Daemon Thread 3] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:35:41.99 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:35:41.105 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:35:41.106 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:35:41.110 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:35:41.111 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:35:41.113 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:35:41.116 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:35:41.123 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:35:41.128 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:35:41.129 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:35:41.131 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:35:41.132 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:35:41.139 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:35:41.140 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:35:41.143 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:35:41.145 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:35:41.146 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:35:41.148 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:35:41.149 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:35:41.151 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:35:41.152 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:35:41.154 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:35:41.157 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:35:41.170 [Daemon Thread 3] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:35:41.171 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login]
+00:35:41.208 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:35:41.226 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:35:41.229 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:35:41.231 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:35:41.242 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:35:41.248 [Daemon Thread 3] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:35:41.272 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:35:41.274 [Daemon Thread 3] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:35:41.277 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:35:41.294 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:35:41.322 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:35:41.339 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:35:41.354 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:35:41.377 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:35:41.390 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:35:41.405 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:35:41.434 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:35:41.447 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:35:41.455 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:35:41.462 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:35:41.473 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:35:41.483 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:35:41.488 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:35:41.493 [Daemon Thread 3] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 462 ms], [Generate Sources = 221 ms], [Process Annotations = 114 ms], [Validate Annotations = 61 ms], [Find R Classes = 29 ms], [Extract Annotations = 13 ms], [Extract Manifest = 11 ms], 
+00:35:41.494 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+00:35:50.837 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:35:50.892 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:35:50.913 [Daemon Thread 3] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml
+00:35:50.922 [Daemon Thread 3] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:35:50.925 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:35:50.927 [Daemon Thread 3] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:35:50.932 [Daemon Thread 3] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:35:50.950 [Daemon Thread 3] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:35:50.952 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:35:50.955 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:35:50.956 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:35:50.960 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:35:50.961 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:35:50.964 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:35:50.967 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:35:50.972 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:35:50.978 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:35:50.979 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:35:50.979 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:35:50.980 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:35:50.984 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:35:50.986 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:35:50.988 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:35:50.991 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:35:50.992 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:35:50.994 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:35:50.994 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:35:50.995 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:35:50.996 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:35:50.998 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:35:51.0 [Daemon Thread 3] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:35:51.14 [Daemon Thread 3] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:35:51.15 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Feed]
+00:35:51.54 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:35:51.56 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:35:51.59 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler, br.com.badrequest.insporte.business.LoginBusiness]
+00:35:51.61 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:35:51.68 [Daemon Thread 3] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:35:51.72 [Daemon Thread 3] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:35:51.97 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:35:51.99 [Daemon Thread 3] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:35:51.102 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:35:51.116 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:35:51.139 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:35:51.160 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:35:51.178 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:35:51.214 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:35:51.228 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:35:51.239 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:35:51.257 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:35:51.270 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:35:51.280 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:35:51.292 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:35:51.307 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:35:51.313 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:35:51.316 [Daemon Thread 3] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:35:51.321 [Daemon Thread 3] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 429 ms], [Generate Sources = 225 ms], [Process Annotations = 95 ms], [Validate Annotations = 51 ms], [Extract Annotations = 16 ms], [Find R Classes = 15 ms], [Extract Manifest = 13 ms], 
+00:35:51.322 [Daemon Thread 3] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+00:38:58.816 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:38:58.884 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:38:58.905 [Daemon Thread 4] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/debug/AndroidManifest.xml
+00:38:58.915 [Daemon Thread 4] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:38:58.917 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:38:58.936 [Daemon Thread 4] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:38:58.950 [Daemon Thread 4] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:38:58.971 [Daemon Thread 4] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:38:58.973 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:38:58.978 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:38:58.979 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:38:58.983 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:38:58.984 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:38:58.987 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:38:58.991 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:38:58.997 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:38:59.3 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:38:59.4 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:38:59.5 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:38:59.6 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:38:59.9 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:38:59.10 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:38:59.13 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:38:59.16 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:38:59.17 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:38:59.18 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:38:59.19 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:38:59.20 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:38:59.22 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:38:59.24 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:38:59.26 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:38:59.38 [Daemon Thread 4] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:38:59.39 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Comment]
+00:38:59.77 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:38:59.79 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:38:59.81 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler, br.com.badrequest.insporte.business.LoginBusiness]
+00:38:59.83 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:38:59.93 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:38:59.99 [Daemon Thread 4] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:38:59.123 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:38:59.125 [Daemon Thread 4] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:38:59.127 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:38:59.144 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:38:59.169 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:38:59.189 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:38:59.206 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:38:59.227 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:38:59.240 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:38:59.255 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:38:59.283 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:38:59.296 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:38:59.304 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:38:59.311 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:38:59.327 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:38:59.334 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:38:59.338 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:38:59.343 [Daemon Thread 4] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 459 ms], [Generate Sources = 220 ms], [Process Annotations = 95 ms], [Validate Annotations = 57 ms], [Find R Classes = 44 ms], [Extract Annotations = 18 ms], [Extract Manifest = 13 ms], 
+00:38:59.344 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing
+00:39:08.251 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:85 - Initialize AndroidAnnotations 3.0.1 with options {androidManifestFile=/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml, resourcePackageName=br.com.badrequest.insporte}
+00:39:08.314 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:109 - Start processing for 23 annotations on 49 elements
+00:39:08.326 [Daemon Thread 4] DEBUG o.a.h.AndroidManifestFinder:98 - AndroidManifest.xml file found with specified path: /Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/manifests/release/AndroidManifest.xml
+00:39:08.335 [Daemon Thread 4] WARN  o.a.h.AndroidManifestFinder:252 - A class activity declared in the AndroidManifest.xml cannot be found in the compile path: [br.com.badrequest.insporte.activity.TestActivity]
+00:39:08.339 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:172 - AndroidManifest.xml found: AndroidManifest [applicationPackage=br.com.badrequest.insporte, componentQualifiedNames=[br.com.badrequest.insporte.activity.Start_, br.com.badrequest.insporte.activity.WizardActivity_, br.com.badrequest.insporte.activity.Login_, br.com.badrequest.insporte.activity.Menu_, br.com.badrequest.insporte.activity.Feed_, br.com.badrequest.insporte.activity.Routes_, br.com.badrequest.insporte.activity.Comment_, br.com.badrequest.insporte.activity.SurveyActivity_, br.com.badrequest.insporte.activity.About_, br.com.badrequest.insporte.service.SyncUserDataService_, br.com.badrequest.insporte.receiver.NetworkChangeReceiver], permissionQualifiedNames=[android.permission.WRITE_EXTERNAL_STORAGE, android.permission.INTERNET, android.permission.ACCESS_NETWORK_STATE, android.permission.ACCESS_COARSE_LOCATION, android.permission.ACCESS_FINE_LOCATION, android.permission.USE_CREDENTIALS, android.permission.GET_ACCOUNTS], applicationClassName=br.com.badrequest.insporte.InsPorte, libraryProject=false, debugabble=false, minSdkVersion=9, maxSdkVersion=-1, targetSdkVersion=19]
+00:39:08.341 [Daemon Thread 4] INFO  o.a.r.ProjectRClassFinder:50 - Found project R class: br.com.badrequest.insporte.R
+00:39:08.376 [Daemon Thread 4] INFO  o.a.r.AndroidRClassFinder:44 - Found Android class: android.R
+00:39:08.396 [Daemon Thread 4] INFO  o.a.p.ModelValidator:42 - Validating elements
+00:39:08.397 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EActivityHandler: [br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.WizardActivity]
+00:39:08.401 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:39:08.402 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:39:08.406 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with EBeanHandler: [br.com.badrequest.insporte.business.LoginBusiness, br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler]
+00:39:08.407 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:39:08.410 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with PrefHandler: [loginPrefs, loginPrefs]
+00:39:08.413 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with ViewByIdHandler: [commentEditText, pictureImageView, pictureLayout, progressBar, list, signInButton, route, list, questoesLayout, pager, indicator, btnNext, title1, title2, image]
+00:39:08.420 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with ClickHandler: [close(), delete(), survey(), about(), signInGoogle(), survey(android.view.View), comment(), notLike(), like(), cancel(), submit(), next()]
+00:39:08.427 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with ExtraHandler: [mSurvey, mRoute, surveyType, mSurvey]
+00:39:08.428 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with FragmentArgHandler: [page]
+00:39:08.429 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with SystemServiceHandler: [inflater]
+00:39:08.431 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:39:08.441 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with PostHandler: [register(br.com.badrequest.insporte.integration.bean.Token)]
+00:39:08.443 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsMenuHandler: [br.com.badrequest.insporte.activity.Comment, br.com.badrequest.insporte.activity.Routes]
+00:39:08.445 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with OptionsItemHandler: [takePicture()]
+00:39:08.448 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with RestServiceHandler: [insporteServiceMapper]
+00:39:08.448 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with RootContextHanlder: [context]
+00:39:08.450 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with NonConfigurationInstanceHandler: [mSurvey]
+00:39:08.452 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with BeanHandler: [loginBusiness, serviceErrorHandler]
+00:39:08.454 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with AfterInjectHandler: [setServiceErrorHandler()]
+00:39:08.455 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with AfterViewsHandler: [afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews(), afterViews()]
+00:39:08.456 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with UiThreadHandler: [updateFeeds(java.util.List<twitter4j.Status>), startFeedActivity(), pararServico()]
+00:39:08.458 [Daemon Thread 4] DEBUG o.a.p.ModelValidator:62 - Validating with BackgroundHandler: [getTwitter(), authWithServer(), syncData()]
+00:39:08.466 [Daemon Thread 4] INFO  o.a.p.ModelProcessor:73 - Processing root elements
+00:39:08.467 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EActivityHandler: [br.com.badrequest.insporte.activity.Feed, br.com.badrequest.insporte.activity.SurveyActivity, br.com.badrequest.insporte.activity.Menu, br.com.badrequest.insporte.activity.About, br.com.badrequest.insporte.activity.WizardActivity, br.com.badrequest.insporte.activity.Start, br.com.badrequest.insporte.activity.Login, br.com.badrequest.insporte.activity.Routes, br.com.badrequest.insporte.activity.Comment]
+00:39:08.498 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EServiceHandler: [br.com.badrequest.insporte.service.SyncUserDataService]
+00:39:08.501 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EFragmentHandler: [br.com.badrequest.insporte.activity.fragment.WizardFragment]
+00:39:08.504 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements EBeanHandler: [br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler, br.com.badrequest.insporte.business.LoginBusiness]
+00:39:08.506 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements SharedPrefHandler: [br.com.badrequest.insporte.preferences.LoginPrefs]
+00:39:08.515 [Daemon Thread 4] DEBUG o.a.p.ModelProcessor:80 - Processing root elements RestHandler: [br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper]
+00:39:08.520 [Daemon Thread 4] INFO  o.a.p.ModelProcessor:104 - Processing enclosed elements
+00:39:08.536 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:251 - Number of files generated by AndroidAnnotations: 15
+00:39:08.539 [Daemon Thread 4] INFO  o.a.g.ApiCodeGenerator:52 - Writting following API classes in project: []
+00:39:08.543 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.About_
+00:39:08.561 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Comment_
+00:39:08.598 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Feed_
+00:39:08.617 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Login_
+00:39:08.634 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Menu_
+00:39:08.655 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Routes_
+00:39:08.668 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.Start_
+00:39:08.681 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.SurveyActivity_
+00:39:08.698 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.WizardActivity_
+00:39:08.713 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.service.SyncUserDataService_
+00:39:08.722 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.preferences.LoginPrefs_
+00:39:08.729 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.activity.fragment.WizardFragment_
+00:39:08.739 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_
+00:39:08.746 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_
+00:39:08.749 [Daemon Thread 4] DEBUG o.a.g.SourceCodewriter:55 - Generating class: br.com.badrequest.insporte.business.LoginBusiness_
+00:39:08.754 [Daemon Thread 4] INFO  o.a.p.TimeStats:81 - Time measurements: [Whole Processing = 440 ms], [Generate Sources = 218 ms], [Process Annotations = 77 ms], [Validate Annotations = 63 ms], [Find R Classes = 46 ms], [Extract Manifest = 14 ms], [Extract Annotations = 10 ms], 
+00:39:08.755 [Daemon Thread 4] INFO  o.a.AndroidAnnotationProcessor:123 - Finish processing

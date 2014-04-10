@@ -1,5 +1,7 @@
 .idea
+.gradle
 InsPorte.iml
+*.iml
 classes/
 gen-external-apklibs/
 gen/
