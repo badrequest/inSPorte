@@ -26,7 +26,7 @@ public class WizardFragment extends Fragment {
     ImageView image;
 
     @AfterViews
-    void afterViews() {
+    void setupPage() {
         title1.setText(page.getText1());
         title2.setText(page.getText2());
         image.setImageResource(page.getImageResource());

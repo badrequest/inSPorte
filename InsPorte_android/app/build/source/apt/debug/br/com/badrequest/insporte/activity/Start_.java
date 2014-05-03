@@ -35,6 +35,7 @@ public final class Start_
 
     private void init_(Bundle savedInstanceState) {
         loginPrefs = new LoginPrefs_(this);
+        requestWindowFeature(1);
     }
 
     @Override

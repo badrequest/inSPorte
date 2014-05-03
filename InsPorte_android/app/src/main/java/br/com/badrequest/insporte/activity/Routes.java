@@ -3,17 +3,19 @@ package br.com.badrequest.insporte.activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SearchView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import br.com.badrequest.insporte.R;
+import br.com.badrequest.insporte.activity.base.FullTranslucentActivity;
 import br.com.badrequest.insporte.adapter.RouteListAdapter;
 import br.com.badrequest.insporte.bean.Route;
 import br.com.badrequest.insporte.database.datasource.RouteDataSource;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
@@ -23,15 +25,18 @@ import java.util.List;
 
 @OptionsMenu(R.menu.routes_menu)
 @EActivity(R.layout.routes_activity)
-public class Routes extends ActionBarActivity implements AdapterView.OnItemClickListener {
+public class Routes extends FullTranslucentActivity implements AdapterView.OnItemClickListener {
 
     @ViewById
     ListView list;
 
     List<Route> mRoutes;
 
+
     @AfterViews
     void afterViews() {
+        super.systemBarTint();
+
         RouteDataSource routeDataSource = new RouteDataSource(this);
         mRoutes = routeDataSource.listRoutes();
 
@@ -39,20 +44,6 @@ public class Routes extends ActionBarActivity implements AdapterView.OnItemClick
         list.setOnItemClickListener(this);
 
         routeDataSource.close();
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-//        setIntent(intent);
-//        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-//            String query = intent.getStringExtra(SearchManager.QUERY);
-//
-//            RouteDataSource routeDataSource = new RouteDataSource(this);
-//            mRoutes = routeDataSource.listRoutes(query);
-//
-//            list.setAdapter(new RouteListAdapter(this, R.layout.route_list_line, mRoutes));
-//            list.invalidate();
-//        }
     }
 
     @Override
@@ -81,15 +72,37 @@ public class Routes extends ActionBarActivity implements AdapterView.OnItemClick
 
             @Override
             public boolean onQueryTextChange(String s) {
+                //TODO: Usar listview filtering
                 RouteDataSource routeDataSource = new RouteDataSource(Routes.this);
                 mRoutes = routeDataSource.listRoutes(s);
+                routeDataSource.close();
 
-                list.setAdapter(new RouteListAdapter(Routes.this, R.layout.route_list_line, mRoutes));
-                list.invalidate();
+                ((RouteListAdapter) list.getAdapter()).setRoutes(mRoutes);
+                ((RouteListAdapter) list.getAdapter()).notifyDataSetChanged();
 
                 return true;
             }
         });
+
+        MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                RouteDataSource routeDataSource = new RouteDataSource(Routes.this);
+                mRoutes = routeDataSource.listRoutes();
+                routeDataSource.close();
+
+                ((RouteListAdapter) list.getAdapter()).setRoutes(mRoutes);
+                ((RouteListAdapter) list.getAdapter()).notifyDataSetChanged();
+
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return true;
+            }
+        });
+
         return super.onCreateOptionsMenu(menu);
     }
 

@@ -1,5 +1,6 @@
 package br.com.badrequest.insporte.integration.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 
 @NoArgsConstructor
+@AllArgsConstructor(suppressConstructorProperties = true)
 public @Getter @Setter class ExtraSurveyInfo implements Serializable {
 
     private String id;
@@ -22,10 +24,4 @@ public @Getter @Setter class ExtraSurveyInfo implements Serializable {
 
     private Date data;
 
-    public ExtraSurveyInfo(String id, Double lat, Double lon, Date data) {
-        this.id = id;
-        this.lat = lat;
-        this.lon = lon;
-        this.data = data;
-    }
 }

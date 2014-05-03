@@ -11,6 +11,10 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_;
+import br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_;
+import br.com.badrequest.insporte.preferences.LoginPrefs_;
 import org.androidannotations.api.BackgroundExecutor;
 
 public final class SyncUserDataService_
@@ -25,6 +29,34 @@ public final class SyncUserDataService_
 
     public static SyncUserDataService_.IntentBuilder_ intent(Fragment supportFragment) {
         return new SyncUserDataService_.IntentBuilder_(supportFragment);
+    }
+
+    private void init_() {
+        loginPrefs = new LoginPrefs_(this);
+        insporteServiceMapper = new InsporteServiceMapper_();
+        serviceErrorHandler = ServiceErrorHandler_.getInstance_(this);
+    }
+
+    @Override
+    public void onCreate() {
+        init_();
+        super.onCreate();
+    }
+
+    @Override
+    public void sendPhotos() {
+        if (Log.isLoggable("SyncUserDataService", Log.INFO)) {
+            long start = System.currentTimeMillis();
+            Log.i("SyncUserDataService", "Entering [sendPhotos()]");
+            try {
+                SyncUserDataService_.super.sendPhotos();
+            } finally {
+                long duration = (System.currentTimeMillis()-start);
+                Log.i("SyncUserDataService", ("Exiting [sendPhotos()], duration in ms: "+ duration));
+            }
+        } else {
+            SyncUserDataService_.super.sendPhotos();
+        }
     }
 
     @Override

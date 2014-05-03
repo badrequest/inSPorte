@@ -3,7 +3,9 @@ package br.com.badrequest.insporte.activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.widget.Toast;
 import br.com.badrequest.insporte.R;
+import br.com.badrequest.insporte.activity.base.FullTranslucentActivity;
 import br.com.badrequest.insporte.business.LoginBusiness;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
@@ -12,7 +14,7 @@ import com.google.android.gms.plus.Plus;
 import org.androidannotations.annotations.*;
 
 @EActivity(R.layout.login_activity)
-public class Login extends TranslucentActivity implements
+public class Login extends FullTranslucentActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     @Bean
@@ -63,16 +65,37 @@ public class Login extends TranslucentActivity implements
         mGoogleApiClient.connect();
     }
 
+    @Click(R.id.signInAnonymous)
+    void signInAnonymous() {
+        authAnonymous();
+    }
+
     @Override
     public void onConnected(Bundle bundle) {
-        authWithServer();
+        authWithGoogle();
     }
 
     @Background
-    void authWithServer() {
+    void authWithGoogle() {
         if(loginBusiness.googleLogin(Plus.AccountApi.getAccountName(mGoogleApiClient))) {
             startFeedActivity();
+        } else {
+            showToast("Erro ao registrar");
         }
+    }
+
+    @Background
+    void authAnonymous() {
+        if(loginBusiness.anonymousLogin()) {
+            startFeedActivity();
+        } else {
+            showToast("Desculpe, ocorreu um erro ao fazer login.\nTente novamente!");
+        }
+    }
+
+    @UiThread
+    void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     @UiThread
@@ -112,17 +135,13 @@ public class Login extends TranslucentActivity implements
 
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         if (requestCode == RC_SIGN_IN) {
-
             if (responseCode != RESULT_OK) {
                 mSignInClicked = false;
             }
-
             mIntentInProgress = false;
-
             if (!mGoogleApiClient.isConnecting()) {
                 mGoogleApiClient.connect();
             }
         }
     }
-
 }

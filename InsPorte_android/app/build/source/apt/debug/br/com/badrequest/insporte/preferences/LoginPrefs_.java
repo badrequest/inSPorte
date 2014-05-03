@@ -19,7 +19,7 @@ public final class LoginPrefs_
     private Context context_;
 
     public LoginPrefs_(Context context) {
-        super(context.getSharedPreferences((getLocalClassName(context)+"_LoginPrefs"), 0));
+        super(context.getSharedPreferences("LoginPrefs", 0));
         this.context_ = context;
     }
 
@@ -27,18 +27,12 @@ public final class LoginPrefs_
         return new LoginPrefs_.LoginPrefsEditor_(getSharedPreferences());
     }
 
-    private static String getLocalClassName(Context context) {
-        String packageName = context.getPackageName();
-        String className = context.getClass().getName();
-        int packageLen = packageName.length();
-        if (((!className.startsWith(packageName))||(className.length()<= packageLen))||(className.charAt(packageLen)!= '.')) {
-            return className;
-        }
-        return className.substring((packageLen + 1));
+    public StringPrefField email() {
+        return stringField("email", "");
     }
 
-    public StringPrefField userId() {
-        return stringField("userId", "");
+    public StringPrefField uuid() {
+        return stringField("uuid", "");
     }
 
     public StringPrefField pass() {
@@ -54,8 +48,12 @@ public final class LoginPrefs_
             super(sharedPreferences);
         }
 
-        public StringPrefEditorField<LoginPrefs_.LoginPrefsEditor_> userId() {
-            return stringField("userId");
+        public StringPrefEditorField<LoginPrefs_.LoginPrefsEditor_> email() {
+            return stringField("email");
+        }
+
+        public StringPrefEditorField<LoginPrefs_.LoginPrefsEditor_> uuid() {
+            return stringField("uuid");
         }
 
         public StringPrefEditorField<LoginPrefs_.LoginPrefsEditor_> pass() {

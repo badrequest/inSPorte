@@ -1,8 +1,8 @@
 package br.com.badrequest.insporte.business;
 
 import android.content.Context;
-import br.com.badrequest.insporte.integration.bean.SurveySubmitResponse;
 import br.com.badrequest.insporte.integration.bean.Token;
+import br.com.badrequest.insporte.integration.bean.response.LoginResponse;
 import br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler;
 import br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper;
 import br.com.badrequest.insporte.preferences.LoginPrefs_;
@@ -16,6 +16,7 @@ import org.androidannotations.annotations.rest.RestService;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import java.io.IOException;
+import java.util.UUID;
 
 /**
  * Created by gmarques on 3/28/14.
@@ -23,7 +24,6 @@ import java.io.IOException;
 @EBean
 public class LoginBusiness {
 
-    //TODO: Avaliar colocar isso em um metodo rest
     private static final String googleScope = "audience:server:client_id:549088494676-ukvqmup4o945c2memdcgudc631nm1mdk.apps.googleusercontent.com";
 
     @RootContext
@@ -46,12 +46,19 @@ public class LoginBusiness {
     public boolean googleLogin(String email) {
 
         try {
-            SurveySubmitResponse surveySubmitResponse = insporteServiceMapper.register(new Token(GoogleAuthUtil.getToken(context, email, googleScope)));
+            String uuid = uuid();
+            LoginResponse loginResponse = insporteServiceMapper.registerGoogle(new Token(uuid, GoogleAuthUtil.getToken(context, email, googleScope)));
 
-            if(surveySubmitResponse.success()) {
-                loginPrefs.userId().put(email);
-                loginPrefs.pass().put(surveySubmitResponse.getAns());
+            if(loginResponse.success()) {
+                loginPrefs.edit()
+                        .uuid().put(uuid)
+                        .email().put(email)
+                        .pass().put(loginResponse.getAns())
+                        .apply();
+
                 return true;
+            } else {
+                return false;
             }
 
         } catch (IOException e) {
@@ -61,6 +68,27 @@ public class LoginBusiness {
         }
 
         return false;
+    }
+
+    public boolean anonymousLogin() {
+        String uuid = uuid();
+
+        LoginResponse loginResponse = insporteServiceMapper.registerAnonymous(new Token(uuid));
+        if(loginResponse.success()) {
+            loginPrefs.edit()
+                    .uuid().put(uuid)
+                    .pass().put(loginResponse.getAns())
+                    .apply();
+
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    private String uuid(){
+        return UUID.randomUUID().toString().replaceAll("[\\s\\-()]", "");
     }
 
 }

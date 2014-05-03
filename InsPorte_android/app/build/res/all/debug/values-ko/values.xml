@@ -17,7 +17,7 @@
     <string name="abc_searchview_description_voice" msgid="893419373245838918">"음성 검색"</string>
     <string name="abc_shareactionprovider_share_with" msgid="3421042268587513524">"공유 대상"</string>
     <string name="abc_shareactionprovider_share_with_application" msgid="7165123711973476752">"%s와(과) 공유"</string>
-    <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/exploded-aar/com.google.android.gms/play-services/4.2.42/res/values-ko/strings.xml -->
+    <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/exploded-aar/com.google.android.gms/play-services/4.3.23/res/values-ko/strings.xml -->
     <eat-comment />
 
     <string name="auth_client_needs_enabling_title" msgid="3983201110833868073">"Google Play 서비스를 사용하도록 설정해야 하는 애플리케이션입니다."</string>

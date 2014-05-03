@@ -5,12 +5,16 @@
 
 package br.com.badrequest.insporte.integration.service.mapper;
 
-import br.com.badrequest.insporte.integration.bean.SurveySubmitResponse;
+import br.com.badrequest.insporte.integration.bean.Image;
+import br.com.badrequest.insporte.integration.bean.Like;
+import br.com.badrequest.insporte.integration.bean.Survey;
 import br.com.badrequest.insporte.integration.bean.Token;
+import br.com.badrequest.insporte.integration.bean.response.DefaultResponse;
+import br.com.badrequest.insporte.integration.bean.response.LoginResponse;
+import br.com.badrequest.insporte.integration.bean.response.SurveyResponse;
 import org.androidannotations.api.rest.RestErrorHandler;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,9 +27,9 @@ public final class InsporteServiceMapper_
     private RestTemplate restTemplate;
 
     public InsporteServiceMapper_() {
-        rootUrl = "http://www.insporte.com.br/transplot-rest/rest";
+        rootUrl = "http://www.insporte.com.br:88/rest";
         restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
+        restTemplate.getMessageConverters().add(new CustomHttpMessageConverter());
     }
 
     @Override
@@ -34,10 +38,70 @@ public final class InsporteServiceMapper_
     }
 
     @Override
-    public SurveySubmitResponse register(Token token) {
+    public LoginResponse registerGoogle(Token token) {
         HttpEntity<Token> requestEntity = new HttpEntity<Token>(token);
         try {
-            return restTemplate.exchange(rootUrl.concat("/rest/auth/add"), HttpMethod.POST, requestEntity, SurveySubmitResponse.class).getBody();
+            return restTemplate.exchange(rootUrl.concat("/auth/add"), HttpMethod.POST, requestEntity, LoginResponse.class).getBody();
+        } catch (RestClientException e) {
+            if (restErrorHandler!= null) {
+                restErrorHandler.onRestClientExceptionThrown(e);
+                return null;
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    @Override
+    public SurveyResponse survey(Survey survey) {
+        HttpEntity<Survey> requestEntity = new HttpEntity<Survey>(survey);
+        try {
+            return restTemplate.exchange(rootUrl.concat("/answer"), HttpMethod.POST, requestEntity, SurveyResponse.class).getBody();
+        } catch (RestClientException e) {
+            if (restErrorHandler!= null) {
+                restErrorHandler.onRestClientExceptionThrown(e);
+                return null;
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    @Override
+    public LoginResponse registerAnonymous(Token token) {
+        HttpEntity<Token> requestEntity = new HttpEntity<Token>(token);
+        try {
+            return restTemplate.exchange(rootUrl.concat("/auth/simple"), HttpMethod.POST, requestEntity, LoginResponse.class).getBody();
+        } catch (RestClientException e) {
+            if (restErrorHandler!= null) {
+                restErrorHandler.onRestClientExceptionThrown(e);
+                return null;
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    @Override
+    public DefaultResponse addLike(Like like) {
+        HttpEntity<Like> requestEntity = new HttpEntity<Like>(like);
+        try {
+            return restTemplate.exchange(rootUrl.concat("/likes/add"), HttpMethod.POST, requestEntity, DefaultResponse.class).getBody();
+        } catch (RestClientException e) {
+            if (restErrorHandler!= null) {
+                restErrorHandler.onRestClientExceptionThrown(e);
+                return null;
+            } else {
+                throw e;
+            }
+        }
+    }
+
+    @Override
+    public DefaultResponse sendImage(Image image) {
+        HttpEntity<Image> requestEntity = new HttpEntity<Image>(image);
+        try {
+            return restTemplate.exchange(rootUrl.concat("/image/add"), HttpMethod.POST, requestEntity, DefaultResponse.class).getBody();
         } catch (RestClientException e) {
             if (restErrorHandler!= null) {
                 restErrorHandler.onRestClientExceptionThrown(e);

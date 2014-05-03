@@ -6,11 +6,11 @@ import org.androidannotations.annotations.sharedpreferences.SharedPref;
  * Created by gmarques on 3/27/14.
  */
 
-@SharedPref
+@SharedPref(SharedPref.Scope.UNIQUE)
 public interface LoginPrefs {
 
-    String userId();
-
+    String email();
+    String uuid();
     String pass();
 
 }

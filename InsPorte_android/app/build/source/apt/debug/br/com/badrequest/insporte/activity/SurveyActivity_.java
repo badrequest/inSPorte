@@ -9,6 +9,7 @@ import java.io.Serializable;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -32,8 +33,8 @@ public final class SurveyActivity_
 {
 
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
-    public final static String M_SURVEY_EXTRA = "SURVEY";
     public final static String SURVEY_TYPE_EXTRA = "SURVEY_TYPE";
+    public final static String M_SURVEY_EXTRA = "SURVEY";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public final class SurveyActivity_
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         injectExtras_();
         inflater = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
+        SurveyActivity_.NonConfigurationInstancesHolder nonConfigurationInstance = ((SurveyActivity_.NonConfigurationInstancesHolder) super.getLastCustomNonConfigurationInstance());
+        if (nonConfigurationInstance!= null) {
+            mImageUri = nonConfigurationInstance.mImageUri;
+        }
     }
 
     @Override
@@ -88,21 +93,6 @@ public final class SurveyActivity_
     public void onViewChanged(HasViews hasViews) {
         questoesLayout = ((LinearLayout) hasViews.findViewById(id.questoesLayout));
         {
-            View view = hasViews.findViewById(id.btnAnterior);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SurveyActivity_.this.cancel();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.btnProximo);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -117,17 +107,32 @@ public final class SurveyActivity_
                 );
             }
         }
+        {
+            View view = hasViews.findViewById(id.btnAnterior);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SurveyActivity_.this.cancel();
+                    }
+
+                }
+                );
+            }
+        }
         afterViews();
     }
 
     private void injectExtras_() {
         Bundle extras_ = getIntent().getExtras();
         if (extras_!= null) {
-            if (extras_.containsKey(M_SURVEY_EXTRA)) {
-                mSurvey = ((Survey) extras_.getSerializable(M_SURVEY_EXTRA));
-            }
             if (extras_.containsKey(SURVEY_TYPE_EXTRA)) {
                 surveyType = ((SurveyType) extras_.getSerializable(SURVEY_TYPE_EXTRA));
+            }
+            if (extras_.containsKey(M_SURVEY_EXTRA)) {
+                mSurvey = ((Survey) extras_.getSerializable(M_SURVEY_EXTRA));
             }
         }
     }
@@ -136,6 +141,23 @@ public final class SurveyActivity_
     public void setIntent(Intent newIntent) {
         super.setIntent(newIntent);
         injectExtras_();
+    }
+
+    @Override
+    public Object getLastCustomNonConfigurationInstance() {
+        SurveyActivity_.NonConfigurationInstancesHolder nonConfigurationInstance = ((SurveyActivity_.NonConfigurationInstancesHolder) super.getLastCustomNonConfigurationInstance());
+        if (nonConfigurationInstance == null) {
+            return null;
+        }
+        return nonConfigurationInstance.superNonConfigurationInstance;
+    }
+
+    @Override
+    public SurveyActivity_.NonConfigurationInstancesHolder onRetainCustomNonConfigurationInstance() {
+        SurveyActivity_.NonConfigurationInstancesHolder nonConfigurationInstanceState_ = new SurveyActivity_.NonConfigurationInstancesHolder();
+        nonConfigurationInstanceState_.superNonConfigurationInstance = super.onRetainCustomNonConfigurationInstance();
+        nonConfigurationInstanceState_.mImageUri = mImageUri;
+        return nonConfigurationInstanceState_;
     }
 
     public static class IntentBuilder_ {
@@ -180,15 +202,22 @@ public final class SurveyActivity_
             }
         }
 
+        public SurveyActivity_.IntentBuilder_ surveyType(SurveyType surveyType) {
+            intent_.putExtra(SURVEY_TYPE_EXTRA, ((Serializable) surveyType));
+            return this;
+        }
+
         public SurveyActivity_.IntentBuilder_ mSurvey(Survey mSurvey) {
             intent_.putExtra(M_SURVEY_EXTRA, ((Serializable) mSurvey));
             return this;
         }
 
-        public SurveyActivity_.IntentBuilder_ surveyType(SurveyType surveyType) {
-            intent_.putExtra(SURVEY_TYPE_EXTRA, ((Serializable) surveyType));
-            return this;
-        }
+    }
+
+    private static class NonConfigurationInstancesHolder {
+
+        public Uri mImageUri;
+        public Object superNonConfigurationInstance;
 
     }
 

@@ -1,29 +1,31 @@
 package br.com.badrequest.insporte.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import br.com.badrequest.insporte.R;
+import br.com.badrequest.insporte.activity.base.FullTranslucentActivity;
 import br.com.badrequest.insporte.bean.Route;
 import br.com.badrequest.insporte.bean.SurveyType;
-import br.com.badrequest.insporte.integration.bean.Credentials;
-import br.com.badrequest.insporte.integration.bean.ExtraSurveyInfo;
+import br.com.badrequest.insporte.bean.database.Like;
 import br.com.badrequest.insporte.integration.bean.Survey;
+import br.com.badrequest.insporte.preferences.LoginPrefs_;
 import org.androidannotations.annotations.*;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
-import java.util.Date;
+import java.util.List;
 
 @EActivity(R.layout.menu_activity)
-public class Menu extends ActionBarActivity {
+public class Menu extends FullTranslucentActivity {
 
     public static final String ROUTE_EXTRA = "ROUTE";
     public static final int SURVEY_INTENT = 2000;
 
-    //FIXME: Nao usar bean de integration no projeto. Criar beans internos
     private Survey mSurvey = new Survey();
+
+    @Pref
+    LoginPrefs_ loginPrefs;
 
     @ViewById
     TextView route;
@@ -31,17 +33,17 @@ public class Menu extends ActionBarActivity {
     @Extra(ROUTE_EXTRA)
     Route mRoute;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        mSurvey.setCredentials(new Credentials("giovannimarques33@gmail.com", ""));
-        mSurvey.setInfo(new ExtraSurveyInfo(mRoute.getCod(), 0.0, 0.0, new Date()));
-        super.onCreate(savedInstanceState);
-    }
-
     @AfterViews
     void afterViews() {
+        super.systemBarTint();
+
         route.setText(mRoute.getName());
-        //Util.sendNotification(this, "Devido a manifestações, sua linha sofrerá atraso de 25 minutos!");
+        Like like = Like.getLikeByRoute(mRoute.getCod());
+
+        if(like != null) {
+            if(like.isLike()) like();
+            else notLike();
+        }
     }
 
     @Click({R.id.imageButtonOnibus, R.id.imageButtonMotorista, R.id.imageButtonPonto, R.id.imageButtonIncidente})
@@ -80,12 +82,14 @@ public class Menu extends ActionBarActivity {
     void notLike() {
         ((ImageButton) findViewById(R.id.imageButtonNotLike)).setImageResource(R.drawable.ic_not_like_ativo);
         ((ImageButton) findViewById(R.id.imageButtonLike)).setImageResource(R.drawable.ic_like);
+        updateLike(false);
     }
 
     @Click(R.id.imageButtonLike)
     void like() {
         ((ImageButton) findViewById(R.id.imageButtonNotLike)).setImageResource(R.drawable.ic_not_like);
         ((ImageButton) findViewById(R.id.imageButtonLike)).setImageResource(R.drawable.ic_like_ativo);
+        updateLike(true);
     }
 
     @Override
@@ -93,6 +97,20 @@ public class Menu extends ActionBarActivity {
         if (requestCode == SURVEY_INTENT && resultCode == RESULT_OK) {
             mSurvey = (Survey) data.getSerializableExtra(Comment.SURVEY_EXTRA);
         }
+    }
+
+    private void updateLike(boolean likeState) {
+        List<Like> likes = Like.find(Like.class, "route_id = ?", String.valueOf(mRoute.getCod()));
+        if(!likes.isEmpty()) {
+            Like like = likes.get(0);
+            if (like.isLike() != likeState) {
+                like.setLike(likeState).save();
+            }
+        } else {
+            new Like(likeState, mRoute.getCod()).save();
+        }
+
+        startService(new Intent(this, br.com.badrequest.insporte.service.SyncUserDataService_.class));
     }
 
 }

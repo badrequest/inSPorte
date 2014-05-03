@@ -16,4 +16,11 @@ allprojects {
         mavenCentral()
         mavenLocal()
     }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Atrace=true"
+        }
+    }
+
 }

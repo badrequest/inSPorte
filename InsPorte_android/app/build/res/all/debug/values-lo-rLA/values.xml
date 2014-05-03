@@ -17,7 +17,7 @@
     <string name="abc_searchview_description_voice" msgid="893419373245838918">"ຊອກຫາດ້ວຍສຽງ"</string>
     <string name="abc_shareactionprovider_share_with" msgid="3421042268587513524">"ແບ່ງປັນກັບ"</string>
     <string name="abc_shareactionprovider_share_with_application" msgid="7165123711973476752">"ແບ່ງ​ປັນ​ກັບ​ %s"</string>
-    <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/exploded-aar/com.google.android.gms/play-services/4.2.42/res/values-lo-rLA/strings.xml -->
+    <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/exploded-aar/com.google.android.gms/play-services/4.3.23/res/values-lo-rLA/strings.xml -->
     <eat-comment />
 
     <string name="auth_client_needs_enabling_title" msgid="3983201110833868073">"ແອັບພລິເຄຊັນຕ້ອງການເປີດນຳໃຊ້ Google Play Services."</string>

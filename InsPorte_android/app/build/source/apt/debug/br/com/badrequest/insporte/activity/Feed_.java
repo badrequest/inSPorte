@@ -13,14 +13,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import br.com.badrequest.insporte.R.id;
+import android.widget.ImageView;
 import br.com.badrequest.insporte.R.layout;
+import com.nvanbenschoten.motion.ParallaxImageView;
 import org.androidannotations.api.BackgroundExecutor;
+import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -45,6 +47,7 @@ public final class Feed_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        requestWindowFeature(1);
     }
 
     @Override
@@ -74,11 +77,20 @@ public final class Feed_
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (((SdkVersionHelper.getSdkInt()< 5)&&(keyCode == KeyEvent.KEYCODE_BACK))&&(event.getRepeatCount() == 0)) {
+            onBackPressed();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public void onViewChanged(HasViews hasViews) {
-        list = ((ListView) hasViews.findViewById(id.list));
-        progressBar = ((ProgressBar) hasViews.findViewById(id.progressBar));
+        twitterBird = ((ImageView) hasViews.findViewById(br.com.badrequest.insporte.R.id.twitterBird));
+        background = ((ParallaxImageView) hasViews.findViewById(android.R.id.background));
+        pager = ((ViewPager) hasViews.findViewById(br.com.badrequest.insporte.R.id.pager));
         {
-            View view = hasViews.findViewById(id.imageButtonSobre);
+            View view = hasViews.findViewById(br.com.badrequest.insporte.R.id.imageButtonSobre);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -93,7 +105,22 @@ public final class Feed_
             }
         }
         {
-            View view = hasViews.findViewById(id.imageButtonAvaliar);
+            View view = hasViews.findViewById(br.com.badrequest.insporte.R.id.imageButtonHistorico);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        Feed_.this.historico();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(br.com.badrequest.insporte.R.id.imageButtonAvaliar);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -122,6 +149,20 @@ public final class Feed_
 
         }
         );
+    }
+
+    @Override
+    public void circleTwitter() {
+        handler_.postDelayed(new Runnable() {
+
+
+            @Override
+            public void run() {
+                Feed_.super.circleTwitter();
+            }
+
+        }
+        , 4000L);
     }
 
     @Override

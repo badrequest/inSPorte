@@ -3,28 +3,36 @@ package br.com.badrequest.insporte.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
-import br.com.badrequest.insporte.bean.dao.JsonSubmit;
-import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.EService;
-import org.androidannotations.annotations.UiThread;
-import org.orman.mapper.Model;
+import br.com.badrequest.insporte.bean.database.Like;
+import br.com.badrequest.insporte.bean.database.Photo;
+import br.com.badrequest.insporte.bean.database.SurveyJson;
+import br.com.badrequest.insporte.integration.bean.Credentials;
+import br.com.badrequest.insporte.integration.bean.Image;
+import br.com.badrequest.insporte.integration.bean.Survey;
+import br.com.badrequest.insporte.integration.bean.response.DefaultResponse;
+import br.com.badrequest.insporte.integration.bean.response.SurveyResponse;
+import br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler;
+import br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper;
+import br.com.badrequest.insporte.preferences.LoginPrefs_;
+import com.google.gson.GsonBuilder;
+import org.androidannotations.annotations.*;
+import org.androidannotations.annotations.rest.RestService;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 @EService
 public class SyncUserDataService extends Service {
 
-    public static final String INTENT_STATUS_SYNC = "intentStatusSync";
+    @RestService
+    InsporteServiceMapper insporteServiceMapper;
 
-    public static final String DATA_REMAINING_EXTRA = "DATA_REMAINING";
+    @Bean
+    ServiceErrorHandler serviceErrorHandler;
 
-    public static final String IMAGE_REMAINING_EXTRA = "IMAGE_REMAINING";
-
-    public static final String FAILURE_EXTRA = "FAILURE";
+    @Pref
+    LoginPrefs_ loginPrefs;
 
     @Override
     public void onCreate() {
-        Log.d("INSPORTE", "onCreate - SyncUserDataService");
         syncData();
     }
 
@@ -35,148 +43,55 @@ public class SyncUserDataService extends Service {
 
     @Background
     void syncData() {
-        Log.d("INSPORTE", "syncData - SyncUserDataService");
-
-        int falhas = 0;
+        insporteServiceMapper.setRestErrorHandler(serviceErrorHandler);
         try {
-            String baseURL = "http://54.201.69.11";
-            for(JsonSubmit json : Model.fetchAll(JsonSubmit.class)) {
-                //Log.d("INSPORTE - RESPONSE ", ServiceRequest.makeJSONRequest(baseURL+"/rest/answer", json.getJson()));
-                json.delete();
-            }
-
-//            RespostaDataSource respostaDS = new RespostaDataSource(getApplicationContext());
-//            List<Resposta> respostasQuestionario = respostaDS.listarTodosQuestionarios();
-//            String baseURL = Util.getUrlWS(getApplicationContext());
-//            int questionariosRestantes = respostasQuestionario.size();
-//
-//            //Envia questionarios
-//            for (Resposta respostaQuestionario : respostasQuestionario) {
-//                Log.d(Constantes.TAG, "SyncRespostasService - Enviando QUESTIONARIO " + respostaQuestionario.getId());
-//                boolean sucesso
-//                        = enviarJsonQuestionario(converterFormatoWS(respostaQuestionario.getDados()), baseURL + Constantes.METODO_GRAVA_FORMULARIO, (new Gson()).fromJson(respostaQuestionario.getDados(), Questionario.class));
-//
-//                if (sucesso) {
-//                    Log.d(Constantes.TAG, "SyncRespostasService - JSON " + respostaQuestionario.getId() + " enviado com sucesso!");
-//                    respostaDS.marcarQuestionarioEnviado(respostaQuestionario.getId());
-//                } else {
-//                    Log.d(Constantes.TAG, "SyncRespostasService - JSON " + respostaQuestionario.getId() + " erro no envio.");
-//                    falhas++;
-//                }
-//                sendStatus(questionariosRestantes--, QUESTIONARIO_RESTANTES_EXTRA);
-//            }
-//
-//            //Envia imagens
-//            String fotosPath = getExternalFilesDir(Constantes.PATH_FOTOS).getAbsolutePath();
-//            int imagensRestantes = new File(fotosPath).listFiles().length;
-//
-//            List<Resposta> respostasImagem = respostaDS.listarTodasImagens();
-//            for (Resposta respostaImagem : respostasImagem) {
-//                Bitmap foto = BitmapFactory.decodeFile(respostaImagem.getDados());
-//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//                foto.compress(Bitmap.CompressFormat.JPEG, 85, baos);
-//                byte[] b = baos.toByteArray();
-//                foto.recycle();
-//                String encoded = Base64.encodeToString(b, Base64.DEFAULT);
-//
-//                JsonImagem jsonImagem = new JsonImagem();
-//                jsonImagem.setAutenticacao(Util.obterUsuarioLogado(getApplicationContext()));
-//                jsonImagem.setDados(encoded);
-//                jsonImagem.setExtensao("jpg");
-//                jsonImagem.setIdImagem(respostaImagem.getId());
-//
-//                if (enviarJsonImagem((new Gson()).toJson(jsonImagem), baseURL + Constantes.METODO_GRAVA_ENVIA_IMAGEM)) {
-//                    Log.d(Constantes.TAG, "SyncRespostasService - IMAGEM " + respostaImagem.getId() + " enviada com sucesso!");
-//                    respostaDS.marcarImagemEnviada(respostaImagem.getId());
-//                    BitmapUtils.deleteImage(respostaImagem.getDados());
-//                } else {
-//                    Log.d(Constantes.TAG, "SyncRespostasService - IMAGEM " + respostaImagem.getId() + " erro no envio.");
-//                    falhas++;
-//                }
-//                sendStatus(imagensRestantes--, IMAGENS_RESTANTES_EXTRA);
-//            }
-//            respostaDS.close();
+            sendSurvey();
+            sendLike();
+            sendPhotos();
         } finally {
-//            sendStatus(falhas, FALHAS_EXTRA);
             pararServico();
         }
     }
 
-//    private boolean enviarJsonImagem(String json, String url) {
-//        try {
-//            String resposta = ServiceRequest.makeJSONRequest(url, json);
-//            JSONObject response = new JSONObject(resposta);
-//
-//            return response.getString("status").equalsIgnoreCase("OK");
-//        } catch (ParseException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - ParseException " + e.getMessage());
-//        } catch (ClientProtocolException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - ClientProtocolException " + e.getMessage());
-//        } catch (IOException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - IOException " + e.getMessage());
-//        } catch (IllegalStateException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - IllegalStateException " + e.getMessage());
-//        } catch (JSONException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - JSONException " + e.getMessage());
-//        }
-//
-//        return false;
-//    }
+    private void sendSurvey() {
+        for(SurveyJson surveyToSend : SurveyJson.findAllToSend()) {
+            Survey survey = new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm:ss").create().fromJson(surveyToSend.getJson(), Survey.class);
+            SurveyResponse response = insporteServiceMapper.survey(survey);
+            if (response != null && response.success()) {
+                surveyToSend.setSent(true).save();
+                for(Photo photo : response.getIdImagens()) {
+                    photo.setImgPath(survey.getResposta().getOrAddQuestion(photo.getIdPergunta()).getImgPath());
+                    photo.save();
+                }
+            }
+        }
+    }
 
-//    private boolean enviarJsonQuestionario(String json, String url, Questionario questionarioLocal) {
-//
-//        try {
-//            //System.out.println(json);
-//            String resposta = ServiceRequest.makeJSONRequest(url, json);
-//            RetornoSync retornoSync = (new Gson()).fromJson(resposta, RetornoSync.class);
-//
-//            if (!retornoSync.getStatus().equalsIgnoreCase("OK")) return false;
-//
-//            RespostaDataSource respostaDS = new RespostaDataSource(getApplicationContext());
-//            for (Foto foto : retornoSync.getImagens()) {
-//                respostaDS.inserirImagem(foto.getIdImagem(), getPathImg(foto.getIdOpcao(), questionarioLocal));
-//            }
-//
-//            return true;
-//        } catch (ParseException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - ParseException " + e.getMessage());
-//        } catch (ClientProtocolException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - ClientProtocolException " + e.getMessage());
-//        } catch (IOException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - IOException " + e.getMessage());
-//        } catch (IllegalStateException e) {
-//            Log.d(Constantes.TAG, "SyncRespostasService - IllegalStateException " + e.getMessage());
-//        }
-//
-//        return false;
-//    }
+    private void sendLike() {
+        Credentials credentials = new Credentials(loginPrefs.uuid().get(), loginPrefs.pass().get());
+        for (Like like : Like.findAllToSend()) {
+            DefaultResponse response = insporteServiceMapper.addLike(new br.com.badrequest.insporte.integration.bean.Like(credentials, like.getRouteId(), like.isLike()));
 
-//    private String getPathImg(int idOpcao, Questionario questionario) {
-//        if (idOpcao == 0) {
-//            return questionario.getPathFotoComentario();
-//        }
-//
-//        for (Categoria categoria : questionario.getCategorias()) {
-//            for (Pergunta pergunta : categoria.getPerguntas()) {
-//                for (OpcaoPergunta opcaoPergunta : pergunta.getOpcoes()) {
-//                    if (opcaoPergunta.getId() == idOpcao) {
-//                        return pergunta.getPathImgResposta();
-//                    }
-//                }
-//            }
-//        }
-//        return null;
-//    }
+            if(response != null && response.success()) {
+                like.setSent(true).save();
+            }
+        }
+    }
 
-    private void sendStatus(int restantes, String type) {
-        Intent intent = new Intent(INTENT_STATUS_SYNC);
-        intent.putExtra(type, restantes);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    @Trace
+    void sendPhotos() {
+        Credentials credentials = new Credentials(loginPrefs.uuid().get(), loginPrefs.pass().get());
+        for (Photo photo : Photo.findAllToSend()) {
+            DefaultResponse response = insporteServiceMapper.sendImage(new Image(credentials, photo.getIdImagem(), photo.getImgPath()));
+            if(response != null && response.success()) {
+                photo.setSent(true);
+                photo.save();
+            }
+        }
     }
 
     @UiThread
     void pararServico() {
         stopSelf();
     }
-
 }

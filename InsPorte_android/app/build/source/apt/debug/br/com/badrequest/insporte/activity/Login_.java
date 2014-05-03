@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -20,6 +21,7 @@ import br.com.badrequest.insporte.R.layout;
 import br.com.badrequest.insporte.business.LoginBusiness_;
 import com.google.android.gms.common.SignInButton;
 import org.androidannotations.api.BackgroundExecutor;
+import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
@@ -73,6 +75,14 @@ public final class Login_
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (((SdkVersionHelper.getSdkInt()< 5)&&(keyCode == KeyEvent.KEYCODE_BACK))&&(event.getRepeatCount() == 0)) {
+            onBackPressed();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public void onViewChanged(HasViews hasViews) {
         signInButton = ((SignInButton) hasViews.findViewById(id.sign_in_button));
         {
@@ -90,7 +100,36 @@ public final class Login_
                 );
             }
         }
+        {
+            View view = hasViews.findViewById(id.signInAnonymous);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        Login_.this.signInAnonymous();
+                    }
+
+                }
+                );
+            }
+        }
         afterViews();
+    }
+
+    @Override
+    public void showToast(final String text) {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                Login_.super.showToast(text);
+            }
+
+        }
+        );
     }
 
     @Override
@@ -108,14 +147,32 @@ public final class Login_
     }
 
     @Override
-    public void authWithServer() {
+    public void authAnonymous() {
         BackgroundExecutor.execute(new BackgroundExecutor.Task("", 0, "") {
 
 
             @Override
             public void execute() {
                 try {
-                    Login_.super.authWithServer();
+                    Login_.super.authAnonymous();
+                } catch (Throwable e) {
+                    Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void authWithGoogle() {
+        BackgroundExecutor.execute(new BackgroundExecutor.Task("", 0, "") {
+
+
+            @Override
+            public void execute() {
+                try {
+                    Login_.super.authWithGoogle();
                 } catch (Throwable e) {
                     Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
                 }

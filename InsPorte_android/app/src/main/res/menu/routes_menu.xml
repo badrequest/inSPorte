@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tracking="http://schemas.android.com/apk/res-auto" >
+      xmlns:insporte="http://schemas.android.com/apk/res-auto" >
     <item android:id="@+id/action_search"
           android:title="@string/action_search"
           android:icon="@drawable/ic_action_search"
-          tracking:showAsAction="ifRoom|collapseActionView"
-          tracking:actionViewClass="android.support.v7.widget.SearchView" />
+          insporte:showAsAction="ifRoom|collapseActionView"
+          insporte:actionViewClass="android.support.v7.widget.SearchView" />
 </menu>

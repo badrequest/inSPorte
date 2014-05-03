@@ -16,11 +16,12 @@ import android.view.ViewGroup.LayoutParams;
 import br.com.badrequest.insporte.R.layout;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
+import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
 
 public final class About_
     extends About
-    implements HasViews
+    implements HasViews, OnViewChangedListener
 {
 
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
@@ -35,6 +36,7 @@ public final class About_
     }
 
     private void init_(Bundle savedInstanceState) {
+        OnViewChangedNotifier.registerOnViewChangedListener(this);
     }
 
     @Override
@@ -69,6 +71,11 @@ public final class About_
             onBackPressed();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onViewChanged(HasViews hasViews) {
+        afterViews();
     }
 
     public static class IntentBuilder_ {

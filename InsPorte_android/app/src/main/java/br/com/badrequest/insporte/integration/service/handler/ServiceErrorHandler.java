@@ -9,6 +9,7 @@ public class ServiceErrorHandler implements RestErrorHandler {
 
     @Override
     public void onRestClientExceptionThrown(RestClientException e) {
+        //Log.e("RestClientException", e.getMessage());
         //TODO: Disparar broadcast informando o erro
     }
 

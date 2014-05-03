@@ -1,24 +1,24 @@
 apply plugin: 'android'
 apply plugin: 'android-apt'
 def AAVersion = '3.0.1'
-
 dependencies {
+    compile project(":motion")
+    compile project(":CardsUILib")
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
-    compile 'com.android.support:support-v4:19.0.+'
-    compile 'com.android.support:appcompat-v7:19.+'
-    compile 'com.google.android.gms:play-services:4.2.42'
-    compile 'com.viewpagerindicator:library:2.4.1@aar'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'org.twitter4j:twitter4j-core:3.0.6'
     apt 'org.projectlombok:lombok:1.12.6'
     provided 'org.projectlombok:lombok:1.12.6'
     compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
-    compile group: 'org.orman', name: 'orman', version: '20120316'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
     compile group: 'com.google.code.gson', name: 'gson', version: '1.7.1'
     compile group: 'com.readystatesoftware.sqliteasset', name: 'android-sqlite-asset-helper', version: '2'
-
+    compile 'com.android.support:support-v4:19.+'
+    compile 'com.android.support:appcompat-v7:19.+'
+    compile 'com.google.android.gms:play-services:4.+'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'org.twitter4j:twitter4j-core:4.+'
+    compile 'com.viewpagerindicator:library:2.4.1@aar'
 }
 
 android {
@@ -47,6 +47,36 @@ android {
         abortOnError false
     }
 
+//    signingConfigs {
+//        debug {
+//            storeFile file("~/.android/debug.keystore")
+//            keyAlias "androiddebugkey"
+//        }
+//        usertest {
+//            storeFile file("../usertest.keystore")
+//            storePassword "testing123"
+//            keyAlias "testKey"
+//            keyPassword "WhereIsSanta"
+//        }
+//    }
+
+    buildTypes {
+        debug {
+            packageNameSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+        usertest {
+            packageNameSuffix ".usertest"
+            versionNameSuffix "-usertest"
+            runProguard false
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+            //signingConfig signingConfigs.usertest
+        }
+        release {
+            runProguard false
+            proguardFile getDefaultProguardFile('proguard-android.txt')
+        }
+    }
 }
 
 apt {

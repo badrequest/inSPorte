@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/CardsUILib/assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/CardsUILib/build-types/release/assets" />
+    </dataSet>
+
+</merger>

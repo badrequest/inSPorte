@@ -49,4 +49,13 @@ public class RouteListAdapter extends ArrayAdapter<Route> {
         return convertView;
     }
 
+    @Override
+    public int getCount() {
+        return mRoutes.size();
+    }
+
+    public void setRoutes(List<Route> routes) {
+        this.mRoutes = routes;
+    }
+
 }

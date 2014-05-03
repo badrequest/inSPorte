@@ -4,15 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Environment;
+import android.util.Base64;
 import android.util.FloatMath;
-import android.util.Log;
 import android.widget.ImageView;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 
 public class BitmapUtils {
 	/** Used to tag logs */
@@ -63,13 +59,14 @@ public class BitmapUtils {
 
     }
 
-    public static File createTemporaryFile(String dir, String part, String ext) throws IOException {
-        File tempDir= Environment.getExternalStorageDirectory();
-        tempDir=new File(tempDir.getAbsolutePath()+"/" + dir);
-        if(!tempDir.exists()) {
-            tempDir.mkdir();
-        }
-        return File.createTempFile(part, ext, tempDir);
+    public static String openAsBase64(String imgPath) {
+        Bitmap photo = BitmapFactory.decodeFile(imgPath);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        photo.compress(Bitmap.CompressFormat.JPEG, 85, baos);
+        byte[] b = baos.toByteArray();
+        photo.recycle();
+        return Base64.encodeToString(b, Base64.DEFAULT);
+
     }
 
     public static BitmapSize getBitmapSize(String filePath) {
@@ -112,7 +109,7 @@ public class BitmapUtils {
         OutputStream fOut = new FileOutputStream(newFile);
         BitmapSize originalSize = getBitmapSize(fileName);
 
-        BitmapSize newSize = getScaledSize(originalSize.width, originalSize.height, 1310720); //1.3Megapixel
+        BitmapSize newSize = getScaledSize(originalSize.width, originalSize.height, 655630); //1.3Megapixel
 
         Bitmap foto = resizeImage(fileName, newSize.height, newSize.width);
         foto.compress(Bitmap.CompressFormat.JPEG, 85, fOut);

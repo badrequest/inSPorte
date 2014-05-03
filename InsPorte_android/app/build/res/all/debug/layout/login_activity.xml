@@ -20,7 +20,8 @@
     <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            android:id="@+id/relativeLayout">
 
         <ImageView
                 android:id="@+id/logo"
@@ -48,4 +49,16 @@
                 android:layout_alignLeft="@id/logo"
                 android:layout_alignRight="@id/logo"/>
     </RelativeLayout>
+
+    <Button
+            android:id="@+id/signInAnonymous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login anônimo"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_marginTop="10dp"
+            android:layout_alignRight="@+id/relativeLayout"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:textColor="@android:color/white"
+            android:shadowColor="@color/black"/>
 </RelativeLayout><!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/layout/login_activity.xml -->

@@ -3,6 +3,7 @@ package br.com.badrequest.insporte.integration.bean;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,14 +11,15 @@ import java.util.List;
  */
 
 @NoArgsConstructor
+@AllArgsConstructor(suppressConstructorProperties = true)
 @EqualsAndHashCode(of = "idPergunta")
 public @Getter @Setter class Question implements Serializable {
 
-    private Integer idPergunta;
-
+    private int idPergunta;
     private List<QuestionOption> opcoes;
-
     private boolean imagem = false;
+    private String imgPath;
+
 
     public Question(Integer idPergunta) {
         this.idPergunta = idPergunta;
@@ -28,9 +30,20 @@ public @Getter @Setter class Question implements Serializable {
         this.opcoes = opcoes;
     }
 
-    public Question(Integer idPergunta, List<QuestionOption> opcoes, boolean imagem) {
-        this.idPergunta = idPergunta;
-        this.opcoes = opcoes;
-        this.imagem = imagem;
+    public List<QuestionOption> getOpcoes() {
+        if(this.opcoes == null) {
+            this.opcoes = new ArrayList<QuestionOption>();
+        }
+
+        return this.opcoes;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+        imagem = imgPath != null;
+    }
+
+    public boolean hasImage() {
+        return imagem;
     }
 }

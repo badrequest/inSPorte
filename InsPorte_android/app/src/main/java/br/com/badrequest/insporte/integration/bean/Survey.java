@@ -12,13 +12,8 @@ import java.io.Serializable;
 public @Getter @Setter class Survey implements Serializable {
 
     private Credentials auth;
-
-    private String request = "Resposta";
-
     private ExtraSurveyInfo info;
-
     private AdministeredQuestionnaire resposta;
-
     private Comment comentario;
 
     public Survey() {
