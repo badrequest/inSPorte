@@ -6,4 +6,4 @@ classes/
 gen-external-apklibs/
 gen/
 target/
-
+*/build/
