@@ -1124,7 +1124,7 @@
     <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
-    <string name="comentario">Comentário</string>
+    <string name="comentario">Se desejar, insira um comentário aqui...</string>
     <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/build/exploded-aar/com.google.android.gms/play-services/4.3.23/res/values/strings.xml -->
     <eat-comment />
 
@@ -1167,6 +1167,7 @@
     <string name="next">Próximo</string>
     <string name="search_hint">Nome ou cod da linha</string>
     <string name="take_picture">Tirar foto</string>
+    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
     <string name="title_activity_history">Avaliações</string>
     <string name="title_activity_test">TestActivity</string>
     <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/values/api_keys.xml -->

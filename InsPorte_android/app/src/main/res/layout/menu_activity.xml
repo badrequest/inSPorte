@@ -87,27 +87,14 @@
                     android:src="@drawable/custom_button_icon"
                     android:background="@drawable/ic_incidente"/>
 
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_alignRight="@+id/imageButtonIncidente"
-                    android:layout_alignLeft="@+id/imageButtonPonto"
-                    android:layout_below="@+id/imageButtonIncidente"
-                    android:id="@+id/btnComentario"
-                    android:text="@string/comentario"
-                    android:background="@drawable/custom_button"
-                    android:textColor="@drawable/button_text_color"
-                    android:layout_centerHorizontal="true"/>
-
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:orientation="horizontal"
                     android:layout_alignRight="@+id/imageButtonIncidente"
                     android:layout_alignLeft="@+id/imageButtonPonto"
-                    android:layout_below="@+id/btnComentario"
+                    android:layout_below="@+id/imageButtonIncidente"
                     android:layout_centerHorizontal="true"
                     android:gravity="center">
 

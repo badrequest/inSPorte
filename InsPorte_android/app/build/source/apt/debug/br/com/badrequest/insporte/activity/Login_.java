@@ -20,6 +20,7 @@ import br.com.badrequest.insporte.R.id;
 import br.com.badrequest.insporte.R.layout;
 import br.com.badrequest.insporte.business.LoginBusiness_;
 import com.google.android.gms.common.SignInButton;
+import com.nvanbenschoten.motion.ParallaxImageView;
 import org.androidannotations.api.BackgroundExecutor;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
@@ -46,6 +47,7 @@ public final class Login_
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         loginBusiness = LoginBusiness_.getInstance_(this);
+        requestWindowFeature(1);
     }
 
     @Override
@@ -85,21 +87,7 @@ public final class Login_
     @Override
     public void onViewChanged(HasViews hasViews) {
         signInButton = ((SignInButton) hasViews.findViewById(id.sign_in_button));
-        {
-            View view = hasViews.findViewById(id.sign_in_button);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        Login_.this.signInGoogle();
-                    }
-
-                }
-                );
-            }
-        }
+        background = ((ParallaxImageView) hasViews.findViewById(id.background));
         {
             View view = hasViews.findViewById(id.signInAnonymous);
             if (view!= null) {
@@ -115,21 +103,22 @@ public final class Login_
                 );
             }
         }
-        afterViews();
-    }
-
-    @Override
-    public void showToast(final String text) {
-        handler_.post(new Runnable() {
+        {
+            View view = hasViews.findViewById(id.sign_in_button);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
 
 
-            @Override
-            public void run() {
-                Login_.super.showToast(text);
+                    @Override
+                    public void onClick(View view) {
+                        Login_.this.signInGoogle();
+                    }
+
+                }
+                );
             }
-
         }
-        );
+        afterViews();
     }
 
     @Override
@@ -140,6 +129,20 @@ public final class Login_
             @Override
             public void run() {
                 Login_.super.startFeedActivity();
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void showToast(final String text) {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                Login_.super.showToast(text);
             }
 
         }

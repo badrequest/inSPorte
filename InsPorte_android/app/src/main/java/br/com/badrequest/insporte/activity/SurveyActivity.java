@@ -3,6 +3,7 @@ package br.com.badrequest.insporte.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.SparseArray;
@@ -18,6 +19,7 @@ import br.com.badrequest.insporte.bean.SurveyType;
 import br.com.badrequest.insporte.bean.database.SurveyJson;
 import br.com.badrequest.insporte.database.datasource.SurveyDataSource;
 import br.com.badrequest.insporte.integration.bean.AdministeredQuestionnaire;
+import br.com.badrequest.insporte.integration.bean.Comment;
 import br.com.badrequest.insporte.integration.bean.QuestionOption;
 import br.com.badrequest.insporte.integration.bean.Survey;
 import br.com.badrequest.insporte.util.BitmapUtils;
@@ -34,7 +36,9 @@ public class SurveyActivity extends TranslucentActivity {
     public static final String SURVEY_TYPE_EXTRA = "SURVEY_TYPE";
     public static final String SURVEY_EXTRA = "SURVEY";
     private static final int CAMERA_INTENT = 1000;
-    private static final int SHOW_PICTURE_INTENT = 2000;
+    private static final int COMMENT_CAMERA_INTENT = 2000;
+    private static final int SHOW_PICTURE_INTENT = 3000;
+    private static final int COMMENT_SHOW_PICTURE_INTENT = 4000;
 
     @ViewById
     LinearLayout questoesLayout;
@@ -53,6 +57,9 @@ public class SurveyActivity extends TranslucentActivity {
 
     private SparseArray<LinearLayout> mMapQuestaoLayout;
 
+    @NonConfigurationInstance
+    Comment mComment = new Comment();
+
     @AfterViews
     void afterViews() {
         mMapQuestaoLayout = new SparseArray<LinearLayout>();
@@ -67,18 +74,23 @@ public class SurveyActivity extends TranslucentActivity {
             cameraButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+                    if(isSDPresent) {
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-                    String fotoPath = getExternalFilesDir("photos").getAbsolutePath() + "/"
-                            + String.valueOf(question.getId()) + "_"
-                            + String.valueOf(System.currentTimeMillis()) + ".jpg";
-                    File foto = new File(fotoPath);
-                    foto.mkdirs();
-                    foto.delete();
-                    mImageUri = Uri.fromFile(foto);
-                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
+                        String fotoPath = getExternalFilesDir("photos").getAbsolutePath() + "/"
+                                + String.valueOf(question.getId()) + "_"
+                                + String.valueOf(System.currentTimeMillis()) + ".jpg";
+                        File foto = new File(fotoPath);
+                        foto.mkdirs();
+                        foto.delete();
+                        mImageUri = Uri.fromFile(foto);
+                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
 
-                    startActivityForResult(cameraIntent, CAMERA_INTENT + question.getId());
+                        startActivityForResult(cameraIntent, CAMERA_INTENT + question.getId());
+                    } else {
+                        Toast.makeText(SurveyActivity.this, "Para tirar foto é necessário um cartão de memória.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 
@@ -109,6 +121,15 @@ public class SurveyActivity extends TranslucentActivity {
 
     @Click(R.id.btnProximo)
     void submit() {
+        Location location = mLocationService.getLastLocation();
+
+        if(location != null) {
+            mSurvey.getInfo().setLat(location.getLatitude());
+            mSurvey.getInfo().setLon(location.getLongitude());
+        }
+
+        mComment.setTexto(((EditText) findViewById(R.id.commentEditText)).getText().toString());
+        mSurvey.setComentario(mComment);
         (new SurveyJson()).setJson(new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm:ss").create().toJson(mSurvey)).save();
         Intent serviceIntent = new Intent(this, br.com.badrequest.insporte.service.SyncUserDataService_.class);
         startService(serviceIntent);
@@ -129,6 +150,33 @@ public class SurveyActivity extends TranslucentActivity {
                 .show();
     }
 
+    @Click(R.id.commentCamera)
+    void takeCommentPhoto() {
+        Boolean isSDPresent = android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+        if(isSDPresent) {
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            String fotoPath = getExternalFilesDir("photos").getAbsolutePath() + "/"
+                    + "comment" + "_"
+                    + String.valueOf(System.currentTimeMillis()) + ".jpg";
+            File foto = new File(fotoPath);
+            foto.mkdirs();
+            foto.delete();
+            mImageUri = Uri.fromFile(foto);
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
+
+            startActivityForResult(cameraIntent, COMMENT_CAMERA_INTENT);
+        } else {
+            Toast.makeText(SurveyActivity.this, "Para tirar foto é necessário um cartão de memória.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    @Click(R.id.commentPhoto)
+    void viewCommentPhoto() {
+        Intent intent = new Intent(SurveyActivity.this, PictureView_.class);
+        intent.putExtra(PictureView.PERGUNTA_INTENT_EXTRA, mComment.getImgPath());
+        startActivityForResult(intent, COMMENT_SHOW_PICTURE_INTENT);
+    }
 
     private OnCheckedChangeListener registerCallback(final int idQuestion, final int idOption) {
 
@@ -156,7 +204,6 @@ public class SurveyActivity extends TranslucentActivity {
             switch (which) {
                 case DialogInterface.BUTTON_POSITIVE:
                     deleteImages();
-                    mSurvey.setResposta(null);
                     finish();
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
@@ -172,6 +219,9 @@ public class SurveyActivity extends TranslucentActivity {
                     BitmapUtils.deleteImage(question.getImgPath());
                 }
             }
+            if(mComment.hasImage()) {
+                BitmapUtils.deleteImage(mComment.getImgPath());
+            }
         }
     }
 
@@ -182,10 +232,10 @@ public class SurveyActivity extends TranslucentActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode/CAMERA_INTENT == 1 && resultCode == RESULT_OK) {
+        if (requestCode / CAMERA_INTENT == 1 && resultCode == RESULT_OK) {
 
-            br.com.badrequest.insporte.integration.bean.Question question = mSurvey.getResposta().getOrAddQuestion(requestCode%CAMERA_INTENT);
-            if(question.hasImage()) {
+            br.com.badrequest.insporte.integration.bean.Question question = mSurvey.getResposta().getOrAddQuestion(requestCode % CAMERA_INTENT);
+            if (question.hasImage()) {
                 BitmapUtils.deleteImage(question.getImgPath());
             }
             String newFileName = getExternalFilesDir("photos").getAbsolutePath() + "/"
@@ -201,10 +251,31 @@ public class SurveyActivity extends TranslucentActivity {
             question.setImgPath(newFileName);
             mMapQuestaoLayout.get(question.getIdPergunta()).findViewById(R.id.photoIcon).setVisibility(View.VISIBLE);
 
+        } else if(requestCode == COMMENT_CAMERA_INTENT && resultCode == RESULT_OK) {
+
+            if(mComment.hasImage()) {
+                BitmapUtils.deleteImage(mComment.getImgPath());
+            }
+
+            String newFileName = getExternalFilesDir("photos").getAbsolutePath() + "/"
+                    + "comment" + "_"
+                    + String.valueOf(System.currentTimeMillis()) + ".jpg";
+            try {
+                BitmapUtils.saveResizedImage(mImageUri.getPath(), newFileName);
+                BitmapUtils.deleteImage(mImageUri.getPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            mComment.setImgPath(newFileName);
+            findViewById(R.id.commentPhoto).setVisibility(View.VISIBLE);
+
         } else if(requestCode/SHOW_PICTURE_INTENT == 1 && resultCode == PictureView.RESULT_IMAGE_DELETED) {
             int questionId = requestCode%SHOW_PICTURE_INTENT;
             mSurvey.getResposta().getOrAddQuestion(questionId).setImgPath(null);
             mMapQuestaoLayout.get(questionId).findViewById(R.id.photoIcon).setVisibility(View.GONE);
+        } else if(requestCode == COMMENT_SHOW_PICTURE_INTENT && resultCode == PictureView.RESULT_IMAGE_DELETED) {
+            mComment.setImgPath(null);
+            findViewById(R.id.commentPhoto).setVisibility(View.GONE);
         }
     }
 }

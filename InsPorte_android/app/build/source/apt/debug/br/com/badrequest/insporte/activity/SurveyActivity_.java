@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import br.com.badrequest.insporte.R.id;
 import br.com.badrequest.insporte.R.layout;
 import br.com.badrequest.insporte.bean.SurveyType;
+import br.com.badrequest.insporte.integration.bean.Comment;
 import br.com.badrequest.insporte.integration.bean.Survey;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
@@ -33,8 +34,8 @@ public final class SurveyActivity_
 {
 
     private final OnViewChangedNotifier onViewChangedNotifier_ = new OnViewChangedNotifier();
-    public final static String SURVEY_TYPE_EXTRA = "SURVEY_TYPE";
     public final static String M_SURVEY_EXTRA = "SURVEY";
+    public final static String SURVEY_TYPE_EXTRA = "SURVEY_TYPE";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public final class SurveyActivity_
         inflater = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
         SurveyActivity_.NonConfigurationInstancesHolder nonConfigurationInstance = ((SurveyActivity_.NonConfigurationInstancesHolder) super.getLastCustomNonConfigurationInstance());
         if (nonConfigurationInstance!= null) {
+            mComment = nonConfigurationInstance.mComment;
             mImageUri = nonConfigurationInstance.mImageUri;
         }
     }
@@ -93,6 +95,36 @@ public final class SurveyActivity_
     public void onViewChanged(HasViews hasViews) {
         questoesLayout = ((LinearLayout) hasViews.findViewById(id.questoesLayout));
         {
+            View view = hasViews.findViewById(id.commentCamera);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SurveyActivity_.this.takeCommentPhoto();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.commentPhoto);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SurveyActivity_.this.viewCommentPhoto();
+                    }
+
+                }
+                );
+            }
+        }
+        {
             View view = hasViews.findViewById(id.btnProximo);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -128,11 +160,11 @@ public final class SurveyActivity_
     private void injectExtras_() {
         Bundle extras_ = getIntent().getExtras();
         if (extras_!= null) {
-            if (extras_.containsKey(SURVEY_TYPE_EXTRA)) {
-                surveyType = ((SurveyType) extras_.getSerializable(SURVEY_TYPE_EXTRA));
-            }
             if (extras_.containsKey(M_SURVEY_EXTRA)) {
                 mSurvey = ((Survey) extras_.getSerializable(M_SURVEY_EXTRA));
+            }
+            if (extras_.containsKey(SURVEY_TYPE_EXTRA)) {
+                surveyType = ((SurveyType) extras_.getSerializable(SURVEY_TYPE_EXTRA));
             }
         }
     }
@@ -156,6 +188,7 @@ public final class SurveyActivity_
     public SurveyActivity_.NonConfigurationInstancesHolder onRetainCustomNonConfigurationInstance() {
         SurveyActivity_.NonConfigurationInstancesHolder nonConfigurationInstanceState_ = new SurveyActivity_.NonConfigurationInstancesHolder();
         nonConfigurationInstanceState_.superNonConfigurationInstance = super.onRetainCustomNonConfigurationInstance();
+        nonConfigurationInstanceState_.mComment = mComment;
         nonConfigurationInstanceState_.mImageUri = mImageUri;
         return nonConfigurationInstanceState_;
     }
@@ -202,13 +235,13 @@ public final class SurveyActivity_
             }
         }
 
-        public SurveyActivity_.IntentBuilder_ surveyType(SurveyType surveyType) {
-            intent_.putExtra(SURVEY_TYPE_EXTRA, ((Serializable) surveyType));
+        public SurveyActivity_.IntentBuilder_ mSurvey(Survey mSurvey) {
+            intent_.putExtra(M_SURVEY_EXTRA, ((Serializable) mSurvey));
             return this;
         }
 
-        public SurveyActivity_.IntentBuilder_ mSurvey(Survey mSurvey) {
-            intent_.putExtra(M_SURVEY_EXTRA, ((Serializable) mSurvey));
+        public SurveyActivity_.IntentBuilder_ surveyType(SurveyType surveyType) {
+            intent_.putExtra(SURVEY_TYPE_EXTRA, ((Serializable) surveyType));
             return this;
         }
 
@@ -216,8 +249,9 @@ public final class SurveyActivity_
 
     private static class NonConfigurationInstancesHolder {
 
-        public Uri mImageUri;
+        public Comment mComment;
         public Object superNonConfigurationInstance;
+        public Uri mImageUri;
 
     }
 

@@ -44,18 +44,21 @@ public class SyncUserDataService extends Service {
     @Background
     void syncData() {
         insporteServiceMapper.setRestErrorHandler(serviceErrorHandler);
+        Credentials credentials = new Credentials(loginPrefs.uuid().get(), loginPrefs.pass().get());
+
         try {
-            sendSurvey();
-            sendLike();
-            sendPhotos();
+            sendSurvey(credentials);
+            sendLike(credentials);
+            sendPhotos(credentials);
         } finally {
             pararServico();
         }
     }
 
-    private void sendSurvey() {
+    private void sendSurvey(Credentials credentials) {
         for(SurveyJson surveyToSend : SurveyJson.findAllToSend()) {
             Survey survey = new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm:ss").create().fromJson(surveyToSend.getJson(), Survey.class);
+            survey.setCredentials(credentials);
             SurveyResponse response = insporteServiceMapper.survey(survey);
             if (response != null && response.success()) {
                 surveyToSend.setSent(true).save();
@@ -63,12 +66,15 @@ public class SyncUserDataService extends Service {
                     photo.setImgPath(survey.getResposta().getOrAddQuestion(photo.getIdPergunta()).getImgPath());
                     photo.save();
                 }
+
+                if(response.getIdImagemComentario() != null) {
+                    new Photo(0, response.getIdImagemComentario(), survey.getComentario().getImgPath(), false).save();
+                }
             }
         }
     }
 
-    private void sendLike() {
-        Credentials credentials = new Credentials(loginPrefs.uuid().get(), loginPrefs.pass().get());
+    private void sendLike(Credentials credentials) {
         for (Like like : Like.findAllToSend()) {
             DefaultResponse response = insporteServiceMapper.addLike(new br.com.badrequest.insporte.integration.bean.Like(credentials, like.getRouteId(), like.isLike()));
 
@@ -79,8 +85,7 @@ public class SyncUserDataService extends Service {
     }
 
     @Trace
-    void sendPhotos() {
-        Credentials credentials = new Credentials(loginPrefs.uuid().get(), loginPrefs.pass().get());
+    void sendPhotos(Credentials credentials) {
         for (Photo photo : Photo.findAllToSend()) {
             DefaultResponse response = insporteServiceMapper.sendImage(new Image(credentials, photo.getIdImagem(), photo.getImgPath()));
             if(response != null && response.success()) {

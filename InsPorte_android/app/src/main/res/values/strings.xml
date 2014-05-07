@@ -6,7 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="next">Próximo</string>
     <string name="finish">Finalizar</string>
-    <string name="comentario">Comentário</string>
+    <string name="comentario">Se desejar, insira um comentário aqui...</string>
     <string name="login">Entrar</string>
     <string name="hint_bus_card">Bilhete único</string>
     <string name="hint_id">CPF</string>
@@ -16,5 +16,6 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_history">Avaliações</string>
+    <string name="title_activity_google_play_services">GooglePlayServicesActivity</string>
 
 </resources>

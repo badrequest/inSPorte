@@ -16,7 +16,16 @@ import java.io.Serializable;
 public @Getter @Setter class Comment implements Serializable {
 
     private String texto;
+    private boolean imagem = false;
+    private String imgPath;
 
-    private boolean imagem;
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+        imagem = imgPath != null;
+    }
+
+    public boolean hasImage() {
+        return imagem;
+    }
 
 }

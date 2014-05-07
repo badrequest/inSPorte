@@ -1,15 +1,45 @@
 package br.com.badrequest.insporte.service;
 
 import android.app.Service;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.location.Location;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.IBinder;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 
 import java.util.Random;
 
-public class LocationService extends Service {
+public class LocationService extends Service implements
+        GooglePlayServicesClient.ConnectionCallbacks,
+        GooglePlayServicesClient.OnConnectionFailedListener,
+        LocationListener {
+
+    LocationClient mLocationClient;
+    LocationRequest mLocationRequest;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mLocationClient = new LocationClient(this, this, this);
+        mLocationClient.connect();
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(
+                LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(4000);
+        mLocationRequest.setFastestInterval(4000);
+
+    }
+
+    @Override
+    public void onDestroy() {
+        mLocationClient.disconnect();
+        super.onDestroy();
+    }
 
     private final IBinder mBinder = new LocationBinder();
 
@@ -20,31 +50,32 @@ public class LocationService extends Service {
 
     private final Random mGenerator = new Random();
 
-    public int getRandomNumber() {
-        return mGenerator.nextInt(100);
+    public Location getLastLocation() {
+        return mLocationClient.getLastLocation();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
     }
 
     public class LocationBinder extends Binder {
-        LocationService getService() {
+        public LocationService getService() {
             return LocationService.this;
         }
     }
 
-    public static class LocationServiceConnection implements ServiceConnection {
-        LocationService mService;
-        boolean mBound = false;
-
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            LocationBinder binder = (LocationBinder) service;
-            mService = binder.getService();
-            mBound = true;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName className) {
-            mBound = false;
-        }
+    @Override
+    public void onConnected(Bundle bundle) {
+        mLocationClient.requestLocationUpdates(mLocationRequest, this);
     }
+
+    @Override
+    public void onDisconnected() {
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult result) {
+    }
+
 
 }

@@ -15,8 +15,9 @@ import java.util.List;
 public class SurveyDataSource extends SQLiteAssetHelper {
 
     private final String QRY_QUESTIONS = "SELECT * FROM pergunta WHERE id_questionario = ?";
-
+    private final String QRY_QUESTION = "SELECT * FROM pergunta WHERE id = ?";
     private final String QRY_OPTIONS = "SELECT * FROM opcao WHERE id_pergunta = ?";
+    private final String QRY_OPTION = "SELECT * FROM opcao WHERE id = ?";
 
     public SurveyDataSource(Context context) {
         super(context, Constants.DATABASE_NAME,
@@ -51,6 +52,32 @@ public class SurveyDataSource extends SQLiteAssetHelper {
         }
     }
 
+    public Question getQuestion(int idQuestion) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = null;
+
+        Question question = null;
+        try {
+            cursor = db.rawQuery(QRY_QUESTION, new String[] {String.valueOf(idQuestion)});
+            if(cursor.moveToNext()) {
+                question = new Question();
+                question.setId(cursor.getInt(0));
+                question.setOptions(getOptions(cursor.getInt(0)));
+                question.setQuestion(cursor.getString(2));
+            }
+
+            return question;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+
     private List<Option> getOptions(int idQuestion) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = null;
@@ -74,8 +101,29 @@ public class SurveyDataSource extends SQLiteAssetHelper {
                 db.close();
             }
         }
-
     }
 
+    public Option getOption(int idOption) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = null;
 
+        Option option = null;
+        try {
+            cursor = db.rawQuery(QRY_OPTION, new String[] {String.valueOf(idOption)});
+            if(cursor.moveToNext()) {
+                option = new Option();
+                option.setId(cursor.getInt(0));
+                option.setText(cursor.getString(2));
+            }
+
+            return option;
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
 }

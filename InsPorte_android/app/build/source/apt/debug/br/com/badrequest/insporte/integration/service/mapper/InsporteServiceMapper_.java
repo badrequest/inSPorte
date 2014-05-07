@@ -38,10 +38,10 @@ public final class InsporteServiceMapper_
     }
 
     @Override
-    public LoginResponse registerGoogle(Token token) {
-        HttpEntity<Token> requestEntity = new HttpEntity<Token>(token);
+    public DefaultResponse sendImage(Image image) {
+        HttpEntity<Image> requestEntity = new HttpEntity<Image>(image);
         try {
-            return restTemplate.exchange(rootUrl.concat("/auth/add"), HttpMethod.POST, requestEntity, LoginResponse.class).getBody();
+            return restTemplate.exchange(rootUrl.concat("/image/add"), HttpMethod.POST, requestEntity, DefaultResponse.class).getBody();
         } catch (RestClientException e) {
             if (restErrorHandler!= null) {
                 restErrorHandler.onRestClientExceptionThrown(e);
@@ -53,10 +53,10 @@ public final class InsporteServiceMapper_
     }
 
     @Override
-    public SurveyResponse survey(Survey survey) {
-        HttpEntity<Survey> requestEntity = new HttpEntity<Survey>(survey);
+    public LoginResponse registerGoogle(Token token) {
+        HttpEntity<Token> requestEntity = new HttpEntity<Token>(token);
         try {
-            return restTemplate.exchange(rootUrl.concat("/answer"), HttpMethod.POST, requestEntity, SurveyResponse.class).getBody();
+            return restTemplate.exchange(rootUrl.concat("/auth/add"), HttpMethod.POST, requestEntity, LoginResponse.class).getBody();
         } catch (RestClientException e) {
             if (restErrorHandler!= null) {
                 restErrorHandler.onRestClientExceptionThrown(e);
@@ -98,10 +98,10 @@ public final class InsporteServiceMapper_
     }
 
     @Override
-    public DefaultResponse sendImage(Image image) {
-        HttpEntity<Image> requestEntity = new HttpEntity<Image>(image);
+    public SurveyResponse survey(Survey survey) {
+        HttpEntity<Survey> requestEntity = new HttpEntity<Survey>(survey);
         try {
-            return restTemplate.exchange(rootUrl.concat("/image/add"), HttpMethod.POST, requestEntity, DefaultResponse.class).getBody();
+            return restTemplate.exchange(rootUrl.concat("/answer"), HttpMethod.POST, requestEntity, SurveyResponse.class).getBody();
         } catch (RestClientException e) {
             if (restErrorHandler!= null) {
                 restErrorHandler.onRestClientExceptionThrown(e);

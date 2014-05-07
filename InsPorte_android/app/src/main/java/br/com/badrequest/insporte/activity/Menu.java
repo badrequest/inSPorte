@@ -9,23 +9,19 @@ import br.com.badrequest.insporte.activity.base.FullTranslucentActivity;
 import br.com.badrequest.insporte.bean.Route;
 import br.com.badrequest.insporte.bean.SurveyType;
 import br.com.badrequest.insporte.bean.database.Like;
+import br.com.badrequest.insporte.integration.bean.ExtraSurveyInfo;
 import br.com.badrequest.insporte.integration.bean.Survey;
-import br.com.badrequest.insporte.preferences.LoginPrefs_;
 import org.androidannotations.annotations.*;
-import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import java.util.Date;
 import java.util.List;
 
 @EActivity(R.layout.menu_activity)
 public class Menu extends FullTranslucentActivity {
 
     public static final String ROUTE_EXTRA = "ROUTE";
-    public static final int SURVEY_INTENT = 2000;
 
     private Survey mSurvey = new Survey();
-
-    @Pref
-    LoginPrefs_ loginPrefs;
 
     @ViewById
     TextView route;
@@ -35,7 +31,8 @@ public class Menu extends FullTranslucentActivity {
 
     @AfterViews
     void afterViews() {
-        super.systemBarTint();
+        systemBarTint();
+        mSurvey.setInfo(new ExtraSurveyInfo(mRoute.getCod(), 0.0, 0.0, new Date()));
 
         route.setText(mRoute.getName());
         Like like = Like.getLikeByRoute(mRoute.getCod());
@@ -71,13 +68,6 @@ public class Menu extends FullTranslucentActivity {
         startActivity(intent);
     }
 
-    @Click(R.id.btnComentario)
-    void comment() {
-        Intent intent = new Intent(this, Comment_.class);
-        intent.putExtra(Comment.SURVEY_EXTRA, mSurvey);
-        startActivityForResult(intent, SURVEY_INTENT);
-    }
-
     @Click(R.id.imageButtonNotLike)
     void notLike() {
         ((ImageButton) findViewById(R.id.imageButtonNotLike)).setImageResource(R.drawable.ic_not_like_ativo);
@@ -90,13 +80,6 @@ public class Menu extends FullTranslucentActivity {
         ((ImageButton) findViewById(R.id.imageButtonNotLike)).setImageResource(R.drawable.ic_not_like);
         ((ImageButton) findViewById(R.id.imageButtonLike)).setImageResource(R.drawable.ic_like_ativo);
         updateLike(true);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == SURVEY_INTENT && resultCode == RESULT_OK) {
-            mSurvey = (Survey) data.getSerializableExtra(Comment.SURVEY_EXTRA);
-        }
     }
 
     private void updateLike(boolean likeState) {

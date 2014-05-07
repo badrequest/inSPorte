@@ -67,9 +67,9 @@ public final class WizardFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        image = ((ImageView) hasViews.findViewById(br.com.badrequest.insporte.R.id.image));
-        title1 = ((TextView) hasViews.findViewById(br.com.badrequest.insporte.R.id.title1));
         title2 = ((TextView) hasViews.findViewById(br.com.badrequest.insporte.R.id.title2));
+        title1 = ((TextView) hasViews.findViewById(br.com.badrequest.insporte.R.id.title1));
+        image = ((ImageView) hasViews.findViewById(br.com.badrequest.insporte.R.id.image));
         setupPage();
     }
 

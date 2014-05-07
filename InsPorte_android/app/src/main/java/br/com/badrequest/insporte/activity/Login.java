@@ -3,16 +3,20 @@ package br.com.badrequest.insporte.activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Toast;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.activity.base.FullTranslucentActivity;
 import br.com.badrequest.insporte.business.LoginBusiness;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
+import com.nvanbenschoten.motion.ParallaxImageView;
 import org.androidannotations.annotations.*;
 
+@WindowFeature(Window.FEATURE_NO_TITLE)
 @EActivity(R.layout.login_activity)
 public class Login extends FullTranslucentActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -23,8 +27,11 @@ public class Login extends FullTranslucentActivity implements
     @ViewById(R.id.sign_in_button)
     SignInButton signInButton;
 
-    /* Request code used to invoke sign in user interactions. */
+    @ViewById
+    ParallaxImageView background;
+
     private static final int RC_SIGN_IN = 0;
+    private static final int REQUEST_CODE_RECOVER_PLAY_SERVICES = 1;
 
     private GoogleApiClient mGoogleApiClient;
 
@@ -37,19 +44,23 @@ public class Login extends FullTranslucentActivity implements
     @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
+        if(background != null) background.registerSensorManager();
     }
 
+    @Override
     protected void onStop() {
         super.onStop();
+        background.unregisterSensorManager();
 
         if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
+
         }
     }
 
     @AfterViews
     void afterViews() {
+        background.registerSensorManager();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -129,9 +140,11 @@ public class Login extends FullTranslucentActivity implements
                 mIntentInProgress = false;
                 mGoogleApiClient.connect();
             }
+        } else {
+            GooglePlayServicesUtil.getErrorDialog(mConnectionResult.getErrorCode(), this,
+                    REQUEST_CODE_RECOVER_PLAY_SERVICES).show();
         }
     }
-
 
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         if (requestCode == RC_SIGN_IN) {

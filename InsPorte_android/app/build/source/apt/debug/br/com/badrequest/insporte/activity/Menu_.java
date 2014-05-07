@@ -19,7 +19,6 @@ import android.widget.TextView;
 import br.com.badrequest.insporte.R.id;
 import br.com.badrequest.insporte.R.layout;
 import br.com.badrequest.insporte.bean.Route;
-import br.com.badrequest.insporte.preferences.LoginPrefs_;
 import org.androidannotations.api.SdkVersionHelper;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
@@ -43,7 +42,6 @@ public final class Menu_
     }
 
     private void init_(Bundle savedInstanceState) {
-        loginPrefs = new LoginPrefs_(this);
         OnViewChangedNotifier.registerOnViewChangedListener(this);
         injectExtras_();
     }
@@ -85,21 +83,6 @@ public final class Menu_
     @Override
     public void onViewChanged(HasViews hasViews) {
         route = ((TextView) hasViews.findViewById(id.route));
-        {
-            View view = hasViews.findViewById(id.imageButtonLike);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        Menu_.this.like();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.imageButtonOnibus);
             if (view!= null) {
@@ -161,14 +144,14 @@ public final class Menu_
             }
         }
         {
-            View view = hasViews.findViewById(id.btnComentario);
+            View view = hasViews.findViewById(id.imageButtonLike);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        Menu_.this.comment();
+                        Menu_.this.like();
                     }
 
                 }

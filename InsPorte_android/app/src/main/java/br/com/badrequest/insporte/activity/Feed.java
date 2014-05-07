@@ -1,6 +1,5 @@
 package br.com.badrequest.insporte.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.ImageView;
 import br.com.badrequest.insporte.R;
 import br.com.badrequest.insporte.activity.base.FullTranslucentActivity;
 import br.com.badrequest.insporte.adapter.TwitterPagerAdapter;
-import br.com.badrequest.insporte.service.LocationService;
 import com.nvanbenschoten.motion.ParallaxImageView;
 import org.androidannotations.annotations.*;
 import twitter4j.Status;
@@ -33,26 +31,22 @@ public class Feed extends FullTranslucentActivity {
     @ViewById
     ImageView twitterBird;
 
-    @AfterViews
-    void afterViews() {
-        background.registerSensorManager();
-        getTwitter();
-    }
-
-    private LocationService.LocationServiceConnection mConnection = new LocationService.LocationServiceConnection();
-
     @Override
     protected void onStart() {
-        background.registerSensorManager();
         super.onStart();
-        Intent intent = new Intent(this, LocationService.class);
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+        if(background != null) background.registerSensorManager();
     }
 
     @Override
     protected void onStop() {
-        background.unregisterSensorManager();
         super.onStop();
+        background.unregisterSensorManager();
+    }
+
+    @AfterViews
+    void afterViews() {
+        background.registerSensorManager();
+        getTwitter();
     }
 
     @Background
@@ -90,6 +84,14 @@ public class Feed extends FullTranslucentActivity {
         }
         circleTwitter();
     }
+
+//    @Click(R.id.imageButtonHistorico)
+//    void teste() {
+//        if(locationServiceBound) {
+//            int num = mLocationService.getRandomNumber();
+//            Toast.makeText(this, "number: " + num, Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Click(R.id.imageButtonAvaliar)
     void survey() {

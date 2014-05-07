@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import br.com.badrequest.insporte.R.id;
 import br.com.badrequest.insporte.R.layout;
 import com.nvanbenschoten.motion.ParallaxImageView;
 import org.androidannotations.api.BackgroundExecutor;
@@ -86,11 +87,26 @@ public final class Feed_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        twitterBird = ((ImageView) hasViews.findViewById(br.com.badrequest.insporte.R.id.twitterBird));
-        background = ((ParallaxImageView) hasViews.findViewById(android.R.id.background));
-        pager = ((ViewPager) hasViews.findViewById(br.com.badrequest.insporte.R.id.pager));
+        background = ((ParallaxImageView) hasViews.findViewById(id.background));
+        twitterBird = ((ImageView) hasViews.findViewById(id.twitterBird));
+        pager = ((ViewPager) hasViews.findViewById(id.pager));
         {
-            View view = hasViews.findViewById(br.com.badrequest.insporte.R.id.imageButtonSobre);
+            View view = hasViews.findViewById(id.imageButtonAvaliar);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        Feed_.this.survey();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.imageButtonSobre);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -105,7 +121,7 @@ public final class Feed_
             }
         }
         {
-            View view = hasViews.findViewById(br.com.badrequest.insporte.R.id.imageButtonHistorico);
+            View view = hasViews.findViewById(id.imageButtonHistorico);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
@@ -113,21 +129,6 @@ public final class Feed_
                     @Override
                     public void onClick(View view) {
                         Feed_.this.historico();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(br.com.badrequest.insporte.R.id.imageButtonAvaliar);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        Feed_.this.survey();
                     }
 
                 }

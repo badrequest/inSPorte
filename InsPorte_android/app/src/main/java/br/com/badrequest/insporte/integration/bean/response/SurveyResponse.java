@@ -14,6 +14,7 @@ public @Getter @Setter class SurveyResponse implements Serializable {
 
     private String ans;
     private List<Photo> idImagens;
+    private Integer idImagemComentario;
 
     public boolean success() {
         return "ok".equals(ans);

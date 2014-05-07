@@ -90,24 +90,9 @@ public final class Comment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        pictureLayout = ((View) hasViews.findViewById(id.pictureLayout));
-        pictureImageView = ((ImageView) hasViews.findViewById(id.pictureImageView));
         commentEditText = ((EditText) hasViews.findViewById(id.commentEditText));
-        {
-            View view = hasViews.findViewById(id.btnOK);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        Comment_.this.close();
-                    }
-
-                }
-                );
-            }
-        }
+        pictureImageView = ((ImageView) hasViews.findViewById(id.pictureImageView));
+        pictureLayout = ((View) hasViews.findViewById(id.pictureLayout));
         {
             View view = hasViews.findViewById(id.btnDelete);
             if (view!= null) {
@@ -117,6 +102,21 @@ public final class Comment_
                     @Override
                     public void onClick(View view) {
                         Comment_.this.delete();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.btnOK);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        Comment_.this.close();
                     }
 
                 }

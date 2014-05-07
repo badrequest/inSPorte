@@ -2,7 +2,6 @@ package br.com.badrequest.insporte.activity.base;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Window;
 import android.view.WindowManager;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -10,7 +9,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 /**
  * Created by gmarques on 3/28/14.
  */
-public class TranslucentActivity extends ActionBarActivity {
+public class TranslucentActivity extends InsporteBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

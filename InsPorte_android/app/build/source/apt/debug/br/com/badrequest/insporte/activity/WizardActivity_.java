@@ -80,9 +80,9 @@ public final class WizardActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        indicator = ((UnderlinePageIndicator) hasViews.findViewById(id.indicator));
         pager = ((ViewPager) hasViews.findViewById(id.pager));
         btnNext = ((Button) hasViews.findViewById(id.btnNext));
+        indicator = ((UnderlinePageIndicator) hasViews.findViewById(id.indicator));
         {
             View view = hasViews.findViewById(id.btnNext);
             if (view!= null) {

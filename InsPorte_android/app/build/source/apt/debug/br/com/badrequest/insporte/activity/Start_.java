@@ -72,6 +72,16 @@ public final class Start_
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case  1 :
+                Start_.this.onResult(resultCode);
+                break;
+        }
+    }
+
     public static class IntentBuilder_ {
 
         private Context context_;

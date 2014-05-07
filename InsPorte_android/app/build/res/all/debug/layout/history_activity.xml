@@ -6,6 +6,7 @@
 
     <com.fima.cardsui.views.CardUI
             android:id="@+id/cards"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"

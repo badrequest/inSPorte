@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import br.com.badrequest.insporte.integration.bean.Credentials;
 import br.com.badrequest.insporte.integration.service.handler.ServiceErrorHandler_;
 import br.com.badrequest.insporte.integration.service.mapper.InsporteServiceMapper_;
 import br.com.badrequest.insporte.preferences.LoginPrefs_;
@@ -44,18 +45,18 @@ public final class SyncUserDataService_
     }
 
     @Override
-    public void sendPhotos() {
+    public void sendPhotos(final Credentials credentials) {
         if (Log.isLoggable("SyncUserDataService", Log.INFO)) {
             long start = System.currentTimeMillis();
-            Log.i("SyncUserDataService", "Entering [sendPhotos()]");
+            Log.i("SyncUserDataService", "Entering [sendPhotos(br.com.badrequest.insporte.integration.bean.Credentials)]");
             try {
-                SyncUserDataService_.super.sendPhotos();
+                SyncUserDataService_.super.sendPhotos(credentials);
             } finally {
                 long duration = (System.currentTimeMillis()-start);
-                Log.i("SyncUserDataService", ("Exiting [sendPhotos()], duration in ms: "+ duration));
+                Log.i("SyncUserDataService", ("Exiting [sendPhotos(br.com.badrequest.insporte.integration.bean.Credentials)], duration in ms: "+ duration));
             }
         } else {
-            SyncUserDataService_.super.sendPhotos();
+            SyncUserDataService_.super.sendPhotos(credentials);
         }
     }
 
