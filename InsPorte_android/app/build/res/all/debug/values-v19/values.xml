@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/app/src/main/res/values-v19/styles_sptrans.xml -->
+    <eat-comment />
+
+    <style name="ActionBar.Solid.Sptrans" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_sptrans</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_sptrans</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_sptrans</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Sptrans</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Sptrans" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_sptrans</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Sptrans</item>
+    </style>
+
+    <style name="Theme.Sptrans" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_sptrans</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Sptrans</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Sptrans</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Sptrans</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Sptrans</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Sptrans</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_sptrans</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_sptrans</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Sptrans</item>
+        <!-- <item name="android:windowTranslucentStatus">true</item> -->
+        <!-- <item name="android:windowTranslucentNavigation">true</item> -->
+
+
+        <!-- Light.DarkActionBar specific -->
+        <item name="android:actionBarWidgetTheme">@style/Theme.Sptrans.Widget</item>
+    </style>
+
+    <style name="Theme.Sptrans.Widget" parent="@style/Theme.AppCompat">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Sptrans</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Sptrans</item>
+    </style>
+
+</resources>

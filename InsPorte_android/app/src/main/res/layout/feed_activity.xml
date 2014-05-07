@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:parallax="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:animateLayoutChanges="true">
+
+    <com.nvanbenschoten.motion.ParallaxImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            parallax:tiltSensitivity="1.0"
+            parallax:forwardTiltOffset="0.35"
+            parallax:intensity="1.1"
+            android:src="@drawable/sp"
+            android:scaleType="centerCrop"
+            android:clickable="true"/>
+
+    <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/buttonGroup"
+            android:src="@drawable/logo"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#66000000"/>
+
+    <LinearLayout
+            android:id="@+id/buttonGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_centerInParent="true">
+
+        <ImageButton
+                android:id="@+id/imageButtonAvaliar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/custom_button_icon"
+                android:background="@drawable/ic_avaliacao"
+                android:layout_marginRight="10dp"/>
+
+        <ImageButton
+                android:id="@+id/imageButtonHistorico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/custom_button_icon"
+                android:background="@drawable/ic_historico"
+                android:layout_marginRight="10dp"/>
+
+        <ImageButton
+                android:id="@+id/imageButtonSobre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/custom_button_icon"
+                android:background="@drawable/ic_sobrenos"/>
+
+    </LinearLayout>
+
+    <br.com.badrequest.insporte.view.WrapContentHeightViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"/>
+
+    <ImageView
+            android:id="@+id/twitterBird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_above="@+id/pager"
+            android:layout_marginBottom="-25dp"
+            android:src="@drawable/ic_twitter"
+            android:visibility="gone"/>
+
+</RelativeLayout>

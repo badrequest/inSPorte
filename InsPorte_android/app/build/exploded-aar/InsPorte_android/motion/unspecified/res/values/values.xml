@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/motion/src/main/res/values/attrs.xml -->
+    <eat-comment />
+
+    <declare-styleable name="ParallaxImageView">
+        <attr name="intensity" format="float" />
+        <attr name="tiltSensitivity" format="float" />
+        <attr name="forwardTiltOffset" format="float" />
+    </declare-styleable>
+    <!-- From: file:/Users/gmarques/Documents/workspaces/inSPorteGitHub/InsPorte_android/motion/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">Motion</string>
+
+</resources>

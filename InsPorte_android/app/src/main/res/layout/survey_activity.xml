@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:clipToPadding="false">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
+
+            <LinearLayout
+                    android:id="@+id/questoesLayout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true">
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="10dp"
+                    android:animateLayoutChanges="true">
+
+                <RelativeLayout
+                        android:background="@color/graySp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp">
+
+                    <TextView
+                            android:id="@+id/perguntaTextView"
+                            android:text="Comentário"
+                            android:layout_centerVertical="true"
+                            android:textColor="@color/gray"
+                            android:fontFamily="sans-serif"
+                            android:layout_alignParentLeft="true"
+                            android:layout_toLeftOf="@+id/photoIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"/>
+
+                    <ImageButton
+                            android:id="@+id/commentPhoto"
+                            android:src="@drawable/ic_photo_frame"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/commentCamera"
+                            android:layout_marginRight="8dp"
+                            android:visibility="gone"/>
+
+                    <ImageButton
+                            android:id="@+id/commentCamera"
+                            android:src="@drawable/ic_action_photo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="8dp"
+                            android:visibility="visible"/>
+                </RelativeLayout>
+
+                <EditText
+                        android:background="@color/gray91"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minLines="10"
+                        android:inputType="textMultiLine"
+                        android:ems="10"
+                        android:padding="10dp"
+                        android:layout_margin="7dp"
+                        android:maxLength="512"
+                        android:gravity="top"
+                        android:hint="@string/comentario"
+                        android:id="@+id/commentEditText"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <!--Barra botoes inferiores-->
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true">
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginLeft="4dip"
+                android:layout_marginRight="4dip"
+                android:background="#44a0a0a0"
+                android:layout_alignParentTop="true"/>
+        <View
+                android:id="@+id/verticalDivider"
+                android:layout_width="1dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="4dip"
+                android:layout_marginTop="4dip"
+                android:background="#44a0a0a0"
+                android:layout_centerHorizontal="true"/>
+        <Button
+                android:id="@+id/btnAnterior"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1dp"
+                android:layout_toLeftOf="@id/verticalDivider"
+                android:background="@drawable/custom_button2"
+                android:text="Cancelar"
+                android:textColor="@color/black"
+                android:layout_alignParentBottom="true"/>
+        <Button
+                android:id="@+id/btnProximo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="1dp"
+                android:text="Enviar"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/black"
+                android:background="@drawable/custom_button2"
+                android:layout_toRightOf="@id/verticalDivider"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
