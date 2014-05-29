@@ -32,7 +32,6 @@ otherButtonTitles:nil] show]
 
 #define DB_NAME @"local.db"
 
-#warning TROCAR ESTA URL COM A URL DO SEU SERVIDOR!
-#define WEB_SERVICE_SERVER @"http://172.20.10.7/insporte-rest"
+#define WEB_SERVICE_SERVER @"http://insporte.com.br/rest"
 
 #endif
