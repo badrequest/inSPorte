@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E51A5B7A18E257FD0074C165 /* sp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E51A5B7918E257FD0074C165 /* sp.jpg */; };
-		E51A5B7E18E25EFB0074C165 /* sp_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E51A5B7D18E25EFB0074C165 /* sp_blur.jpg */; };
-		E51A5B8118E260F70074C165 /* OfflineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E51A5B8018E260F70074C165 /* OfflineManager.m */; };
-		E51A5B8418E26F230074C165 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E51A5B8318E26F230074C165 /* twitter_icon.png */; };
+		9FC11D521936AFF800414B05 /* DocumentValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC11D511936AFF800414B05 /* DocumentValidator.m */; };
 		E551D201181BD86B00945131 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D200181BD86B00945131 /* SelectViewController.m */; };
 		E551D205181BD94D00945131 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D204181BD94D00945131 /* MenuViewController.m */; };
 		E551D209181BD96E00945131 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D208181BD96E00945131 /* CommentViewController.m */; };
@@ -106,11 +103,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E51A5B7918E257FD0074C165 /* sp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp.jpg; sourceTree = "<group>"; };
-		E51A5B7D18E25EFB0074C165 /* sp_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp_blur.jpg; sourceTree = "<group>"; };
-		E51A5B7F18E260F70074C165 /* OfflineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineManager.h; sourceTree = "<group>"; };
-		E51A5B8018E260F70074C165 /* OfflineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineManager.m; sourceTree = "<group>"; };
-		E51A5B8318E26F230074C165 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_icon.png; sourceTree = "<group>"; };
+		9FC11D501936AFF800414B05 /* DocumentValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentValidator.h; sourceTree = "<group>"; };
+		9FC11D511936AFF800414B05 /* DocumentValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentValidator.m; sourceTree = "<group>"; };
 		E551D1FF181BD86B00945131 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
 		E551D200181BD86B00945131 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
 		E551D203181BD94D00945131 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -263,13 +257,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E51A5B8218E260FC0074C165 /* Offline */ = {
+		9FC11D4E1936AF5A00414B05 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				E51A5B7F18E260F70074C165 /* OfflineManager.h */,
-				E51A5B8018E260F70074C165 /* OfflineManager.m */,
+				9FC11D4F1936AFD200414B05 /* Validation */,
 			);
-			name = Offline;
+			name = Util;
+			sourceTree = "<group>";
+		};
+		9FC11D4F1936AFD200414B05 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				9FC11D501936AFF800414B05 /* DocumentValidator.h */,
+				9FC11D511936AFF800414B05 /* DocumentValidator.m */,
+			);
+			name = Validation;
 			sourceTree = "<group>";
 		};
 		E551D202181BD87000945131 /* SelectViewController */ = {
@@ -344,6 +346,7 @@
 		E58E2DA1181BD6310055CE81 /* inSPorte */ = {
 			isa = PBXGroup;
 			children = (
+				9FC11D4E1936AF5A00414B05 /* Util */,
 				E5C46BDD181C764D0006FB4F /* CheckBox */,
 				E5C46BBA181C434B0006FB4F /* Logo */,
 				E58F6E05181C2E5500206525 /* Imagens */,
@@ -677,7 +680,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = badRequestSpTrans;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Bad Request";
 				TargetAttributes = {
 					E58E2DB8181BD6320055CE81 = {
@@ -802,6 +805,7 @@
 				E58F6DEE181C07FE00206525 /* NSData+base64.m in Sources */,
 				E58F6DE4181C073700206525 /* Reachability.m in Sources */,
 				E5CD5CDB181D3A880046A255 /* QuestionnaireViewController.m in Sources */,
+				9FC11D521936AFF800414B05 /* DocumentValidator.m in Sources */,
 				E58F6DAD181BDCBB00206525 /* Questionnaire.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -856,7 +860,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -895,7 +898,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -953,7 +955,6 @@
 		E58E2DCE181BD6320055CE81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/inSPorte.app/inSPorte";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -976,7 +977,6 @@
 		E58E2DCF181BD6320055CE81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/inSPorte.app/inSPorte";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

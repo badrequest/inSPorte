@@ -9,55 +9,56 @@
 #import "InitialViewController.h"
 #import "Auth.h"
 
-@interface InitialViewController ()
-
-@end
-
 @implementation InitialViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+// View controller inicialization.
+- (id) initWithNibName: (NSString *) nibNameOrNil bundle: (NSBundle *) nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
 }
 
-- (BOOL)prefersStatusBarHidden {
-    
-    return NO;
+// Hide status bar of this view.
+- (BOOL) prefersStatusBarHidden
+{
+    return YES;
 }
 
-- (void)viewDidLoad
+// Capture the view load.
+- (void) viewDidLoad
 {
     [super viewDidLoad];
     
     [self proceedToApplication];
 }
 
-- (void)proceedToApplication {
+// Proceed to application after to configure storyboard.
+- (void) proceedToApplication
+{
     
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    
     UIViewController * viewController;
     
-//    if([Auth isAuthenticated]) {
-    
+    if ([Auth isAuthenticated])
+    {
         viewController = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-//    }
-    
-//    else {
-//        
-//        viewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
-//    }
+    }
+    else
+    {
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthViewController"];
+    }
 
     UIWindow * windowRef = [UIApplication sharedApplication].delegate.window;
     windowRef.rootViewController = viewController;
     [windowRef makeKeyAndVisible];
 }
 
-- (void)didReceiveMemoryWarning
+// Capture receiving warnings about memory.
+- (void) didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

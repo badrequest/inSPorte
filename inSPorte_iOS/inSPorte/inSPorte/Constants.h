@@ -38,6 +38,6 @@ if([button isKindOfClass:[UIButton class]])\
 
 #define DB_NAME @"local.db"
 
-#define WEB_SERVICE_SERVER @"http://www.insporte.com.br/insporte-rest"
+#define WEB_SERVICE_SERVER @"http://insporte.com.br/rest"
 
 #endif
