@@ -21,8 +21,11 @@ Data: 27 de Outubro de 2013
 Desenvolvedores e criadores do projeto:
 
 Danilo de Godoy Carolino (danilogcarolino) / danilogcarolino@gmail.com
+
 Fabio de Albuquerque Dela Antonio (fabio914) / fabio914@gmail.com
+
 Giovanni Longatto Nazario Marques (gmarques33) / giovannimarques33@gmail.com
+
 Jose Eduardo de Melo Colabardini (eduardocolabardini) / eduardocolabardini@gmail.com
 
 ========================
