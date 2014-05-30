@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9FC11D521936AFF800414B05 /* DocumentValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC11D511936AFF800414B05 /* DocumentValidator.m */; };
+		9FFA054519382EAF00C681C2 /* OfflineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFA054419382EAF00C681C2 /* OfflineManager.m */; };
+		9FFA054919382ECF00C681C2 /* sp_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FFA054619382ECF00C681C2 /* sp_blur.jpg */; };
+		9FFA054A19382ECF00C681C2 /* sp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9FFA054719382ECF00C681C2 /* sp.jpg */; };
+		9FFA054B19382ECF00C681C2 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FFA054819382ECF00C681C2 /* twitter_icon.png */; };
 		E551D201181BD86B00945131 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D200181BD86B00945131 /* SelectViewController.m */; };
 		E551D205181BD94D00945131 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D204181BD94D00945131 /* MenuViewController.m */; };
 		E551D209181BD96E00945131 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E551D208181BD96E00945131 /* CommentViewController.m */; };
@@ -105,6 +109,11 @@
 /* Begin PBXFileReference section */
 		9FC11D501936AFF800414B05 /* DocumentValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentValidator.h; sourceTree = "<group>"; };
 		9FC11D511936AFF800414B05 /* DocumentValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentValidator.m; sourceTree = "<group>"; };
+		9FFA054319382EAF00C681C2 /* OfflineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineManager.h; sourceTree = "<group>"; };
+		9FFA054419382EAF00C681C2 /* OfflineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineManager.m; sourceTree = "<group>"; };
+		9FFA054619382ECF00C681C2 /* sp_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp_blur.jpg; sourceTree = "<group>"; };
+		9FFA054719382ECF00C681C2 /* sp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp.jpg; sourceTree = "<group>"; };
+		9FFA054819382ECF00C681C2 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_icon.png; sourceTree = "<group>"; };
 		E551D1FF181BD86B00945131 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
 		E551D200181BD86B00945131 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
 		E551D203181BD94D00945131 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -350,7 +359,6 @@
 				E5C46BDD181C764D0006FB4F /* CheckBox */,
 				E5C46BBA181C434B0006FB4F /* Logo */,
 				E58F6E05181C2E5500206525 /* Imagens */,
-				E51A5B8218E260FC0074C165 /* Offline */,
 				E58F6DF4181C1D6500206525 /* Network */,
 				E58F6DC2181C067900206525 /* Database */,
 				E58F6DB5181BDE0300206525 /* Constants */,
@@ -552,6 +560,8 @@
 		E58F6DF4181C1D6500206525 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				9FFA054319382EAF00C681C2 /* OfflineManager.h */,
+				9FFA054419382EAF00C681C2 /* OfflineManager.m */,
 				E58F6DF1181C1D6000206525 /* Network.h */,
 				E58F6DF2181C1D6000206525 /* Network.m */,
 				E5C46BE8181C8D1C0006FB4F /* Sender.h */,
@@ -572,9 +582,9 @@
 		E58F6E05181C2E5500206525 /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
-				E51A5B8318E26F230074C165 /* twitter_icon.png */,
-				E51A5B7918E257FD0074C165 /* sp.jpg */,
-				E51A5B7D18E25EFB0074C165 /* sp_blur.jpg */,
+				9FFA054619382ECF00C681C2 /* sp_blur.jpg */,
+				9FFA054719382ECF00C681C2 /* sp.jpg */,
+				9FFA054819382ECF00C681C2 /* twitter_icon.png */,
 				E5C46BDE181C7FCB0006FB4F /* botao-avaliacao.png */,
 				E5C46BDF181C7FCB0006FB4F /* botao-sobrenos.png */,
 				E5C46BD2181C57C00006FB4F /* checkbox-ativo.png */,
@@ -716,7 +726,7 @@
 				E5C46BAB181C3D520006FB4F /* botoes-horizontais-autorizar.png in Resources */,
 				E58F6E0B181C313800206525 /* botoes-horizontais-sobre.png in Resources */,
 				E5CD5CD1181D3A610046A255 /* logo-icone-57-57.png in Resources */,
-				E51A5B8418E26F230074C165 /* twitter_icon.png in Resources */,
+				9FFA054B19382ECF00C681C2 /* twitter_icon.png in Resources */,
 				E5C46BC8181C47CC0006FB4F /* camera-red.png in Resources */,
 				E58E2DB4181BD6310055CE81 /* Images.xcassets in Resources */,
 				E5C46BCC181C47CC0006FB4F /* not-like.png in Resources */,
@@ -727,16 +737,17 @@
 				E58F6E00181C2E5000206525 /* botao-motorista.png in Resources */,
 				E58E2DA6181BD6310055CE81 /* InfoPlist.strings in Resources */,
 				E5C46BB2181C41A80006FB4F /* background-buttons.png in Resources */,
+				9FFA054919382ECF00C681C2 /* sp_blur.jpg in Resources */,
 				E58E2DAF181BD6310055CE81 /* Main.storyboard in Resources */,
 				E5CD5CD0181D3A610046A255 /* logo-icone-29-29.png in Resources */,
 				E5C46BC2181C47240006FB4F /* camera_icon@2x.png in Resources */,
-				E51A5B7E18E25EFB0074C165 /* sp_blur.jpg in Resources */,
 				E5C46BD4181C57C10006FB4F /* checkbox-ativo.png in Resources */,
 				E5C46BBE181C46D80006FB4F /* bar@2x.png in Resources */,
 				E5C46BA9181C3D350006FB4F /* logo-284-100.png in Resources */,
 				E58F6DFF181C2E5000206525 /* botao-incidente.png in Resources */,
 				E5C46BD1181C4C460006FB4F /* logo_sptrans.png in Resources */,
 				E5C46BE0181C7FCB0006FB4F /* botao-avaliacao.png in Resources */,
+				9FFA054A19382ECF00C681C2 /* sp.jpg in Resources */,
 				E5C46BCB181C47CC0006FB4F /* not-like-ativo.png in Resources */,
 				E58F6E01181C2E5000206525 /* botao-onibus.png in Resources */,
 				E5C46BC9181C47CC0006FB4F /* like-ativo.png in Resources */,
@@ -744,7 +755,6 @@
 				E5C46BBD181C46D80006FB4F /* bar.png in Resources */,
 				E5CD5CD2181D3A610046A255 /* logo-icone-58-58.png in Resources */,
 				E5CD5CD3181D3A610046A255 /* logo-icone-80-80.png in Resources */,
-				E51A5B7A18E257FD0074C165 /* sp.jpg in Resources */,
 				E5CD5CD5181D3A610046A255 /* logo-icone-120-120.png in Resources */,
 				E5CD5CDD181D3C040046A255 /* local.db in Resources */,
 				E58F6E0A181C313800206525 /* botoes-horizontais-avaliar.png in Resources */,
@@ -768,6 +778,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E58F6DB3181BDDD800206525 /* Option.m in Sources */,
+				9FFA054519382EAF00C681C2 /* OfflineManager.m in Sources */,
 				E58F6DDE181C073700206525 /* NSDictionary+RequestEncoding.m in Sources */,
 				E58F6DB8181BDEB800206525 /* Answer.m in Sources */,
 				E551D201181BD86B00945131 /* SelectViewController.m in Sources */,
@@ -786,7 +797,6 @@
 				E58F6DE0181C073700206525 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				E5C46BF3181C98A40006FB4F /* QuestionnaireAnswer.m in Sources */,
 				E58E2DA8181BD6310055CE81 /* main.m in Sources */,
-				E51A5B8118E260F70074C165 /* OfflineManager.m in Sources */,
 				E58F6DF3181C1D6000206525 /* Network.m in Sources */,
 				E5C46BED181C93B30006FB4F /* OptionAnswer.m in Sources */,
 				E58F6DE1181C073700206525 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
@@ -864,6 +874,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_LINK_OBJC_RUNTIME = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -888,7 +899,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -902,6 +913,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_LINK_OBJC_RUNTIME = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -920,7 +932,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -933,7 +945,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "inSPorte/inSPorte-Prefix.pch";
 				INFOPLIST_FILE = "inSPorte/inSPorte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -946,7 +958,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "inSPorte/inSPorte-Prefix.pch";
 				INFOPLIST_FILE = "inSPorte/inSPorte-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
