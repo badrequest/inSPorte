@@ -33,7 +33,7 @@ public class QuestionaryRest {
 	private QuestionaryService questionaryService;
 	
 	private static final List<String> attrs = Arrays.asList(
-			"Questionary.id", "Questionary.name", "Questionary.questions",
+			"Questionary.id", "Questionary.description", "Questionary.questions",
 			"Question.id", "Question.description", "Question.options",
 			"Option.id", "Option.description");
 

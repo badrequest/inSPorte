@@ -2,7 +2,9 @@ package br.com.badrequest.insporte.rest;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -11,6 +13,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.apache.commons.lang3.StringUtils;
 
 import br.com.badrequest.insporte.model.Answer;
 import br.com.badrequest.insporte.model.AnswerOption;
@@ -59,8 +63,8 @@ public class AnswerRest {
 			Questionario questionario = new Gson().fromJson(json, Questionario.class);
 			QuestionaryAnswer qAnswer = convertJsonToModel(questionario);
 			
-			if (!userService.validateUser(qAnswer.getUser().getEmail(), qAnswer.getUser().getPassword())) {
-				return new Gson().toJson(new Response(Response.FAIL));
+			if (!userService.validateUser(qAnswer.getUser().getUuid(), qAnswer.getUser().getPassword())) {
+					return new Gson().toJson(new Response(Response.FAIL));
 			}
 			
 			qAnswer = answerService.insert(qAnswer);
@@ -70,9 +74,10 @@ public class AnswerRest {
 
 			List<Imagem> imagens = new ArrayList<Imagem>();
 			for (Answer answer : qAnswer.getAnswers()) {
-				if (answer.getImage().getPath().equals(Boolean.TRUE.toString())) {
+				if (answer.getImage() != null &&
+						answer.getImage().getPath().equals(Boolean.TRUE.toString())) {
 					Imagem img = new Imagem();
-					img.idImagem = answer.getId();
+					img.idImagem = answer.getImage().getId();
 					img.idPergunta = answer.getQuestion().getId();
 					imagens.add(img);
 				}
@@ -80,12 +85,13 @@ public class AnswerRest {
 			
 			qResponse.idImagens = imagens;
 			
-			if (qAnswer.getCommentary().getPath().equals(Boolean.TRUE.toString())) {
-				qResponse.idImagemComentario = qAnswer.getCommentary().getId();
+			if (qAnswer.getCommentary() != null && qAnswer.getCommentary().getImage() != null) {
+				qResponse.idImagemComentario = qAnswer.getCommentary().getImage().getId();
 			}
 			
 			return new Gson().toJson(qResponse);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return new Gson().toJson(new Response(Response.FAIL));
 		}
 	}
@@ -103,19 +109,23 @@ public class AnswerRest {
 		user.setDocument(questionario.auth.id);
 		user.setEmail(questionario.auth.email);
 		user.setPassword(questionario.auth.senha);
+		user.setUuid(questionario.auth.uuid);
 		
 		BusLine busLine = new BusLine();
 		busLine.setCode(questionario.info.id);
 		
-		Commentary commentary = new Commentary();
-		commentary.setTexto(questionario.comentario.texto);
-		commentary.setInsertImage(questionario.comentario.imagem);
-		commentary.setEnvio(qAnswer);
+		Commentary commentary = null;
+		if (!StringUtils.isBlank(questionario.comentario.texto) || questionario.comentario.imagem == true) {
+			commentary = new Commentary();
+			commentary.setTexto(StringUtils.isBlank(questionario.comentario.texto) ? null : questionario.comentario.texto);
+			commentary.setInsertImage(questionario.comentario.imagem);
+			commentary.setEnvio(qAnswer);
+		}
 		
 		Questionary questionary = new Questionary();
 		questionary.setId(questionario.resposta.idQuestionario);
 		
-		List<Answer> answers = new ArrayList<Answer>();
+		Set<Answer> answers = new HashSet<Answer>();
 		for (Pergunta p : questionario.resposta.perguntas) {
 			
 			Question question = new Question();
@@ -126,19 +136,21 @@ public class AnswerRest {
 			answer.setInsertImage(p.imagem);
 			answer.setQuestionaryAnswer(qAnswer);
 			
-			List<AnswerOption> options = new ArrayList<AnswerOption>();
-			for (Opcao opcao : p.opcoes) {
-				
-				Option option = new Option();
-				option.setId(opcao.idOpcao);
-
-				AnswerOption answerOption = new AnswerOption();
-				answerOption.setOption(option);
-				answerOption.setAnswer(answer);
-				
-				options.add(answerOption);
+			Set<AnswerOption> options = new HashSet<AnswerOption>();
+			if (p.opcoes != null && !p.opcoes.isEmpty()) {
+				for (Opcao opcao : p.opcoes) {
+					
+					Option option = new Option();
+					option.setId(opcao.idOpcao);
+	
+					AnswerOption answerOption = new AnswerOption();
+					answerOption.setOption(option);
+					answerOption.setAnswer(answer);
+					
+					options.add(answerOption);
+				}
 			}
-			
+				
 			answer.setOptions(options);
 			answers.add(answer);
 		}

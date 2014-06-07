@@ -42,11 +42,11 @@ public class LikeRest {
 		
 		AddLike addlike = new Gson().fromJson(json, AddLike.class);
 		
-		if (!userService.validateUser(addlike.auth.email, addlike.auth.senha)) {
+		if (!userService.validateUser(addlike.auth.uuid, addlike.auth.senha)) {
 			return new Gson().toJson(new Response(Response.FAIL));
 		}
 		
-		boolean ret = likeService.addLike(addlike.auth.email, 
+		boolean ret = likeService.addLike(addlike.auth.uuid, 
 				addlike.like.id, 
 				addlike.like.status);
 		
@@ -65,7 +65,7 @@ public class LikeRest {
 	
 		GetLike getlike = new Gson().fromJson(json, GetLike.class);
 		
-		Like like = likeService.getLike(getlike.auth.email, getlike.id);
+		Like like = likeService.getLike(getlike.auth.uuid, getlike.id);
 		
 		if (like == null) {
 			return new Gson().toJson(new Response(Response.FAIL));

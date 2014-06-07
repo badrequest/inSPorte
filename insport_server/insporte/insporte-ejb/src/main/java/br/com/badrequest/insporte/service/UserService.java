@@ -2,7 +2,7 @@ package br.com.badrequest.insporte.service;
 
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -10,7 +10,7 @@ import javax.persistence.Query;
 
 import br.com.badrequest.insporte.model.User;
 
-@Stateful
+@Stateless
 public class UserService {
 
 	@Inject
@@ -30,13 +30,12 @@ public class UserService {
 		return users;
 	}
 
-	public User getUser(String bu, String document) {
+	public User getUserByUUID(String uuid) {
 		try {
 			Query userQuery = em
-					.createQuery("SELECT u FROM User u WHERE u.bu = :bu AND u.document = :doc");
+					.createQuery("SELECT u FROM User u WHERE u.uuid = :uuid");
 
-			userQuery.setParameter("bu", bu);
-			userQuery.setParameter("doc", document);
+			userQuery.setParameter("uuid", uuid);
 			User user = (User) userQuery.getSingleResult();
 			
 			return user;
@@ -45,32 +44,18 @@ public class UserService {
 		}
 	}
 	
-	public User getUser(String email) {
-		try {
-			Query userQuery = em
-					.createQuery("SELECT u FROM User u WHERE u.email = :email");
-
-			userQuery.setParameter("email", email);
-			User user = (User) userQuery.getSingleResult();
-			
-			return user;
-		} catch (NoResultException noResultException) {
-			return null;
-		}
-	}
-
 	public void insert(User user) {
 		em.persist(user);
 	}
 	
 	
-	public boolean validateUser(String email, String pw) {
+	public boolean validateUser(String uuid, String pw) {
 		
-		if (email == null || email.isEmpty()) {
+		if (uuid == null || uuid.isEmpty()) {
 			return false;
 		}
 		
-		User u = this.getUser(email);
+		User u = this.getUserByUUID(uuid);
 		
 		if (u.getPassword().equals(pw)) {
 			return true;

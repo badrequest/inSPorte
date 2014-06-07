@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -14,9 +14,10 @@ import javax.persistence.NoResultException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 
+import br.com.badrequest.insporte.exception.InvalidImage;
 import br.com.badrequest.insporte.model.Image;
 
-@Stateful
+@Stateless
 public class ImageService {
 
 	@Inject
@@ -62,13 +63,24 @@ public class ImageService {
 		if (binaryData != null) {
 			return Base64.encodeBase64String(binaryData);
 		}
-		return null;
+		return "";
 	}
 	
 	public byte[] getImageBytes(Long id) {
-		Image image = getImage(id);
+
 		try {
-			InputStream is = new FileInputStream(image.getPath());
+			
+			Image image = getImage(id);
+	
+			if (image == null) {
+				throw new InvalidImage();
+			}
+			
+			String filePath = String.format("/home/insporte/images/%d.png", id);
+	
+//			String filePath = "/tmp/"+id.toString()+".png";
+		
+			InputStream is = new FileInputStream(filePath);
 			return IOUtils.toByteArray(is);
 		} catch (Exception e) {
 			return null;

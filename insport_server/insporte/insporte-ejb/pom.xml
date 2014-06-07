@@ -19,6 +19,12 @@
 		<!-- Declare the APIs we depend on and need for compilation. All of them 
 			are provided by JBoss AS 7 -->
 
+		<dependency>
+		    <groupId>uaihebert.com</groupId>
+		    <artifactId>EasyCriteria</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
+
 		<!-- Import the EJB API, we use provided scope as the API is included in 
 			JBoss AS 7 -->
 		<dependency>
@@ -33,6 +39,14 @@
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Import the Mail API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <scope>1.4.3</scope>
 		</dependency>
 
 		<!-- Import the JPA API, we use provided scope as the API is included in 

@@ -1,13 +1,13 @@
 package br.com.badrequest.insporte.service;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import br.com.badrequest.insporte.model.BusLine;
 
-@Stateful
+@Stateless
 public class BusService {
 
 	@Inject

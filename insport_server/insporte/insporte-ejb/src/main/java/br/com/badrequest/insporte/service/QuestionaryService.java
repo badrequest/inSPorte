@@ -2,14 +2,18 @@ package br.com.badrequest.insporte.service;
 
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
-import br.com.badrequest.insporte.model.Questionary;
+import com.uaihebert.factory.EasyCriteriaFactory;
+import com.uaihebert.model.EasyCriteria;
 
-@Stateful
+import br.com.badrequest.insporte.model.Questionary;
+import br.com.badrequest.insporte.model.QuestionaryAnswer;
+
+@Stateless
 public class QuestionaryService {
 
 	@Inject
@@ -24,12 +28,18 @@ public class QuestionaryService {
 	@SuppressWarnings("unchecked")
 	public List<Questionary> getAllQuestionaries() {
 		
-		String jpql = "SELECT a FROM Questionary a LEFT JOIN FETCH a.questions b LEFT JOIN FETCH b.options";
-
-		List<Questionary> questionaries = 
-				(List<Questionary>) em.createQuery(jpql).getResultList();
+		try {
+			EasyCriteria<Questionary> criteria = EasyCriteriaFactory.createQueryCriteria(em, Questionary.class);
+			criteria.leftJoinFetch("questions");
+			criteria.leftJoinFetch("questions.options");
+			criteria.setDistinctTrue();
+			
+			List<Questionary> l = criteria.getResultList();
 		
-		return questionaries;
+			return l;
+		} catch (NoResultException noResultException) {
+			return null;
+		}
 	}
 	
 	public Questionary getQuestionary(Long id) {

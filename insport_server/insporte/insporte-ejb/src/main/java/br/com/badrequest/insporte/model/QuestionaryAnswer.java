@@ -2,7 +2,7 @@ package br.com.badrequest.insporte.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,11 +16,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "questionary_answer")
 @Data
+@EqualsAndHashCode(of={"id"})
 public class QuestionaryAnswer implements Serializable {
 
 	@Id
@@ -40,13 +42,13 @@ public class QuestionaryAnswer implements Serializable {
 	
 	private Double lon;
 
-	@OneToOne
+	@ManyToOne
 	private Questionary questionary;
 	
 	@OneToOne(cascade={CascadeType.ALL})
 	private Commentary commentary;
 	
 	@OneToMany(mappedBy = "questionaryAnswer", cascade={CascadeType.ALL})
-	private List<Answer> answers;
+	private Set<Answer> answers;
 		
 }

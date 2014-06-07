@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import br.com.badrequest.insporte.exception.InvalidUID;
 import br.com.badrequest.insporte.model.User;
 import br.com.badrequest.insporte.rest.model.Response;
 import br.com.badrequest.insporte.rest.model.auth.Auth;
@@ -34,6 +35,33 @@ public class AuthenticatorRest {
 	private UserService userService;
 
 	@POST
+	@Path("/simple")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String simple(String json) {
+		Auth auth = new Gson().fromJson(json, Auth.class);
+
+		try {
+			User user = null;
+            
+            user = userService.getUserByUUID(auth.uuid);
+	            
+            if (user == null) {
+            	user = new User();
+            	user.setUuid(auth.uuid);
+            	user.setPassword(PasswordGenerator.generateRandomString(20, Mode.ALPHANUMERIC));
+            	userService.insert(user);
+            } else {
+            	throw new InvalidUID();
+            }
+            
+			return new Gson().toJson(new Response(user.getPassword()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Gson().toJson(new Response(Response.FAIL));
+		}
+	}
+	
+	@POST
 	@Path("/add")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String addUser(String json) {
@@ -43,19 +71,25 @@ public class AuthenticatorRest {
 			User user = null;
 			String email = null;
             
-			GoogleChecker checker = new GoogleChecker(new String[]{"549088494676-m2ctid6cpll6ttd4j3p6rk4d8ug49eri.apps.googleusercontent.com"}, "549088494676-ukvqmup4o945c2memdcgudc631nm1mdk.apps.googleusercontent.com");
-            GoogleIdToken.Payload payload = checker.check(auth.token);
+			GoogleChecker checker = new GoogleChecker(new String[]{"?"}, "?");
+            
+			GoogleIdToken.Payload payload = checker.check(auth.token);
+            
+            System.out.println("Token Auth: " + auth.token);
             
             if (payload.getEmailVerified()) {
                 email = payload.getEmail();
             
-	            user = userService.getUser(email);
+	            user = userService.getUserByUUID(auth.uuid);
 	            
 	            if (user == null) {
 	            	user = new User();
 	            	user.setEmail(email);
+	            	user.setUuid(auth.uuid);
 	            	user.setPassword(PasswordGenerator.generateRandomString(20, Mode.ALPHANUMERIC));
 	            	userService.insert(user);
+	            } else {
+	            	throw new InvalidUID();
 	            }
 	            
 				return new Gson().toJson(new Response(user.getPassword()));
@@ -63,6 +97,7 @@ public class AuthenticatorRest {
     			return new Gson().toJson(new Response(Response.FAIL));
             }
 		} catch (Exception e) {
+			e.printStackTrace();
 			return new Gson().toJson(new Response(Response.FAIL));
 		}
 	}
@@ -73,28 +108,4 @@ public class AuthenticatorRest {
 		return new Gson().toJson(new Response(Response.OK));
 	}
 	
-//	@GET
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public String getAllUsers() {
-//		List<User> results = userService.getAllUsers();
-//		
-//		if (results == null) {
-//			results = new ArrayList<User>();
-//		}
-//		
-//		return new Gson().toJson(results);
-//	}
-//
-//	@GET
-//	@Path("/{id:[0-9][0-9]*}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public String getUser(@PathParam("id") long id) {
-//		User user = userService.getUser(id);
-//		
-//		if (user == null) {
-//			return new Gson().toJson(new Response(Response.FAIL));
-//		}
-//		
-//		return new Gson().toJson(user);
-//	}
 }

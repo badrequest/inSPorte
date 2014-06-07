@@ -11,10 +11,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "comment")
 @Data
+@EqualsAndHashCode(of={"id"})
 public class Commentary {
 
 	@Id

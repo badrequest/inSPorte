@@ -14,5 +14,8 @@ public class Auth implements Serializable {
 	
 	public String email;
 	public String senha;
+	
+	public String uuid;
+	public String device;
 
 }

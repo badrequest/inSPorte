@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -17,8 +16,7 @@ import com.google.gson.annotations.SerializedName;
 
 @SuppressWarnings("serial")
 @Entity
-//@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"bu", "document"}))
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"uuid"}))
 @Data 
 public class User implements Serializable {
 
@@ -36,4 +34,7 @@ public class User implements Serializable {
 	
 	private String password;
 	
+	private String uuid;
+
+	private String device;
 }
